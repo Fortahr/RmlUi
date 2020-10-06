@@ -15,13 +15,13 @@
 int GameShutdown(lua_State* L);
 int GameSetPaused(lua_State* L);
 int GameSetDifficulty(lua_State* L);
-int GameSetDefenderColour(lua_State* L);
+int GameSetDefenderColor(lua_State* L);
 int GameSubmitHighScore(lua_State* L);
 int GameSetHighScoreName(lua_State* L);
 
 static ElementGameInstancer game_instancer;
 
-void LuaInterface::Initialise(lua_State* L)
+void LuaInterface::Initialize(lua_State* L)
 {
     InitGame(L);
     Rml::Factory::RegisterElementInstancer("game", &game_instancer);
@@ -50,8 +50,8 @@ void LuaInterface::InitGame(lua_State *L)
     lua_pushcfunction(L,GameSetDifficulty);
     lua_setfield(L,game,"SetDifficulty");
 
-    lua_pushcfunction(L,GameSetDefenderColour);
-    lua_setfield(L,game,"SetDefenderColour");
+    lua_pushcfunction(L,GameSetDefenderColor);
+    lua_setfield(L,game,"SetDefenderColor");
 
     lua_pushcfunction(L,GameSubmitHighScore);
     lua_setfield(L,game,"SubmitHighScore");
@@ -91,10 +91,10 @@ int GameSetDifficulty(lua_State* L)
     return 0;
 }
 
-int GameSetDefenderColour(lua_State* L)
+int GameSetDefenderColor(lua_State* L)
 {
-    Rml::Colourb* colour = Rml::Lua::LuaType<Rml::Colourb>::check(L,1);
-    GameDetails::SetDefenderColour(*colour);
+    Rml::Colorb* color = Rml::Lua::LuaType<Rml::Colorb>::check(L,1);
+    GameDetails::SetDefenderColor(*color);
     return 0;
 }
 
@@ -104,7 +104,7 @@ int GameSubmitHighScore(lua_State* /*L*/)
     if(score > 0)
     {
         // Submit the score the player just got to the high scores chart.
-        HighScores::SubmitScore(GameDetails::GetDefenderColour(),GameDetails::GetWave(), GameDetails::GetScore());
+        HighScores::SubmitScore(GameDetails::GetDefenderColor(),GameDetails::GetWave(), GameDetails::GetScore());
         // Reset the score so the chart won't get confused next time we enter.
         GameDetails::ResetScore();
     }

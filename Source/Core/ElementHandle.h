@@ -61,7 +61,7 @@ protected:
 	Element* move_target;
 	Element* size_target;
 
-	bool initialised;
+	bool initialized;
 };
 
 } // namespace Rml

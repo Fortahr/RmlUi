@@ -181,34 +181,34 @@ int WidgetTextInput::GetLength() const
 	return (int)result;
 }
 
-// Update the colours of the selected text.
-void WidgetTextInput::UpdateSelectionColours()
+// Update the colors of the selected text.
+void WidgetTextInput::UpdateSelectionColors()
 {
-	// Determine what the colour of the selected text is. If our 'selection' element has the 'color'
-	// attribute set, then use that. Otherwise, use the inverse of our own text colour.
-	Colourb colour;
-	const Property* colour_property = selection_element->GetLocalProperty("color");
-	if (colour_property != nullptr)
-		colour = colour_property->Get< Colourb >();
+	// Determine what the color of the selected text is. If our 'selection' element has the 'color'
+	// attribute set, then use that. Otherwise, use the inverse of our own text color.
+	Colorb color;
+	const Property* color_property = selection_element->GetLocalProperty("color");
+	if (color_property != nullptr)
+		color = color_property->Get< Colorb >();
 	else
 	{
-		colour = parent->GetComputedValues().color;
-		colour.red = 255 - colour.red;
-		colour.green = 255 - colour.green;
-		colour.blue = 255 - colour.blue;
+		color = parent->GetComputedValues().color;
+		color.red = 255 - color.red;
+		color.green = 255 - color.green;
+		color.blue = 255 - color.blue;
 	}
 
-	// Set the computed text colour on the element holding the selected text.
-	selected_text_element->SetProperty(PropertyId::Color, Property(colour, Property::COLOUR));
+	// Set the computed text color on the element holding the selected text.
+	selected_text_element->SetProperty(PropertyId::Color, Property(color, Property::COLOR));
 
 	// If the 'background-color' property has been set on the 'selection' element, use that as the
-	// background colour for the selected text. Otherwise, use the inverse of the selected text
-	// colour.
-	colour_property = selection_element->GetLocalProperty("background-color");
-	if (colour_property != nullptr)
-		selection_colour = colour_property->Get< Colourb >();
+	// background color for the selected text. Otherwise, use the inverse of the selected text
+	// color.
+	color_property = selection_element->GetLocalProperty("background-color");
+	if (color_property != nullptr)
+		selection_color = color_property->Get< Colorb >();
 	else
-		selection_colour = Colourb(255 - colour.red, 255 - colour.green, 255 - colour.blue, colour.alpha);
+		selection_color = Colorb(255 - color.red, 255 - color.green, 255 - color.blue, color.alpha);
 }
 
 // Updates the cursor, if necessary.
@@ -1065,7 +1065,7 @@ Vector2f WidgetTextInput::FormatText()
 
 			selection_vertices.resize(selection_vertices.size() + 4);
 			selection_indices.resize(selection_indices.size() + 6);
-			GeometryUtilities::GenerateQuad(&selection_vertices[selection_vertices.size() - 4], &selection_indices[selection_indices.size() - 6], line_position, Vector2f((float)selection_width, line_height), selection_colour, (int)selection_vertices.size() - 4);
+			GeometryUtilities::GenerateQuad(&selection_vertices[selection_vertices.size() - 4], &selection_indices[selection_indices.size() - 6], line_position, Vector2f((float)selection_width, line_height), selection_color, (int)selection_vertices.size() - 4);
 
 			line_position.x += selection_width;
 		}
@@ -1122,7 +1122,7 @@ void WidgetTextInput::GenerateCursor()
 
 	cursor_size.x = ElementUtilities::GetDensityIndependentPixelRatio(text_element);
 	cursor_size.y = text_element->GetLineHeight() + 2.0f;
-	GeometryUtilities::GenerateQuad(&vertices[0], &indices[0], Vector2f(0, 0), cursor_size, parent->GetProperty< Colourb >("color"));
+	GeometryUtilities::GenerateQuad(&vertices[0], &indices[0], Vector2f(0, 0), cursor_size, parent->GetProperty< Colorb >("color"));
 }
 
 void WidgetTextInput::UpdateCursorPosition()

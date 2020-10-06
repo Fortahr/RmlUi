@@ -58,7 +58,7 @@ StyleSheetFactory::~StyleSheetFactory()
 	instance = nullptr;
 }
 
-bool StyleSheetFactory::Initialise()
+bool StyleSheetFactory::Initialize()
 {
 	new StyleSheetFactory();
 

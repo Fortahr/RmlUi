@@ -51,8 +51,8 @@ public:
 	Game();
 	~Game();
 
-	/// Initialise a new game
-	void Initialise();
+	/// Initialize a new game
+	void Initialize();
 
 	/// Update the game
 	void Update();
@@ -118,8 +118,8 @@ private:
 	// Texture that contains the sprites
 	Rml::TextureHandle texture;
 
-	void InitialiseShields();
-	void InitialiseWave();
+	void InitializeShields();
+	void InitializeWave();
 	void OnGameOver();
 };
 

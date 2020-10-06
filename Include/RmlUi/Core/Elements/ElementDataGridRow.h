@@ -54,7 +54,7 @@ public:
 	ElementDataGridRow(const String& tag);
 	virtual ~ElementDataGridRow();
 
-	void Initialise(ElementDataGrid* parent_grid, ElementDataGridRow* parent_row = nullptr, int child_index = -1, ElementDataGridRow* header_row = nullptr, int depth = -1);
+	void Initialize(ElementDataGrid* parent_grid, ElementDataGridRow* parent_row = nullptr, int child_index = -1, ElementDataGridRow* header_row = nullptr, int depth = -1);
 	void SetChildIndex(int child_index);
 	int GetDepth();
 

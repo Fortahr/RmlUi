@@ -15,7 +15,7 @@
 #include <RmlUi/Core/Elements/DataFormatter.h>
 
 /**
-	Formats the colour of the player's ship to a <defender> tag, which is linked to the defender decorator.
+	Formats the color of the player's ship to a <defender> tag, which is linked to the defender decorator.
 	@author Robert Curry
  */
 

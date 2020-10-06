@@ -423,7 +423,7 @@ struct PrepareVisitor
 		// Rotate3D can be interpolated if and only if their rotation axes point in the same direction.
 		// We normalize the rotation vector here for easy comparison, and return true here. Later on we make the
 		// pair-wise check in 'TryConvertToMatchingGenericType' to see if we need to decompose.
-		Vector3f vec = Vector3f(p.values[0], p.values[1], p.values[2]).Normalise();
+		Vector3f vec = Vector3f(p.values[0], p.values[1], p.values[2]).Normalize();
 		p.values[0] = vec.x;
 		p.values[1] = vec.y;
 		p.values[2] = vec.z;
@@ -876,13 +876,13 @@ bool TransformUtilities::Decompose(Transforms::DecomposedMatrix4& d, const Matri
 	}
 
 	d.scale[0] = row[0].Magnitude();
-	row[0] = row[0].Normalise();
+	row[0] = row[0].Normalize();
 
 	d.skew[0] = row[0].DotProduct(row[1]);
 	row[1] = Combine(row[1], row[0], 1, -d.skew[0]);
 
 	d.scale[1] = row[1].Magnitude();
-	row[1] = row[1].Normalise();
+	row[1] = row[1].Normalize();
 	d.skew[0] /= d.scale[1];
 
 	d.skew[1] = row[0].DotProduct(row[2]);
@@ -891,7 +891,7 @@ bool TransformUtilities::Decompose(Transforms::DecomposedMatrix4& d, const Matri
 	row[2] = Combine(row[2], row[1], 1, -d.skew[2]);
 
 	d.scale[2] = row[2].Magnitude();
-	row[2] = row[2].Normalise();
+	row[2] = row[2].Normalize();
 	d.skew[2] /= d.scale[2];
 	d.skew[1] /= d.scale[2];
 

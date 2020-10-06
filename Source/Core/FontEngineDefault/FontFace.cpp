@@ -76,7 +76,7 @@ FontFaceHandleDefault* FontFace::GetHandle(int size) {
 		return nullptr;
 	}
 
-	// Construct and initialise the new handle.
+	// Construct and initialize the new handle.
 	auto handle = MakeUnique<FontFaceHandleDefault>();
 	if (!handle->Initialize(face, size))
 	{

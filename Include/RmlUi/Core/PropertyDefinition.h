@@ -50,7 +50,7 @@ public:
 	~PropertyDefinition();
 
 	/// Registers a parser to parse values for this definition.
-	/// @param[in] parser_name The name of the parser (default parsers are 'string', 'keyword', 'number' and 'colour').
+	/// @param[in] parser_name The name of the parser (default parsers are 'string', 'keyword', 'number' and 'color').
 	/// @param[in] parser_parameters A comma-separated list of validation parameters for the parser.
 	/// @return This property definition.
 	PropertyDefinition& AddParser(const String& parser_name, const String& parser_parameters = "");

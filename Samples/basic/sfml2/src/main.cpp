@@ -101,7 +101,7 @@ int main(int /*argc*/, char** /*argv*/)
 	Rml::SetSystemInterface(&SystemInterface);
 
 
-	if (!Rml::Initialise())
+	if (!Rml::Initialize())
 		return 1;
 
 	Rml::LoadFontFace("assets/Delicious-Bold.otf");
@@ -112,7 +112,7 @@ int main(int /*argc*/, char** /*argv*/)
 	Rml::Context* Context = Rml::CreateContext("default",
 		Rml::Vector2i(MyWindow.getSize().x, MyWindow.getSize().y));
 
-	Rml::Debugger::Initialise(Context);
+	Rml::Debugger::Initialize(Context);
 
 	Rml::ElementDocument* Document = Context->LoadDocument("assets/demo.rml");
 

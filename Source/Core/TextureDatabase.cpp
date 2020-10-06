@@ -48,7 +48,7 @@ TextureDatabase::~TextureDatabase()
 	texture_database = nullptr;
 }
 
-void TextureDatabase::Initialise()
+void TextureDatabase::Initialize()
 {
 	new TextureDatabase();
 }

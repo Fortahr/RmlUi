@@ -39,7 +39,7 @@
 #include <X11/Xutil.h>
 #include <string.h>
 
-static void InitialiseKeymap();
+static void InitializeKeymap();
 static int GetKeyModifierState(int x_state);
 
 static const int KEYMAP_SIZE = 256;
@@ -52,9 +52,9 @@ static bool has_xkblib = false;
 static int min_keycode, max_keycode, keysyms_per_keycode;
 static KeySym *x11_key_mapping = nullptr;
 
-bool InputX11::Initialise()
+bool InputX11::Initialize()
 {
-	InitialiseKeymap();
+	InitializeKeymap();
 	return true;
 }
 
@@ -62,7 +62,7 @@ void InputX11::Shutdown()
 {
 }
 
-void InputX11::InitialiseX11Keymap(Display *display)
+void InputX11::InitializeX11Keymap(Display *display)
 {
 	RMLUI_ASSERT(display != nullptr);
 
@@ -226,9 +226,9 @@ static int GetKeyModifierState(int x_state)
 	return key_modifier_state;
 }
 
-static void InitialiseKeymap()
+static void InitializeKeymap()
 {
-	// Initialise the key map with default values.
+	// Initialize the key map with default values.
 	memset(key_identifier_map, 0, sizeof(key_identifier_map));
 
 	key_identifier_map[XK_BackSpace & 0xFF] = Rml::Input::KI_BACK;

@@ -45,7 +45,7 @@ int Vector2f__sub(lua_State* L);
 int Vector2f__eq(lua_State* L);
 
 int Vector2fDotProduct(lua_State* L, Vector2f* obj);
-int Vector2fNormalise(lua_State* L, Vector2f* obj);
+int Vector2fNormalize(lua_State* L, Vector2f* obj);
 int Vector2fRotate(lua_State* L, Vector2f* obj);
 
 int Vector2fGetAttrx(lua_State*L);

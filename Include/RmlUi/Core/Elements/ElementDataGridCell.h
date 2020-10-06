@@ -49,7 +49,7 @@ public:
 	ElementDataGridCell(const String& tag);
 	virtual ~ElementDataGridCell();
 
-	void Initialise(int column, Element* header);
+	void Initialize(int column, Element* header);
 	int GetColumn();
 	
 private:

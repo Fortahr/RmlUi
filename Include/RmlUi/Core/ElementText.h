@@ -116,7 +116,7 @@ private:
 	GeometryList geometry;
 	bool geometry_dirty;
 
-	Colourb colour;
+	Colorb color;
 
 	// The decoration geometry we've generated for this string.
 	Geometry decoration;

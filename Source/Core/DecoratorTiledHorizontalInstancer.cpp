@@ -56,7 +56,7 @@ SharedPtr<Decorator> DecoratorTiledHorizontalInstancer::InstanceDecorator(const 
 		return nullptr;
 
 	auto decorator = MakeShared<DecoratorTiledHorizontal>();
-	if (!decorator->Initialise(tiles, textures))
+	if (!decorator->Initialize(tiles, textures))
 		return nullptr;
 
 	return decorator;

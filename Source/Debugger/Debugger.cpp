@@ -33,19 +33,19 @@
 namespace Rml {
 namespace Debugger {
 
-// Initialises the debug plugin. The debugger will be loaded into the given context.
-bool Initialise(Context* context)
+// Initializes the debug plugin. The debugger will be loaded into the given context.
+bool Initialize(Context* context)
 {
 	if (DebuggerPlugin::GetInstance() != nullptr)
 	{
-		Log::Message(Log::LT_WARNING, "Unable to initialise debugger plugin, already initialised!");
+		Log::Message(Log::LT_WARNING, "Unable to initialize debugger plugin, already initialized!");
 		return false;
 	}
 
 	DebuggerPlugin* plugin = new DebuggerPlugin();
-	if (!plugin->Initialise(context))
+	if (!plugin->Initialize(context))
 	{
-		Log::Message(Log::LT_WARNING, "Unable to initialise debugger plugin.");
+		Log::Message(Log::LT_WARNING, "Unable to initialize debugger plugin.");
 
 		delete plugin;
 		return false;

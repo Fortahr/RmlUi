@@ -26,8 +26,8 @@
  *
  */
 
-#ifndef RMLUI_CORE_PROPERTYPARSERCOLOUR_H
-#define RMLUI_CORE_PROPERTYPARSERCOLOUR_H
+#ifndef RMLUI_CORE_PROPERTYPARSERCOLOR_H
+#define RMLUI_CORE_PROPERTYPARSERCOLOR_H
 
 #include "../../Include/RmlUi/Core/PropertyParser.h"
 #include "../../Include/RmlUi/Core/Types.h"
@@ -35,18 +35,18 @@
 namespace Rml {
 
 /**
-	A property parser that parses a colour value.
+	A property parser that parses a color value.
 
 	@author Peter Curry
  */
 
-class PropertyParserColour : public PropertyParser
+class PropertyParserColor : public PropertyParser
 {
 public:
-	PropertyParserColour();
-	virtual ~PropertyParserColour();
+	PropertyParserColor();
+	virtual ~PropertyParserColor();
 
-	/// Called to parse a RCSS colour declaration.
+	/// Called to parse a RCSS color declaration.
 	/// @param[out] property The property to set the parsed value on.
 	/// @param[in] value The raw value defined for this property.
 	/// @param[in] parameters The parameters defined for this property; not used for this parser.
@@ -54,8 +54,8 @@ public:
 	bool ParseValue(Property& property, const String& value, const ParameterMap& parameters) const override;
 
 private:
-	using ColourMap = UnorderedMap< String, Colourb>;
-	ColourMap html_colours;
+	using ColorMap = UnorderedMap< String, Colorb>;
+	ColorMap html_colors;
 };
 
 } // namespace Rml

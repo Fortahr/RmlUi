@@ -144,10 +144,10 @@ int Vector2fDotProduct(lua_State* L, Vector2f* obj)
     return 1;
 }
 
-int Vector2fNormalise(lua_State* L, Vector2f* obj)
+int Vector2fNormalize(lua_State* L, Vector2f* obj)
 {
     Vector2f* res = new Vector2f();
-    (*res) = obj->Normalise();
+    (*res) = obj->Normalize();
 
     LuaType<Vector2f>::push(L,res,true);
     return 1;
@@ -215,7 +215,7 @@ int Vector2fSetAttry(lua_State*L)
 RegType<Vector2f> Vector2fMethods[] = 
 {
     RMLUI_LUAMETHOD(Vector2f,DotProduct)
-    RMLUI_LUAMETHOD(Vector2f,Normalise)
+    RMLUI_LUAMETHOD(Vector2f,Normalize)
     RMLUI_LUAMETHOD(Vector2f,Rotate)
     { nullptr, nullptr },
 };

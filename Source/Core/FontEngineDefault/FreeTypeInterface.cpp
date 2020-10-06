@@ -43,14 +43,14 @@ static void BuildGlyphMap(FT_Face ft_face, int size, FontGlyphMap& glyphs);
 static void GenerateMetrics(FT_Face ft_face, FontMetrics& metrics);
 
 
-bool FreeType::Initialise()
+bool FreeType::Initialize()
 {
 	RMLUI_ASSERT(!ft_library);
 
 	FT_Error result = FT_Init_FreeType(&ft_library);
 	if (result != 0)
 	{
-		Log::Message(Log::LT_ERROR, "Failed to initialise FreeType, error %d.", result);
+		Log::Message(Log::LT_ERROR, "Failed to initialize FreeType, error %d.", result);
 		Shutdown();
 		return false;
 	}
@@ -80,7 +80,7 @@ FontFaceHandleFreetype FreeType::LoadFace(const byte* data, int data_length, con
 		return 0;
 	}
 
-	// Initialise the character mapping on the face.
+	// Initialize the character mapping on the face.
 	if (face->charmap == nullptr)
 	{
 		FT_Select_Charmap(face, FT_ENCODING_APPLE_ROMAN);
@@ -119,8 +119,8 @@ void FreeType::GetFaceStyle(FontFaceHandleFreetype in_face, String& font_family,
 
 
 
-// Initialises the handle so it is able to render text.
-bool FreeType::InitialiseFaceHandle(FontFaceHandleFreetype face, int font_size, FontGlyphMap& glyphs, FontMetrics& metrics)
+// Initializes the handle so it is able to render text.
+bool FreeType::InitializeFaceHandle(FontFaceHandleFreetype face, int font_size, FontGlyphMap& glyphs, FontMetrics& metrics)
 {
 	FT_Face ft_face = (FT_Face)face;
 

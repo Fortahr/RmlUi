@@ -64,9 +64,9 @@ public:
 		PX = 1 << 4,                // number suffixed by 'px'; fetch as < float >
 		DEG = 1 << 5,               // number suffixed by 'deg'; fetch as < float >
 		RAD = 1 << 6,               // number suffixed by 'rad'; fetch as < float >
-		COLOUR = 1 << 7,            // colour; fetch as < Colourb >
+		COLOR = 1 << 7,            // color; fetch as < Colorb >
 		DP = 1 << 8,                // density-independent pixel; number suffixed by 'dp'; fetch as < float >
-		ABSOLUTE_UNIT = NUMBER | PX | DP | DEG | RAD | COLOUR,
+		ABSOLUTE_UNIT = NUMBER | PX | DP | DEG | RAD | COLOR,
 
 		// Relative values.
 		EM = 1 << 9,                // number suffixed by 'em'; fetch as < float >
@@ -108,7 +108,7 @@ public:
 	/// Get the value of the property as a string.
 	String ToString() const;
 
-	/// Templatised accessor.
+	/// Templatized accessor.
 	template <typename T>
 	T Get() const
 	{

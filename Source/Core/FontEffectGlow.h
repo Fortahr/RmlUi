@@ -48,7 +48,7 @@ public:
 	FontEffectGlow();
 	virtual ~FontEffectGlow();
 
-	bool Initialise(int width_outline, int width_blur, Vector2i offset);
+	bool Initialize(int width_outline, int width_blur, Vector2i offset);
 
 	bool HasUniqueTexture() const override;
 

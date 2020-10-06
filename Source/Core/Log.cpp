@@ -38,8 +38,8 @@
 
 namespace Rml {
 
-// Initialises the logging interface.
-bool Log::Initialise()
+// Initializes the logging interface.
+bool Log::Initialize()
 {
 	return true;
 }

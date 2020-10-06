@@ -131,10 +131,10 @@ RMLUICORE_API float RadiansToDegrees(float angle);
 /// @param[in] The angle, in degrees.
 /// @return The angle converted to radians.
 RMLUICORE_API float DegreesToRadians(float angle);
-/// Normalises and angle in radians
+/// Normalizes and angle in radians
 /// @param[in] The angle, in randians
-/// @return The normalised angle
-RMLUICORE_API float NormaliseAngle(float angle);
+/// @return The normalized angle
+RMLUICORE_API float NormalizeAngle(float angle);
 
 /// Calculates the square root of a value.
 /// @param[in] value The value to calculate the square root of. This must be above zero.

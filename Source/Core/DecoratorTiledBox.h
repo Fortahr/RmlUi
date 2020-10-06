@@ -43,11 +43,11 @@ public:
 	DecoratorTiledBox();
 	virtual ~DecoratorTiledBox();
 
-	/// Initialises the tiles for the decorator.
+	/// Initializes the tiles for the decorator.
 	/// @param[in] tiles The declaration for all eight tiles.
 	/// @param[in] textures The textures for the eight tiles.
 	/// @return True if all the tiles and textures are properly specified.
-	bool Initialise(const Tile* tiles, const Texture* textures);
+	bool Initialize(const Tile* tiles, const Texture* textures);
 
 	/// Called on a decorator to generate any required per-element data for a newly decorated element.
 	DecoratorDataHandle GenerateElementData(Element* element) const override;

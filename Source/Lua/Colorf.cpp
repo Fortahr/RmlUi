@@ -26,42 +26,42 @@
  *
  */
  
-#include "Colourf.h"
+#include "Colorf.h"
 
 
 namespace Rml {
 namespace Lua {
 
-template<> void ExtraInit<Colourf>(lua_State* L, int metatable_index)
+template<> void ExtraInit<Colorf>(lua_State* L, int metatable_index)
 {
-    lua_pushcfunction(L,Colourfnew);
+    lua_pushcfunction(L,Colorfnew);
     lua_setfield(L,metatable_index-1,"new");
 
-    lua_pushcfunction(L,Colourf__eq);
+    lua_pushcfunction(L,Colorf__eq);
     lua_setfield(L,metatable_index,"__eq");
 
     return;
 }
 
 //metamethods
-int Colourfnew(lua_State* L)
+int Colorfnew(lua_State* L)
 {
     float red = (float)luaL_checknumber(L,1);
     float green = (float)luaL_checknumber(L,2);
     float blue =  (float)luaL_checknumber(L,3);
     float alpha = (float)luaL_checknumber(L,4);
 
-    Colourf* col = new Colourf(red,green,blue,alpha);
+    Colorf* col = new Colorf(red,green,blue,alpha);
 
-    LuaType<Colourf>::push(L,col,true);
+    LuaType<Colorf>::push(L,col,true);
     return 1;
 }
 
-int Colourf__eq(lua_State* L)
+int Colorf__eq(lua_State* L)
 {
-    Colourf* lhs = LuaType<Colourf>::check(L,1);
+    Colorf* lhs = LuaType<Colorf>::check(L,1);
     RMLUI_CHECK_OBJ(lhs);
-    Colourf* rhs = LuaType<Colourf>::check(L,2);
+    Colorf* rhs = LuaType<Colorf>::check(L,2);
     RMLUI_CHECK_OBJ(rhs);
 
     lua_pushboolean(L, (*lhs) == (*rhs) ? 1 : 0);
@@ -70,41 +70,41 @@ int Colourf__eq(lua_State* L)
 
 
 //getters
-int ColourfGetAttrred(lua_State* L)
+int ColorfGetAttrred(lua_State* L)
 {
-    Colourf* obj = LuaType<Colourf>::check(L,1);
+    Colorf* obj = LuaType<Colorf>::check(L,1);
     RMLUI_CHECK_OBJ(obj);
     lua_pushnumber(L,obj->red);
     return 1;
 }
 
-int ColourfGetAttrgreen(lua_State* L)
+int ColorfGetAttrgreen(lua_State* L)
 {
-    Colourf* obj = LuaType<Colourf>::check(L,1);
+    Colorf* obj = LuaType<Colorf>::check(L,1);
     RMLUI_CHECK_OBJ(obj);
     lua_pushnumber(L,obj->green);
     return 1;
 }
 
-int ColourfGetAttrblue(lua_State* L)
+int ColorfGetAttrblue(lua_State* L)
 {
-    Colourf* obj = LuaType<Colourf>::check(L,1);
+    Colorf* obj = LuaType<Colorf>::check(L,1);
     RMLUI_CHECK_OBJ(obj);
     lua_pushnumber(L,obj->blue);
     return 1;
 }
 
-int ColourfGetAttralpha(lua_State* L)
+int ColorfGetAttralpha(lua_State* L)
 {
-    Colourf* obj = LuaType<Colourf>::check(L,1);
+    Colorf* obj = LuaType<Colorf>::check(L,1);
     RMLUI_CHECK_OBJ(obj);
     lua_pushnumber(L,obj->alpha);
     return 1;
 }
 
-int ColourfGetAttrrgba(lua_State* L)
+int ColorfGetAttrrgba(lua_State* L)
 {
-    Colourf* obj = LuaType<Colourf>::check(L,1);
+    Colorf* obj = LuaType<Colorf>::check(L,1);
     RMLUI_CHECK_OBJ(obj);
     lua_pushnumber(L,obj->red);
     lua_pushnumber(L,obj->green);
@@ -115,50 +115,50 @@ int ColourfGetAttrrgba(lua_State* L)
 
 
 //setters
-int ColourfSetAttrred(lua_State* L)
+int ColorfSetAttrred(lua_State* L)
 {
-    Colourf* obj = LuaType<Colourf>::check(L,1);
+    Colorf* obj = LuaType<Colorf>::check(L,1);
     RMLUI_CHECK_OBJ(obj);
     float red = (float)luaL_checknumber(L,2);
     obj->red = red;
     return 0;
 }
 
-int ColourfSetAttrgreen(lua_State* L)
+int ColorfSetAttrgreen(lua_State* L)
 {
-    Colourf* obj = LuaType<Colourf>::check(L,1);
+    Colorf* obj = LuaType<Colorf>::check(L,1);
     RMLUI_CHECK_OBJ(obj);
     float green = (float)luaL_checknumber(L,2);
     obj->green = green;
     return 0;
 }
 
-int ColourfSetAttrblue(lua_State* L)
+int ColorfSetAttrblue(lua_State* L)
 {
-    Colourf* obj = LuaType<Colourf>::check(L,1);
+    Colorf* obj = LuaType<Colorf>::check(L,1);
     RMLUI_CHECK_OBJ(obj);
     float blue = (float)luaL_checknumber(L,2);
     obj->blue = blue;
     return 0;
 }
 
-int ColourfSetAttralpha(lua_State* L)
+int ColorfSetAttralpha(lua_State* L)
 {
-    Colourf* obj = LuaType<Colourf>::check(L,1);
+    Colorf* obj = LuaType<Colorf>::check(L,1);
     RMLUI_CHECK_OBJ(obj);
     float alpha = (float)luaL_checknumber(L,2);
     obj->alpha = alpha;
     return 0;
 }
 
-int ColourfSetAttrrgba(lua_State* L)
+int ColorfSetAttrrgba(lua_State* L)
 {
-    Colourf* obj = nullptr;
+    Colorf* obj = nullptr;
     int top = lua_gettop(L);
     //each of the items are optional.
     if(top > 0)
     {
-        obj = LuaType<Colourf>::check(L,1);
+        obj = LuaType<Colorf>::check(L,1);
         RMLUI_CHECK_OBJ(obj);
         if(top > 1)
         {
@@ -176,32 +176,32 @@ int ColourfSetAttrrgba(lua_State* L)
 }
 
 
-RegType<Colourf> ColourfMethods[] =
+RegType<Colorf> ColorfMethods[] =
 {
     { nullptr, nullptr },
 };
 
-luaL_Reg ColourfGetters[] =
+luaL_Reg ColorfGetters[] =
 {
-    RMLUI_LUAGETTER(Colourf,red)
-    RMLUI_LUAGETTER(Colourf,green)
-    RMLUI_LUAGETTER(Colourf,blue)
-    RMLUI_LUAGETTER(Colourf,alpha)
-    RMLUI_LUAGETTER(Colourf,rgba)
+    RMLUI_LUAGETTER(Colorf,red)
+    RMLUI_LUAGETTER(Colorf,green)
+    RMLUI_LUAGETTER(Colorf,blue)
+    RMLUI_LUAGETTER(Colorf,alpha)
+    RMLUI_LUAGETTER(Colorf,rgba)
     { nullptr, nullptr },
 };
 
-luaL_Reg ColourfSetters[] =
+luaL_Reg ColorfSetters[] =
 {
-    RMLUI_LUASETTER(Colourf,red)
-    RMLUI_LUASETTER(Colourf,green)
-    RMLUI_LUASETTER(Colourf,blue)
-    RMLUI_LUASETTER(Colourf,alpha)
-    RMLUI_LUASETTER(Colourf,rgba)
+    RMLUI_LUASETTER(Colorf,red)
+    RMLUI_LUASETTER(Colorf,green)
+    RMLUI_LUASETTER(Colorf,blue)
+    RMLUI_LUASETTER(Colorf,alpha)
+    RMLUI_LUASETTER(Colorf,rgba)
     { nullptr, nullptr },
 };
 
-RMLUI_LUATYPE_DEFINE(Colourf)
+RMLUI_LUATYPE_DEFINE(Colorf)
 
 
 } // namespace Lua

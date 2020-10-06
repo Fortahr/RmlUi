@@ -47,8 +47,8 @@ class PluginRegistry
 public:
 	static void RegisterPlugin(Plugin* plugin);
 
-	/// Calls OnInitialise() on all plugins.
-	static void NotifyInitialise();
+	/// Calls OnInitialize() on all plugins.
+	static void NotifyInitialize();
 	/// Calls OnShutdown() on all plugins.
 	static void NotifyShutdown();
 

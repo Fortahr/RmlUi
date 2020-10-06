@@ -54,7 +54,7 @@ Context::Context(const String& name) : name(name), dimensions(0, 0), density_ind
 {
 	instancer = nullptr;
 
-	// Initialise this to nullptr; this will be set in Rml::CreateContext().
+	// Initialize this to nullptr; this will be set in Rml::CreateContext().
 	render_interface = nullptr;
 
 	root = Factory::InstanceElement(nullptr, "*", "#root", XMLAttributes());
@@ -62,7 +62,7 @@ Context::Context(const String& name) : name(name), dimensions(0, 0), density_ind
 	root->SetOffset(Vector2f(0, 0), nullptr);
 	root->SetProperty(PropertyId::ZIndex, Property(0, Property::NUMBER));
 
-	cursor_proxy = Factory::InstanceElement(nullptr, documents_base_tag, documents_base_tag, XMLAttributes());
+	cursor_proxy.reset(static_cast<ElementDocument*>(Factory::InstanceElement(nullptr, documents_base_tag, documents_base_tag, XMLAttributes()).release()));
 	ElementDocument* cursor_proxy_document = cursor_proxy.get();
 	if (cursor_proxy_document)
 		cursor_proxy_document->context = this;

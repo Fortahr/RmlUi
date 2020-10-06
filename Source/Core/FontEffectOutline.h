@@ -47,7 +47,7 @@ public:
 	FontEffectOutline();
 	virtual ~FontEffectOutline();
 
-	bool Initialise(int width);
+	bool Initialize(int width);
 
 	bool HasUniqueTexture() const override;
 

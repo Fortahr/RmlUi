@@ -88,16 +88,16 @@ static void InitializeShell()
 		Rml::SetSystemInterface(&shell_system_interface);
 		Rml::SetRenderInterface(&shell_render_interface);
 
-		REQUIRE(Rml::Initialise());
+		REQUIRE(Rml::Initialize());
 		shell_context = Rml::CreateContext("main", window_size);
 
-		REQUIRE(Shell::Initialise());
+		REQUIRE(Shell::Initialize());
 		Shell::LoadFonts("assets/");
 
 #ifdef RMLUI_TESTS_USE_SHELL
 		// Also, create the window.
 
-		Rml::Debugger::Initialise(shell_context);
+		Rml::Debugger::Initialize(shell_context);
 		num_documents_begin = shell_context->GetNumDocuments();
 
 		REQUIRE(Shell::OpenWindow("RmlUi Tests", &shell_render_interface, window_size.x, window_size.y, true));

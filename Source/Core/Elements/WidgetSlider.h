@@ -53,8 +53,8 @@ public:
 	WidgetSlider(ElementFormControl* parent);
 	virtual ~WidgetSlider();
 
-	/// Initialises the slider's hidden elements.
-	bool Initialise();
+	/// Initializes the slider's hidden elements.
+	bool Initialize();
 
 	/// Updates the key repeats for the increment / decrement arrows.
 	void Update();

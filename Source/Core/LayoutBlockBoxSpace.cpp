@@ -85,11 +85,11 @@ float LayoutBlockBoxSpace::PositionBox(float cursor, Element* element)
 	boxes[float_property == Style::Float::Left ? LEFT : RIGHT].push_back(SpaceBox(element_offset, element_size));
 
 	// Set our offset and dimensions (if necessary) so they enclose the new box.
-	Vector2f normalised_offset = element_offset - (parent->GetPosition() + parent->GetBox().GetPosition());
-	offset.x = Math::Min(offset.x, normalised_offset.x);
-	offset.y = Math::Min(offset.y, normalised_offset.y);
-	dimensions.x = Math::Max(dimensions.x, normalised_offset.x + element_size.x);
-	dimensions.y = Math::Max(dimensions.y, normalised_offset.y + element_size.y);
+	Vector2f normalized_offset = element_offset - (parent->GetPosition() + parent->GetBox().GetPosition());
+	offset.x = Math::Min(offset.x, normalized_offset.x);
+	offset.y = Math::Min(offset.y, normalized_offset.y);
+	dimensions.x = Math::Max(dimensions.x, normalized_offset.x + element_size.x);
+	dimensions.y = Math::Max(dimensions.y, normalized_offset.y + element_size.y);
 
 	// Shift the offset into the correct space relative to the element's offset parent.
 	element_offset += Vector2f(element->GetBox().GetEdge(Box::MARGIN, Box::LEFT), element->GetBox().GetEdge(Box::MARGIN, Box::TOP));
@@ -177,9 +177,9 @@ float LayoutBlockBoxSpace::PositionBox(Vector2f& box_position, float cursor, con
 			next_cursor = Math::Min(next_cursor, fixed_box.offset.y + fixed_box.dimensions.y);
 
 			// Were we pushed out of our containing box? If so, try again at the next cursor position.
-			float normalised_position = box_position.x - parent_origin;
-			if (normalised_position < 0 ||
-				normalised_position + dimensions.x > parent->GetBox().GetSize().x)
+			float normalized_position = box_position.x - parent_origin;
+			if (normalized_position < 0 ||
+				normalized_position + dimensions.x > parent->GetBox().GetSize().x)
 				return PositionBox(box_position, next_cursor + 0.01f, dimensions, float_property);
 		}
 	}

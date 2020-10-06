@@ -37,7 +37,7 @@ const int NUM_SCORES = 10;
 class HighScores : public Rml::DataSource
 {
 public:
-	static void Initialise();
+	static void Initialize();
 	static void Shutdown();
 
 	void GetRow(Rml::StringList& row, const Rml::String& table, int row_index, const Rml::StringList& columns);
@@ -47,9 +47,9 @@ public:
 
 	/// Two functions to add a score to the chart.
 	/// Adds a full score, including a name. This won't prompt the user to enter their name.
-	static void SubmitScore(const Rml::String& name, const Rml::Colourb& colour, int wave, int score);
+	static void SubmitScore(const Rml::String& name, const Rml::Colorb& color, int wave, int score);
 	/// Adds a score, and causes an input field to appear to request the user for their name.
-	static void SubmitScore(const Rml::Colourb& colour, int wave, int score);
+	static void SubmitScore(const Rml::Colorb& color, int wave, int score);
 	/// Sets the name of the last player to submit their score.
 	static void SubmitName(const Rml::String& name);
 
@@ -59,7 +59,7 @@ private:
 
 	static HighScores* instance;
 
-	void SubmitScore(const Rml::String& name, const Rml::Colourb& colour, int wave, int score, bool name_required);
+	void SubmitScore(const Rml::String& name, const Rml::Colorb& color, int wave, int score, bool name_required);
 	void LoadScores();
 	void SaveScores();
 
@@ -67,7 +67,7 @@ private:
 	{
 		Rml::String name;
 		bool name_required;
-		Rml::Colourb colour;
+		Rml::Colorb color;
 		int score;
 		int wave;
 	};

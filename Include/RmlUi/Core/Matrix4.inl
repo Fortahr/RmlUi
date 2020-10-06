@@ -595,7 +595,7 @@ Matrix4< Component, Storage > Matrix4< Component, Storage >::ScaleZ(Component z)
 template< typename Component, class Storage>
 Matrix4< Component, Storage > Matrix4< Component, Storage >::Rotate(const Vector3< Component >& v, Component angle) noexcept
 {
-	Vector3< Component > n = v.Normalise();
+	Vector3< Component > n = v.Normalize();
 	Component Sin = Math::Sin(angle);
 	Component Cos = Math::Cos(angle);
 	return Matrix4< Component, Storage >::FromRows(

@@ -62,13 +62,13 @@ public:
 	ConvolutionFilter();
 	~ConvolutionFilter();
 
-	/// Initialises a square kernel filter with the given radius.
-	bool Initialise(int kernel_radius, FilterOperation operation);
+	/// Initializes a square kernel filter with the given radius.
+	bool Initialize(int kernel_radius, FilterOperation operation);
 
-	/// Initialises the filter. A filter must be initialised and populated with values before use.
-	/// @param[in] kernel_radii The size of the filter's kernel on each side of the origin along both axes. So, for example, a filter initialised with radii (1,1) will store 9 values.
+	/// Initializes the filter. A filter must be initialized and populated with values before use.
+	/// @param[in] kernel_radii The size of the filter's kernel on each side of the origin along both axes. So, for example, a filter initialized with radii (1,1) will store 9 values.
 	/// @param[in] operation The operation the filter conducts to determine the result.
-	bool Initialise(Vector2i kernel_radii, FilterOperation operation);
+	bool Initialize(Vector2i kernel_radii, FilterOperation operation);
 
 	/// Returns a reference to one of the rows of the filter kernel.
 	/// @param[in] kernel_y_index The index of the desired row.
@@ -77,7 +77,7 @@ public:
 
 	/// Runs the convolution filter. The filter will operate on each pixel in the destination
 	/// surface, setting its opacity to the result the filter on the source opacity values. The
-	/// colour values will remain unchanged.
+	/// color values will remain unchanged.
 	/// @param[in] destination The RGBA-encoded destination buffer.
 	/// @param[in] destination_dimensions The size of the destination region (in pixels).
 	/// @param[in] destination_stride The stride (in bytes) of the destination region.

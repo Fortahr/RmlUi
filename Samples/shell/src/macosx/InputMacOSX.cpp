@@ -40,15 +40,15 @@
 #define KEY_OPTION 2048
 #define KEY_CTRL 4096
 
-static void InitialiseKeymap();
+static void InitializeKeymap();
 static int GetKeyModifierState(EventRef event);
 
 static const int KEYMAP_SIZE = 256;
 static Rml::Input::KeyIdentifier key_identifier_map[KEYMAP_SIZE];
 
-bool InputMacOSX::Initialise()
+bool InputMacOSX::Initialize()
 {
-	InitialiseKeymap();
+	InitializeKeymap();
 	return true;
 }
 
@@ -179,9 +179,9 @@ static int GetKeyModifierState(EventRef event)
 	return key_modifier_state;
 }
 
-static void InitialiseKeymap()
+static void InitializeKeymap()
 {
-	// Initialise the key map with default values.
+	// Initialize the key map with default values.
 	memset(key_identifier_map, sizeof(key_identifier_map), 0);
 
 	key_identifier_map[0x00] = Rml::Input::KI_A;

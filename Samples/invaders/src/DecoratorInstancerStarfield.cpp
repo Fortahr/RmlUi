@@ -34,8 +34,8 @@
 DecoratorInstancerStarfield::DecoratorInstancerStarfield()
 {
 	id_num_layers = RegisterProperty("num-layers", "3").AddParser("number").GetId();
-	id_top_colour = RegisterProperty("top-colour", "#dddc").AddParser("color").GetId();
-	id_bottom_colour = RegisterProperty("bottom-colour", "#333c").AddParser("color").GetId();
+	id_top_color = RegisterProperty("top-color", "#dddc").AddParser("color").GetId();
+	id_bottom_color = RegisterProperty("bottom-color", "#333c").AddParser("color").GetId();
 	id_top_speed = RegisterProperty("top-speed", "10.0").AddParser("number").GetId();
 	id_bottom_speed = RegisterProperty("bottom-speed", "2.0").AddParser("number").GetId();
 	id_top_density = RegisterProperty("top-density", "15").AddParser("number").GetId();
@@ -51,15 +51,15 @@ Rml::SharedPtr<Rml::Decorator> DecoratorInstancerStarfield::InstanceDecorator(co
 	const Rml::PropertyDictionary& properties, const Rml::DecoratorInstancerInterface& /*instancer_interface*/)
 {
 	int num_layers = Rml::Math::RealToInteger(properties.GetProperty(id_num_layers)->Get< float >());
-	Rml::Colourb top_colour = properties.GetProperty(id_top_colour)->Get< Rml::Colourb >();
-	Rml::Colourb bottom_colour = properties.GetProperty(id_bottom_colour)->Get< Rml::Colourb >();
+	Rml::Colorb top_color = properties.GetProperty(id_top_color)->Get< Rml::Colorb >();
+	Rml::Colorb bottom_color = properties.GetProperty(id_bottom_color)->Get< Rml::Colorb >();
 	float top_speed = properties.GetProperty(id_top_speed)->Get< float >();
 	float bottom_speed = properties.GetProperty(id_bottom_speed)->Get< float >();
 	int top_density = Rml::Math::RealToInteger(properties.GetProperty(id_top_density)->Get< float >());
 	int bottom_density = Rml::Math::RealToInteger(properties.GetProperty(id_bottom_density)->Get< float >());
 
 	auto decorator = Rml::MakeShared<DecoratorStarfield>();
-	if (decorator->Initialise(num_layers, top_colour, bottom_colour, top_speed, bottom_speed, top_density, bottom_density))
+	if (decorator->Initialize(num_layers, top_color, bottom_color, top_speed, bottom_speed, top_density, bottom_density))
 		return decorator;
 
 	return nullptr;

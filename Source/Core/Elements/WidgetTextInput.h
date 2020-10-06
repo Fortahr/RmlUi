@@ -63,8 +63,8 @@ public:
 	/// Returns the current length (in characters) of this text field.
 	int GetLength() const;
 
-	/// Update the colours of the selected text.
-	void UpdateSelectionColours();
+	/// Update the colors of the selected text.
+	void UpdateSelectionColors();
 
 	/// Updates the cursor, if necessary.
 	void OnUpdate();
@@ -218,8 +218,8 @@ private:
 	int selection_begin_index;
 	int selection_length;
 
-	// The colour of the background of selected text.
-	Colourb selection_colour;
+	// The color of the background of selected text.
+	Colorb selection_color;
 	// The selection background.
 	Geometry selection_geometry;
 

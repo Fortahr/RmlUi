@@ -35,14 +35,14 @@
 #include <string.h>
 
 static int GetKeyModifierState();
-static void InitialiseKeymap();
+static void InitializeKeymap();
 
 static const int KEYMAP_SIZE = 256;
 static Rml::Input::KeyIdentifier key_identifier_map[KEYMAP_SIZE];
 
-bool InputWin32::Initialise()
+bool InputWin32::Initialize()
 {
-	InitialiseKeymap();
+	InitializeKeymap();
 	return true;
 }
 
@@ -197,9 +197,9 @@ static int GetKeyModifierState()
 #define VK_ICO_CLEAR 0xE6
 #endif // !defined(__MINGW32__)  || defined(__MINGW64__)
 
-static void InitialiseKeymap()
+static void InitializeKeymap()
 {
-	// Initialise the key map with default values.
+	// Initialize the key map with default values.
 	memset(key_identifier_map, 0, sizeof(key_identifier_map));
 	
 	// Assign individual values.

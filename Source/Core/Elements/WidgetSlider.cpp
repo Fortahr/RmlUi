@@ -94,8 +94,8 @@ WidgetSlider::~WidgetSlider()
 	}
 }
 
-// Initialises the slider to a given orientation.
-bool WidgetSlider::Initialise()
+// Initializes the slider to a given orientation.
+bool WidgetSlider::Initialize()
 {
 	Property drag_property = Property(Style::Drag::Drag);
 	parent->SetProperty(PropertyId::Drag, drag_property);
@@ -265,7 +265,7 @@ void WidgetSlider::FormatElements(const Vector2f& containing_block, float slider
 	content = track_box.GetSize();
 	content[length_axis] = slider_length -= orientation == VERTICAL ? (track_box.GetCumulativeEdge(Box::CONTENT, Box::TOP) + track_box.GetCumulativeEdge(Box::CONTENT, Box::BOTTOM)) :
 																	  (track_box.GetCumulativeEdge(Box::CONTENT, Box::LEFT) + track_box.GetCumulativeEdge(Box::CONTENT, Box::RIGHT));
-	// If no height has been explicitly specified for the track, it'll be initialised to -1 as per normal block
+	// If no height has been explicitly specified for the track, it'll be initialized to -1 as per normal block
 	// elements. We'll fix that up here.
 	if (orientation == HORIZONTAL &&
 		content.y < 0)

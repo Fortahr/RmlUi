@@ -84,7 +84,7 @@ private:
 	DataSource* data_source;
 	String data_table;
 
-	bool initialised;
+	bool initialized;
 };
 
 } // namespace Rml

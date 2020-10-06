@@ -308,8 +308,8 @@ public:
 		}
 		else if (value == "change_color")
 		{
-			Colourb color((byte)Math::RandomInteger(255), (byte)Math::RandomInteger(255), (byte)Math::RandomInteger(255));
-			element->Animate("image-color", Property(color, Property::COLOUR), tweening_parameters.duration, Tween(tweening_parameters.type, tweening_parameters.direction));
+			Colorb color((byte)Math::RandomInteger(255), (byte)Math::RandomInteger(255), (byte)Math::RandomInteger(255));
+			element->Animate("image-color", Property(color, Property::COLOR), tweening_parameters.duration, Tween(tweening_parameters.type, tweening_parameters.direction));
 			event.StopPropagation();
 		}
 		else if (value == "move_child")
@@ -471,7 +471,7 @@ int main(int RMLUI_UNUSED_PARAMETER(argc), char** RMLUI_UNUSED_PARAMETER(argv))
 	shell_renderer = &opengl_renderer;
 
 	// Generic OS initialisation, creates a window and attaches OpenGL.
-	if (!Shell::Initialise() ||
+	if (!Shell::Initialize() ||
 		!Shell::OpenWindow("Demo Sample", shell_renderer, width, height, true))
 	{
 		Shell::Shutdown();
@@ -485,7 +485,7 @@ int main(int RMLUI_UNUSED_PARAMETER(argc), char** RMLUI_UNUSED_PARAMETER(argv))
 	ShellSystemInterface system_interface;
 	Rml::SetSystemInterface(&system_interface);
 
-	Rml::Initialise();
+	Rml::Initialize();
 
 	// Create the main RmlUi context and set it on the shell's input layer.
 	context = Rml::CreateContext("main", Rml::Vector2i(width, height));
@@ -496,7 +496,7 @@ int main(int RMLUI_UNUSED_PARAMETER(argc), char** RMLUI_UNUSED_PARAMETER(argv))
 		return -1;
 	}
 
-	Rml::Debugger::Initialise(context);
+	Rml::Debugger::Initialize(context);
 	Input::SetContext(context);
 	shell_renderer->SetContext(context);
 	

@@ -42,7 +42,7 @@ DecoratorNinePatch::~DecoratorNinePatch()
 {
 }
 
-bool DecoratorNinePatch::Initialise(const Rectangle& _rect_outer, const Rectangle& _rect_inner, const Array<Property, 4>* _edges, const Texture& _texture)
+bool DecoratorNinePatch::Initialize(const Rectangle& _rect_outer, const Rectangle& _rect_inner, const Array<Property, 4>* _edges, const Texture& _texture)
 {
 	rect_outer = _rect_outer;
 	rect_inner = _rect_inner;
@@ -69,9 +69,9 @@ DecoratorDataHandle DecoratorNinePatch::GenerateElementData(Element* element) co
 	const Vector2f surface_dimensions = element->GetBox().GetSize(Box::PADDING);
 
 	const float opacity = computed.opacity;
-	Colourb quad_colour = computed.image_color;
+	Colorb quad_color = computed.image_color;
 
-	quad_colour.alpha = (byte)(opacity * (float)quad_colour.alpha);
+	quad_color.alpha = (byte)(opacity * (float)quad_color.alpha);
 
 
 	/* In the following, we operate on the four diagonal vertices in the grid, as they define the whole grid. */
@@ -137,7 +137,7 @@ DecoratorDataHandle DecoratorNinePatch::GenerateElementData(Element* element) co
 		for (int x = 0; x < 4; x++)
 		{
 			Vertex& vertex = vertices[y * 4 + x];
-			vertex.colour = quad_colour;
+			vertex.color = quad_color;
 			vertex.position = { surface_pos[x].x, surface_pos[y].y };
 			vertex.tex_coord = { tex_coords[x].x, tex_coords[y].y };
 		}
@@ -241,7 +241,7 @@ SharedPtr<Decorator> DecoratorNinePatchInstancer::InstanceDecorator(const String
 
 	auto decorator = MakeShared<DecoratorNinePatch>();
 
-	if (!decorator->Initialise(sprite_outer->rectangle, sprite_inner->rectangle, (edges_set ? &edges : nullptr), sprite_outer->sprite_sheet->texture))
+	if (!decorator->Initialize(sprite_outer->rectangle, sprite_inner->rectangle, (edges_set ? &edges : nullptr), sprite_outer->sprite_sheet->texture))
 		return nullptr;
 
 	return decorator;

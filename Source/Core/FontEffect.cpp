@@ -31,7 +31,7 @@
 
 namespace Rml {
 
-FontEffect::FontEffect() : colour(255, 255, 255)
+FontEffect::FontEffect() : color(255, 255, 255)
 {
 	layer = Layer::Back;
 }
@@ -62,14 +62,14 @@ void FontEffect::GenerateGlyphTexture(byte* RMLUI_UNUSED_PARAMETER(destination_d
 	RMLUI_UNUSED(glyph);
 }
 
-void FontEffect::SetColour(const Colourb& _colour)
+void FontEffect::SetColor(const Colorb& _color)
 {
-	colour = _colour;
+	color = _color;
 }
 
-const Colourb& FontEffect::GetColour() const
+const Colorb& FontEffect::GetColor() const
 {
-	return colour;
+	return color;
 }
 
 FontEffect::Layer FontEffect::GetLayer() const

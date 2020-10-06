@@ -91,7 +91,7 @@ void DataQuery::ExecuteQuery(DataSource* _data_source, const String& _table, con
 		field_indices[fields[i]] = i;
 	}
 
-	// Initialise the row pointer.
+	// Initialize the row pointer.
 	current_row = -1;
 
 	// If limit is -1, then we fetch to the end of the data source.

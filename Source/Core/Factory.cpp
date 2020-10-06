@@ -68,7 +68,7 @@
 #include "FontEffectOutline.h"
 #include "FontEffectShadow.h"
 #include "PluginRegistry.h"
-#include "PropertyParserColour.h"
+#include "PropertyParserColor.h"
 #include "StreamFile.h"
 #include "StyleSheetFactory.h"
 #include "TemplateCache.h"
@@ -124,7 +124,7 @@ static EventInstancer* event_instancer = nullptr;
 // Event listener instancer.
 static EventListenerInstancer* event_listener_instancer = nullptr;
 
-// Default instancers are constructed and destroyed on Initialise and Shutdown, respectively.
+// Default instancers are constructed and destroyed on Initialize and Shutdown, respectively.
 struct DefaultInstancers {
 
 	UniquePtr<ContextInstancer> context_default;
@@ -197,7 +197,7 @@ Factory::~Factory()
 }
 
 
-bool Factory::Initialise()
+bool Factory::Initialize()
 {
 	default_instancers = MakeUnique<DefaultInstancers>();
 

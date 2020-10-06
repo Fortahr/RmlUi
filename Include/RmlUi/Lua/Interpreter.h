@@ -43,7 +43,7 @@ namespace Interpreter {
     @return The lua_State that the Interpreter created in Interpreter::Startup()
     @remark This class lacks a SetLuaState for a reason. If you have to use a seperate Lua binding and want to keep the types
     from RmlUi, then use this lua_State; it will already have all of the libraries loaded, and all of the types defined.
-    Alternatively, you can initialise the plugin with your own Lua state if you need them defined in it. */
+    Alternatively, you can initialize the plugin with your own Lua state if you need them defined in it. */
     RMLUILUA_API lua_State* GetLuaState();
 
     /** This function calls luaL_loadfile and then lua_pcall, reporting the errors (if any)

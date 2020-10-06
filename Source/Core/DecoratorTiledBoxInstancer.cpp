@@ -66,7 +66,7 @@ SharedPtr<Decorator>DecoratorTiledBoxInstancer::InstanceDecorator(const String& 
 		return nullptr;
 
 	auto decorator = MakeShared<DecoratorTiledBox>();
-	if (!decorator->Initialise(tiles, textures))
+	if (!decorator->Initialize(tiles, textures))
 		return nullptr;
 
 	return decorator;

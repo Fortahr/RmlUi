@@ -49,7 +49,7 @@ bool FontEffectGlow::HasUniqueTexture() const
 	return true;
 }
 
-bool FontEffectGlow::Initialise(int _width_outline, int _width_blur, Vector2i _offset)
+bool FontEffectGlow::Initialize(int _width_outline, int _width_blur, Vector2i _offset)
 {
 	if (_width_outline < 0 || _width_blur < 0)
 		return false;
@@ -60,7 +60,7 @@ bool FontEffectGlow::Initialise(int _width_outline, int _width_blur, Vector2i _o
 	offset = _offset;
 
 	// Outline filter.
-	filter_outline.Initialise(width_outline, FilterOperation::Dilation);
+	filter_outline.Initialize(width_outline, FilterOperation::Dilation);
 	for (int x = -width_outline; x <= width_outline; ++x)
 	{
 		for (int y = -width_outline; y <= width_outline; ++y)
@@ -87,8 +87,8 @@ bool FontEffectGlow::Initialise(int _width_outline, int _width_blur, Vector2i _o
 	float sum_weight = 0.f;
 
 	// We separate the blur filter into two passes, horizontal and vertical, for performance reasons.
-	filter_blur_x.Initialise(Vector2i(width_blur, 0), FilterOperation::Sum);
-	filter_blur_y.Initialise(Vector2i(0, width_blur), FilterOperation::Sum);
+	filter_blur_x.Initialize(Vector2i(width_blur, 0), FilterOperation::Sum);
+	filter_blur_y.Initialize(Vector2i(0, width_blur), FilterOperation::Sum);
 
 	for (int x = -width_blur; x <= width_blur; ++x)
 	{
@@ -168,15 +168,15 @@ SharedPtr<FontEffect> FontEffectGlowInstancer::InstanceFontEffect(const String& 
 	int width_blur = properties.GetProperty(id_width_blur)->Get< int >();
 	offset.x = properties.GetProperty(id_offset_x)->Get< int >();
 	offset.y = properties.GetProperty(id_offset_y)->Get< int >();
-	Colourb color = properties.GetProperty(id_color)->Get< Colourb >();
+	Colorb color = properties.GetProperty(id_color)->Get< Colorb >();
 
 	if (width_blur < 0)
 		width_blur = width_outline;
 
 	auto font_effect = MakeShared<FontEffectGlow>();
-	if (font_effect->Initialise(width_outline, width_blur, offset))
+	if (font_effect->Initialize(width_outline, width_blur, offset))
 	{
-		font_effect->SetColour(color);
+		font_effect->SetColor(color);
 		return font_effect;
 	}
 

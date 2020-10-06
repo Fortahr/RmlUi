@@ -43,7 +43,7 @@ public:
 	DecoratorGradient();
 	virtual ~DecoratorGradient();
 
-	bool Initialise(const Direction &dir_, const Colourb &start_, const Colourb & stop_);
+	bool Initialize(const Direction &dir_, const Colorb &start_, const Colorb & stop_);
 
 	DecoratorDataHandle GenerateElementData(Element* element) const override;
 	void ReleaseElementData(DecoratorDataHandle element_data) const override;
@@ -52,7 +52,7 @@ public:
 
 private:
 	Direction dir;
-	Colourb start, stop;
+	Colorb start, stop;
 };
 
 

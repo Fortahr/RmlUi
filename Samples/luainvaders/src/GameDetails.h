@@ -47,12 +47,12 @@ public:
 	/// @return The current game difficulty.
 	static Difficulty GetDifficulty();
 
-	/// Sets the colour of the player's ship.
-	/// @param[in] colour The new ship colour.
-	static void SetDefenderColour(const Rml::Colourb& colour);
-	/// Returns the player's ship colour.
-	/// @return The colour of the player's ship.
-	static const Rml::Colourb& GetDefenderColour();
+	/// Sets the color of the player's ship.
+	/// @param[in] color The new ship color.
+	static void SetDefenderColor(const Rml::Colorb& color);
+	/// Returns the player's ship color.
+	/// @return The color of the player's ship.
+	static const Rml::Colorb& GetDefenderColor();
 
 	/// Sets the score the player achieved in the last game.
 	/// @param[in] score The player's score.

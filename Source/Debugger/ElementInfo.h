@@ -50,9 +50,9 @@ public:
 	ElementInfo(const String& tag);
 	~ElementInfo();
 
-	/// Initialises the info element.
-	/// @return True if the element initialised successfully, false otherwise.
-	bool Initialise();
+	/// Initializes the info element.
+	/// @return True if the element initialized successfully, false otherwise.
+	bool Initialize();
 	/// Clears the element references.
 	void Reset();
 

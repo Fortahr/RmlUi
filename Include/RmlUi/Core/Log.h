@@ -55,9 +55,9 @@ public:
 	};
 	
 public:
-	/// Initialises the logging interface.
+	/// Initializes the logging interface.
 	/// @return True if the logging interface was successful, false if not.
-	static bool Initialise();
+	static bool Initialize();
 	/// Shutdown the log interface.
 	static void Shutdown();
 

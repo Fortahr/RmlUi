@@ -55,7 +55,7 @@ bool FontFaceHandleDefault::Initialize(FontFaceHandleFreetype face, int font_siz
 
 	RMLUI_ASSERTMSG(layer_configurations.empty(), "Initialize must only be called once.");
 
-	if (!FreeType::InitialiseFaceHandle(ft_face, font_size, glyphs, metrics))
+	if (!FreeType::InitializeFaceHandle(ft_face, font_size, glyphs, metrics))
 	{
 		return false;
 	}
@@ -212,7 +212,7 @@ bool FontFaceHandleDefault::GenerateLayerTexture(UniquePtr<const byte[]>& textur
 }
 
 // Generates the geometry required to render a single line of text.
-int FontFaceHandleDefault::GenerateString(GeometryList& geometry, const String& string, const Vector2f& position, const Colourb& colour, int layer_configuration_index)
+int FontFaceHandleDefault::GenerateString(GeometryList& geometry, const String& string, const Vector2f& position, const Colorb& color, int layer_configuration_index)
 {
 	int geometry_index = 0;
 	int line_width = 0;
@@ -232,11 +232,11 @@ int FontFaceHandleDefault::GenerateString(GeometryList& geometry, const String& 
 	{
 		FontFaceLayer* layer = layer_configuration[i];
 
-		Colourb layer_colour;
+		Colorb layer_color;
 		if (layer == base_layer)
-			layer_colour = colour;
+			layer_color = color;
 		else
-			layer_colour = layer->GetColour();
+			layer_color = layer->GetColor();
 
 		const int num_textures = layer->GetNumTextures();
 
@@ -271,7 +271,7 @@ int FontFaceHandleDefault::GenerateString(GeometryList& geometry, const String& 
 			if (prior_character != Character::Null)
 				line_width += GetKerning(prior_character, character);
 
-			layer->GenerateGeometry(&geometry[geometry_index], character, Vector2f(position.x + line_width, position.y), layer_colour);
+			layer->GenerateGeometry(&geometry[geometry_index], character, Vector2f(position.x + line_width, position.y), layer_color);
 
 			line_width += glyph->advance;
 			prior_character = character;

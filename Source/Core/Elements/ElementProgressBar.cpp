@@ -233,12 +233,12 @@ void ElementProgressBar::GenerateGeometry()
 		texcoords[1] = Vector2f(1, 1);
 	}
 
-	Colourb quad_colour;
+	Colorb quad_color;
 	{
 		const ComputedValues& computed = GetComputedValues();
 		const float opacity = computed.opacity;
-		quad_colour = computed.image_color;
-		quad_colour.alpha = (byte)(opacity * (float)quad_colour.alpha);
+		quad_color = computed.image_color;
+		quad_color.alpha = (byte)(opacity * (float)quad_color.alpha);
 	}
 
 
@@ -313,7 +313,7 @@ void ElementProgressBar::GenerateGeometry()
 			const Vector2f pos = (Vector2f(1, 1) + vertices[i].position) * 0.5f;
 			vertices[i].position = pos * render_size;
 			vertices[i].tex_coord = texcoords[0] + pos * (texcoords[1] - texcoords[0]);
-			vertices[i].colour = quad_colour;
+			vertices[i].color = quad_color;
 		}
 	}
 		break;
@@ -326,7 +326,7 @@ void ElementProgressBar::GenerateGeometry()
 	{
 		vertices.resize(4);
 		indices.resize(6);
-		GeometryUtilities::GenerateQuad(&vertices[0], &indices[0], Vector2f(0), render_size, quad_colour, texcoords[0], texcoords[1]);
+		GeometryUtilities::GenerateQuad(&vertices[0], &indices[0], Vector2f(0), render_size, quad_color, texcoords[0], texcoords[1]);
 	}
 }
 

@@ -31,11 +31,11 @@
 
 namespace Rml {
 
-FontFaceLayer::FontFaceLayer(const SharedPtr<const FontEffect>& _effect) : colour(255, 255, 255)
+FontFaceLayer::FontFaceLayer(const SharedPtr<const FontEffect>& _effect) : color(255, 255, 255)
 {
 	effect = _effect;
 	if (effect)
-		colour = effect->GetColour();
+		color = effect->GetColor();
 }
 
 FontFaceLayer::~FontFaceLayer()
@@ -97,7 +97,7 @@ bool FontFaceLayer::Generate(const FontFaceHandleDefault* handle, const FontFace
 	}
 	else
 	{
-		// Initialise the texture layout for the glyphs.
+		// Initialize the texture layout for the glyphs.
 		character_boxes.reserve(glyphs.size());
 		for (auto& pair : glyphs)
 		{
@@ -252,10 +252,10 @@ int FontFaceLayer::GetNumTextures() const
 	return (int)textures.size();
 }
 
-// Returns the layer's colour.
-const Colourb& FontFaceLayer::GetColour() const
+// Returns the layer's color.
+const Colorb& FontFaceLayer::GetColor() const
 {
-	return colour;
+	return color;
 }
 
 } // namespace Rml

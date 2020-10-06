@@ -70,15 +70,15 @@ DebuggerPlugin::~DebuggerPlugin()
 	instance = nullptr;
 }
 
-// Initialises the debugging tools into the given context.
-bool DebuggerPlugin::Initialise(Context* context)
+// Initializes the debugging tools into the given context.
+bool DebuggerPlugin::Initialize(Context* context)
 {
 	host_context = context;
 	Geometry::SetContext(context);
 
 	if (!LoadFont())
 	{
-		Log::Message(Log::LT_ERROR, "Failed to initialise debugger, unable to load font.");
+		Log::Message(Log::LT_ERROR, "Failed to initialize debugger, unable to load font.");
 		return false;
 	}
 
@@ -86,7 +86,7 @@ bool DebuggerPlugin::Initialise(Context* context)
 		!LoadInfoElement() ||
 		!LoadLogElement())
 	{
-		Log::Message(Log::LT_ERROR, "Failed to initialise debugger, error while load debugger elements.");
+		Log::Message(Log::LT_ERROR, "Failed to initialize debugger, error while load debugger elements.");
 		return false;
 	}
 
@@ -121,7 +121,7 @@ bool DebuggerPlugin::SetContext(Context* context)
 			return false;
 		}
 
-		hook_element->Initialise(this);
+		hook_element->Initialize(this);
 	}
 
 	// Attach the info element to the new context.
@@ -190,7 +190,7 @@ void DebuggerPlugin::Render()
 						Geometry::RenderOutline(
 							element->GetAbsoluteOffset(Box::BORDER) + box_offset + box.GetPosition(Box::BORDER),
 							box.GetSize(Box::BORDER), 
-							Colourb(255, 0, 0, 128), 
+							Colorb(255, 0, 0, 128), 
 							1
 						);
 					}
@@ -334,7 +334,7 @@ bool DebuggerPlugin::LoadInfoElement()
 
 	info_element->SetProperty(PropertyId::Visibility, Property(Style::Visibility::Hidden));
 
-	if (!info_element->Initialise())
+	if (!info_element->Initialize())
 	{
 		host_context->UnloadDocument(info_element);
 		info_element = nullptr;
@@ -355,7 +355,7 @@ bool DebuggerPlugin::LoadLogElement()
 
 	log_element->SetProperty(PropertyId::Visibility, Property(Style::Visibility::Hidden));
 
-	if (!log_element->Initialise())
+	if (!log_element->Initialize())
 	{
 		host_context->UnloadDocument(log_element);
 		log_element = nullptr;

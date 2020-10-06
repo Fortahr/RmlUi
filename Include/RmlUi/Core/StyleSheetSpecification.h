@@ -47,7 +47,7 @@ class RMLUICORE_API StyleSheetSpecification
 public:
 	/// Starts up the specification structure and registers default properties and type parsers.
 	/// @return True if the specification started up successfully, false if not.
-	static bool Initialise();
+	static bool Initialize();
 	/// Destroys the specification structure and releases the parsers.
 	static void Shutdown();
 

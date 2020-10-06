@@ -19,7 +19,7 @@ DecoratorDefender::~DecoratorDefender()
 {
 }
 
-bool DecoratorDefender::Initialise(const Rml::String& image_source, const Rml::String& image_path)
+bool DecoratorDefender::Initialize(const Rml::String& image_source, const Rml::String& image_path)
 {
 	image_index = LoadTexture(image_source, image_path);
 	if (image_index == -1)
@@ -54,8 +54,8 @@ void DecoratorDefender::RenderElement(Rml::Element* element, Rml::DecoratorDataH
 
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, (GLuint) GetTexture(image_index)->GetHandle(element->GetRenderInterface()));
-	Rml::Colourb colour = element->GetProperty< Rml::Colourb >("color");
-	glColor4ubv(colour);
+	Rml::Colorb color = element->GetProperty< Rml::Colorb >("color");
+	glColor4ubv(color);
 	glBegin(GL_QUADS);
 
 		glVertex2f(position.x, position.y);

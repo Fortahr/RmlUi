@@ -40,7 +40,7 @@
 namespace Rml {
 
 /**
-	Templatised TypeConverters with Template Specialisation.
+	Templatized TypeConverters with Template Specialisation.
 
 	These converters convert from source types to destination types.
 	They're mainly useful in things like dictionaries and serialisers.

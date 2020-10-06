@@ -26,8 +26,8 @@
  *
  */
  
-#ifndef RMLUI_LUA_COLOURB_H
-#define RMLUI_LUA_COLOURB_H
+#ifndef RMLUI_LUA_COLORB_H
+#define RMLUI_LUA_COLORB_H
 
 #include <RmlUi/Lua/LuaType.h>
 #include <RmlUi/Lua/IncludeLua.h>
@@ -35,32 +35,32 @@
 
 namespace Rml {
 namespace Lua {
-template<> void ExtraInit<Colourb>(lua_State* L, int metatable_index);
-int Colourbnew(lua_State* L);
-int Colourb__eq(lua_State* L);
-int Colourb__add(lua_State* L);
-int Colourb__mul(lua_State* L);
+template<> void ExtraInit<Colorb>(lua_State* L, int metatable_index);
+int Colorbnew(lua_State* L);
+int Colorb__eq(lua_State* L);
+int Colorb__add(lua_State* L);
+int Colorb__mul(lua_State* L);
 
 
 //getters
-int ColourbGetAttrred(lua_State* L);
-int ColourbGetAttrgreen(lua_State* L);
-int ColourbGetAttrblue(lua_State* L);
-int ColourbGetAttralpha(lua_State* L);
-int ColourbGetAttrrgba(lua_State* L);
+int ColorbGetAttrred(lua_State* L);
+int ColorbGetAttrgreen(lua_State* L);
+int ColorbGetAttrblue(lua_State* L);
+int ColorbGetAttralpha(lua_State* L);
+int ColorbGetAttrrgba(lua_State* L);
 
 //setters
-int ColourbSetAttrred(lua_State* L);
-int ColourbSetAttrgreen(lua_State* L);
-int ColourbSetAttrblue(lua_State* L);
-int ColourbSetAttralpha(lua_State* L);
-int ColourbSetAttrrgba(lua_State* L);
+int ColorbSetAttrred(lua_State* L);
+int ColorbSetAttrgreen(lua_State* L);
+int ColorbSetAttrblue(lua_State* L);
+int ColorbSetAttralpha(lua_State* L);
+int ColorbSetAttrrgba(lua_State* L);
 
-extern RegType<Colourb> ColourbMethods[];
-extern luaL_Reg ColourbGetters[];
-extern luaL_Reg ColourbSetters[];
+extern RegType<Colorb> ColorbMethods[];
+extern luaL_Reg ColorbGetters[];
+extern luaL_Reg ColorbSetters[];
 
-RMLUI_LUATYPE_DECLARE(Colourb)
+RMLUI_LUATYPE_DECLARE(Colorb)
 } // namespace Lua
 } // namespace Rml
 #endif

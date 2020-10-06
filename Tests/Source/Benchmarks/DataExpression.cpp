@@ -45,7 +45,7 @@ TEST_CASE("data_expressions")
 {
 	float radius = 6.0f;
 	String color_name = "color";
-	Colourb color_value = Colourb(180, 100, 255);
+	Colorb color_value = Colorb(180, 100, 255);
 
 	DataModelConstructor constructor(&model, &type_register);
 	constructor.Bind("radius", &radius);

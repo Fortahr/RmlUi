@@ -50,10 +50,10 @@ FontProvider::~FontProvider()
 	RMLUI_ASSERT(g_font_provider == this);
 }
 
-bool FontProvider::Initialise()
+bool FontProvider::Initialize()
 {
 	RMLUI_ASSERT(!g_font_provider);
-	if (!FreeType::Initialise())
+	if (!FreeType::Initialize())
 		return false;
 	g_font_provider = new FontProvider;
 	return true;

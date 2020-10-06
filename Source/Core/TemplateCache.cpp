@@ -51,7 +51,7 @@ TemplateCache::~TemplateCache()
 	instance = nullptr;
 }
 
-bool TemplateCache::Initialise()
+bool TemplateCache::Initialize()
 {
 	new TemplateCache();
 

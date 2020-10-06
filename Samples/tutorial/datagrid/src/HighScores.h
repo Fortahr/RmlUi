@@ -24,7 +24,7 @@ const int NUM_SCORES = 10;
 class HighScores
 {
 public:
-	static void Initialise();
+	static void Initialize();
 	static void Shutdown();
 
 private:
@@ -33,13 +33,13 @@ private:
 
 	static HighScores* instance;
 
-	void SubmitScore(const Rml::String& name, const Rml::Colourb& colour, int wave, int score);
+	void SubmitScore(const Rml::String& name, const Rml::Colorb& color, int wave, int score);
 	void LoadScores();
 
 	struct Score
 	{
 		Rml::String name;
-		Rml::Colourb colour;
+		Rml::Colorb color;
 		int score;
 		int wave;
 	};

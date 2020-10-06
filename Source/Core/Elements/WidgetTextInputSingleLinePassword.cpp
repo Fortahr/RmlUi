@@ -42,9 +42,9 @@ WidgetTextInputSingleLinePassword::~WidgetTextInputSingleLinePassword()
 // Sets the value of the password field.
 void WidgetTextInputSingleLinePassword::SetValue(const String& value)
 {
-	String sanitised_value(value);
-	SanitiseValue(sanitised_value);
-	WidgetTextInput::SetValue(String(sanitised_value.size(), '*'));
+	String sanitized_value(value);
+	SanitizeValue(sanitized_value);
+	WidgetTextInput::SetValue(String(sanitized_value.size(), '*'));
 }
 
 } // namespace Rml

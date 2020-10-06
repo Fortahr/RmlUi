@@ -40,7 +40,7 @@ namespace Rml {
 
 	By default, RmlUi will use a file interface implementing the standard C file functions. If this is not sufficient,
 	or your application wants more control over file I/O, this class should be derived, instanced, and installed
-	through Rml::SetFileInterface() before you initialise RmlUi.
+	through Rml::SetFileInterface() before you initialize RmlUi.
 
 	@author Peter Curry
  */

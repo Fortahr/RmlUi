@@ -84,7 +84,7 @@ int main(int RMLUI_UNUSED_PARAMETER(argc), char** RMLUI_UNUSED_PARAMETER(argv))
 	shell_renderer = &opengl_renderer;
 
 	// Generic OS initialisation, creates a window and attaches OpenGL.
-	if (!Shell::Initialise() ||
+	if (!Shell::Initialize() ||
 		!Shell::OpenWindow("Bitmap Font Sample", shell_renderer, window_width, window_height, true))
 	{
 		Shell::Shutdown();
@@ -102,7 +102,7 @@ int main(int RMLUI_UNUSED_PARAMETER(argc), char** RMLUI_UNUSED_PARAMETER(argv))
 	FontEngineInterfaceBitmap font_interface;
 	Rml::SetFontEngineInterface(&font_interface);
 
-	Rml::Initialise();
+	Rml::Initialize();
 
 	// Create the main RmlUi context and set it on the shell's input layer.
 	context = Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
@@ -113,7 +113,7 @@ int main(int RMLUI_UNUSED_PARAMETER(argc), char** RMLUI_UNUSED_PARAMETER(argv))
 		return -1;
 	}
 
-	Rml::Debugger::Initialise(context);
+	Rml::Debugger::Initialize(context);
 	Input::SetContext(context);
 	shell_renderer->SetContext(context);
 

@@ -41,7 +41,7 @@ Vector4f operator*(float lhs, const Vector4f& rhs)
 }
 
 template <>
-Vector4< float > Vector4< float >::Normalise() const
+Vector4< float > Vector4< float >::Normalize() const
 {
 	float magnitude = Magnitude();
 	if (Math::IsZero(magnitude))

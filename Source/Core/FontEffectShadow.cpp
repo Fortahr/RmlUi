@@ -40,7 +40,7 @@ FontEffectShadow::~FontEffectShadow()
 {
 }
 
-bool FontEffectShadow::Initialise(const Vector2i& _offset)
+bool FontEffectShadow::Initialize(const Vector2i& _offset)
 {
 	offset = _offset;
 	return true;
@@ -82,12 +82,12 @@ SharedPtr<FontEffect> FontEffectShadowInstancer::InstanceFontEffect(const String
 	Vector2i offset;
 	offset.x = Math::RealToInteger(properties.GetProperty(id_offset_x)->Get< float >());
 	offset.y = Math::RealToInteger(properties.GetProperty(id_offset_y)->Get< float >());
-	Colourb color = properties.GetProperty(id_color)->Get< Colourb >();
+	Colorb color = properties.GetProperty(id_color)->Get< Colorb >();
 
 	auto font_effect = MakeShared<FontEffectShadow>();
-	if (font_effect->Initialise(offset))
+	if (font_effect->Initialize(offset))
 	{
-		font_effect->SetColour(color);
+		font_effect->SetColor(color);
 		return font_effect;
 	}
 

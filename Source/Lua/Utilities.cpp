@@ -50,11 +50,11 @@ void PushVariant(lua_State* L, const Variant* var)
     case Variant::FLOAT:
         lua_pushnumber(L,var->Get<float>());
         break;
-    case Variant::COLOURB:
-        LuaType<Colourb>::push(L,new Colourb(var->Get<Colourb>()),true);
+    case Variant::COLORB:
+        LuaType<Colorb>::push(L,new Colorb(var->Get<Colorb>()),true);
         break;
-    case Variant::COLOURF:
-        LuaType<Colourf>::push(L,new Colourf(var->Get<Colourf>()),true);
+    case Variant::COLORF:
+        LuaType<Colorf>::push(L,new Colorf(var->Get<Colorf>()),true);
         break;
     case Variant::STRING:
         lua_pushstring(L,var->Get<String>().c_str());

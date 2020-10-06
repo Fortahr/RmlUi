@@ -26,7 +26,7 @@ const int NUM_ALIEN_TYPES = 3;
 class HighScores : public Rml::DataSource
 {
 public:
-	static void Initialise();
+	static void Initialize();
 	static void Shutdown();
 
 	void GetRow(Rml::StringList& row, const Rml::String& table, int row_index, const Rml::StringList& columns);
@@ -38,13 +38,13 @@ private:
 
 	static HighScores* instance;
 
-	void SubmitScore(const Rml::String& name, const Rml::Colourb& colour, int wave, int score, int alien_kills[]);
+	void SubmitScore(const Rml::String& name, const Rml::Colorb& color, int wave, int score, int alien_kills[]);
 	void LoadScores();
 
 	struct Score
 	{
 		Rml::String name;
-		Rml::Colourb colour;
+		Rml::Colorb color;
 		int score;
 		int wave;
 

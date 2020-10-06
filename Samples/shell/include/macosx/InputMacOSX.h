@@ -41,7 +41,7 @@
 class InputMacOSX : public Input
 {
 public:
-	static bool Initialise();
+	static bool Initialize();
 	static void Shutdown();
 
 	/// Process the Carbon event.

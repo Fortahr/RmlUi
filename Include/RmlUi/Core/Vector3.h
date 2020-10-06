@@ -58,9 +58,9 @@ class Vector3
 		/// Returns the squared magnitude of the vector.
 		/// @return The computed squared magnitude.
 		inline Type SquaredMagnitude() const;
-		/// Generates a normalised vector from this vector.
-		/// @return The normalised vector.
-		inline Vector3 Normalise() const;
+		/// Generates a normalized vector from this vector.
+		/// @return The normalized vector.
+		inline Vector3 Normalize() const;
 
 		/// Computes the dot-product between this vector and another.
 		/// @param[in] rhs The other vector to use in the dot-product.

@@ -43,7 +43,7 @@ Pool< PoolType >::Pool(int _chunk_size, bool _grow)
 	first_free_node = nullptr;
 
 	if (_chunk_size > 0)
-		Initialise(_chunk_size, _grow);
+		Initialize(_chunk_size, _grow);
 }
 
 template < typename PoolType >
@@ -63,9 +63,9 @@ Pool< PoolType >::~Pool()
 	}
 }
 
-// Initialises the pool to a given size.
+// Initializes the pool to a given size.
 template < typename PoolType >
-void Pool< PoolType >::Initialise(int _chunk_size, bool _grow)
+void Pool< PoolType >::Initialize(int _chunk_size, bool _grow)
 {
 	// Should resize the pool here ... ?
 	if (chunk_size > 0)
@@ -242,7 +242,7 @@ void Pool< PoolType >::CreateChunk()
 	// Create chunk's pool nodes.
 	new_chunk->chunk = new PoolNode[chunk_size];
 
-	// Initialise the linked list.
+	// Initialize the linked list.
 	for (int i = 0; i < chunk_size; i++)
 	{
 		if (i == 0)

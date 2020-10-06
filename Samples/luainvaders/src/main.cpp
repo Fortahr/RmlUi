@@ -73,7 +73,7 @@ int main(int, char**)
 	shell_renderer = &opengl_renderer;
 
 	// Generic OS initialisation, creates a window and attaches OpenGL.
-	if (!Shell::Initialise() ||
+	if (!Shell::Initialize() ||
 		!Shell::OpenWindow("RmlUi Invaders from Mars (Lua Powered)", shell_renderer, window_width, window_height, false))
 	{
 		Shell::Shutdown();
@@ -87,10 +87,10 @@ int main(int, char**)
 	ShellSystemInterface system_interface;
 	Rml::SetSystemInterface(&system_interface);
 
-	Rml::Initialise();
+	Rml::Initialize();
 
-	// Initialise the Lua interface
-	Rml::Lua::Initialise();
+	// Initialize the Lua interface
+	Rml::Lua::Initialize();
 
 	// Create the main RmlUi context and set it on the shell's input layer.
 	context = Rml::CreateContext("main", Rml::Vector2i(window_width, window_height));
@@ -101,7 +101,7 @@ int main(int, char**)
 		return -1;
 	}
 
-	Rml::Debugger::Initialise(context);
+	Rml::Debugger::Initialize(context);
 	Input::SetContext(context);
 	shell_renderer->SetContext(context);
 
@@ -115,10 +115,10 @@ int main(int, char**)
 	Rml::Factory::RegisterDecoratorInstancer("defender", &decorator_defender);
 
 	// Construct the game singletons.
-	HighScores::Initialise();
+	HighScores::Initialize();
 
 	// Fire off the startup script.
-    LuaInterface::Initialise(Rml::Lua::Interpreter::GetLuaState()); //the tables/functions defined in the samples
+    LuaInterface::Initialize(Rml::Lua::Interpreter::GetLuaState()); //the tables/functions defined in the samples
     Rml::Lua::Interpreter::LoadFile(Rml::String("luainvaders/lua/start.lua"));
 
 	Shell::EventLoop(GameLoop);	

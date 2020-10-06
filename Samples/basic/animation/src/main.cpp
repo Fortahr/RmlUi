@@ -67,11 +67,11 @@ public:
 			}
 			{
 				auto el = document->GetElementById("options");
-				el->Animate("image-color", Property(Colourb(128, 255, 255, 255), Property::COLOUR), 0.3f, Tween{}, -1, false);
-				el->AddAnimationKey("image-color", Property(Colourb(128, 128, 255, 255), Property::COLOUR), 0.3f);
-				el->AddAnimationKey("image-color", Property(Colourb(0, 128, 128, 255), Property::COLOUR), 0.3f);
-				el->AddAnimationKey("image-color", Property(Colourb(64, 128, 255, 0), Property::COLOUR), 0.9f);
-				el->AddAnimationKey("image-color", Property(Colourb(255, 255, 255, 255), Property::COLOUR), 0.3f);
+				el->Animate("image-color", Property(Colorb(128, 255, 255, 255), Property::COLOR), 0.3f, Tween{}, -1, false);
+				el->AddAnimationKey("image-color", Property(Colorb(128, 128, 255, 255), Property::COLOR), 0.3f);
+				el->AddAnimationKey("image-color", Property(Colorb(0, 128, 128, 255), Property::COLOR), 0.3f);
+				el->AddAnimationKey("image-color", Property(Colorb(64, 128, 255, 0), Property::COLOR), 0.9f);
+				el->AddAnimationKey("image-color", Property(Colorb(255, 255, 255, 255), Property::COLOR), 0.3f);
 			}
 			{
 				auto el = document->GetElementById("exit");
@@ -351,7 +351,7 @@ int main(int RMLUI_UNUSED_PARAMETER(argc), char** RMLUI_UNUSED_PARAMETER(argv))
 	shell_renderer = &opengl_renderer;
 
 	// Generic OS initialisation, creates a window and attaches OpenGL.
-	if (!Shell::Initialise() ||
+	if (!Shell::Initialize() ||
 		!Shell::OpenWindow("Animation Sample", shell_renderer, width, height, true))
 	{
 		Shell::Shutdown();
@@ -365,7 +365,7 @@ int main(int RMLUI_UNUSED_PARAMETER(argc), char** RMLUI_UNUSED_PARAMETER(argv))
 	ShellSystemInterface system_interface;
 	Rml::SetSystemInterface(&system_interface);
 
-	Rml::Initialise();
+	Rml::Initialize();
 
 	// Create the main RmlUi context and set it on the shell's input layer.
 	context = Rml::CreateContext("main", Rml::Vector2i(width, height));
@@ -376,7 +376,7 @@ int main(int RMLUI_UNUSED_PARAMETER(argc), char** RMLUI_UNUSED_PARAMETER(argv))
 		return -1;
 	}
 
-	Rml::Debugger::Initialise(context);
+	Rml::Debugger::Initialize(context);
 	Input::SetContext(context);
 	shell_renderer->SetContext(context);
 

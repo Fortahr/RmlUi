@@ -91,9 +91,9 @@ public:
 	/// @param[out] geometry An array of geometries to generate the geometry into.
 	/// @param[in] string The string to render.
 	/// @param[in] position The position of the baseline of the first character to render.
-	/// @param[in] colour The colour to render the text.
+	/// @param[in] color The color to render the text.
 	/// @return The width, in pixels, of the string geometry.
-	int GenerateString(GeometryList& geometry, const String& string, const Vector2f& position, const Colourb& colour, int layer_configuration = 0);
+	int GenerateString(GeometryList& geometry, const String& string, const Vector2f& position, const Colorb& color, int layer_configuration = 0);
 
 	/// Version is changed whenever the layers are dirtied, requiring regeneration of string geometry.
 	int GetVersion() const;

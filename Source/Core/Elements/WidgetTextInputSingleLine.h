@@ -58,7 +58,7 @@ protected:
 	void LineBreak() override;
 
 	/// Strips all \n and \r characters from the string.
-	void SanitiseValue(String& value);
+	void SanitizeValue(String& value);
 };
 
 } // namespace Rml

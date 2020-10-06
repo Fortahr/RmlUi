@@ -42,8 +42,8 @@
 class Shell
 {
 public:
-	/// Initialise the shell.
-	static bool Initialise();
+	/// Initialize the shell.
+	static bool Initialize();
 	/// Shutdown the shell.
 	static void Shutdown();
 

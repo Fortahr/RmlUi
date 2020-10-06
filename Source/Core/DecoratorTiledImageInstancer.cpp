@@ -54,7 +54,7 @@ SharedPtr<Decorator> DecoratorTiledImageInstancer::InstanceDecorator(const Strin
 	
 	auto decorator = MakeShared<DecoratorTiledImage>();
 
-	if (!decorator->Initialise(tile, texture))
+	if (!decorator->Initialize(tile, texture))
 		return nullptr;
 
 	return decorator;

@@ -63,8 +63,8 @@ public:
 		VECTOR2 = '2',
 		VECTOR3 = '3',
 		VECTOR4 = '4',
-		COLOURF = 'g',
-		COLOURB = 'h',
+		COLORF = 'g',
+		COLORB = 'h',
 		SCRIPTINTERFACE = 'p',
 		TRANSFORMPTR = 't',
 		TRANSITIONLIST = 'T',
@@ -93,14 +93,14 @@ public:
 
 	inline Type GetType() const;
 
-	/// Templatised data accessor. TypeConverters will be used to attempt to convert from the
+	/// Templatized data accessor. TypeConverters will be used to attempt to convert from the
 	/// internal representation to the requested representation.
 	/// @param[in] default_value The value returned if the conversion failed.
 	/// @return Data in the requested type.
 	template< typename T >
 	T Get(T default_value = T()) const;
 
-	/// Templatised data accessor. TypeConverters will be used to attempt to convert from the
+	/// Templatized data accessor. TypeConverters will be used to attempt to convert from the
 	/// internal representation to the requested representation.
 	/// @param[out] value Data in the requested type.
 	/// @return True if the value was converted and returned, false if no data was stored in the variant.
@@ -134,8 +134,8 @@ private:
 	void Set(const Vector2f& value);
 	void Set(const Vector3f& value);
 	void Set(const Vector4f& value);
-	void Set(const Colourf& value);
-	void Set(const Colourb& value);
+	void Set(const Colorf& value);
+	void Set(const Colorb& value);
 	void Set(ScriptInterface* value);
 
 	void Set(const String& value);

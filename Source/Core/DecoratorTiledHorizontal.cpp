@@ -59,8 +59,8 @@ DecoratorTiledHorizontal::~DecoratorTiledHorizontal()
 {
 }
 
-// Initialises the tiles for the decorator.
-bool DecoratorTiledHorizontal::Initialise(const Tile* _tiles, const Texture* _textures)
+// Initializes the tiles for the decorator.
+bool DecoratorTiledHorizontal::Initialize(const Tile* _tiles, const Texture* _textures)
 {
 	// Load the textures.
 	for (int i = 0; i < 3; i++)
@@ -92,7 +92,7 @@ bool DecoratorTiledHorizontal::Initialise(const Tile* _tiles, const Texture* _te
 // Called on a decorator to generate any required per-element data for a newly decorated element.
 DecoratorDataHandle DecoratorTiledHorizontal::GenerateElementData(Element* element) const
 {
-	// Initialise the tiles for this element.
+	// Initialize the tiles for this element.
 	for (int i = 0; i < 3; i++)
 		tiles[i].CalculateDimensions(element, *(GetTexture(tiles[i].texture_index)));
 

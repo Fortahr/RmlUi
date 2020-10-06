@@ -57,9 +57,9 @@ class Vector2
 		/// Returns the squared magnitude of the vector.
 		/// @return The computed squared magnitude.
 		inline Type SquaredMagnitude() const;
-		/// Generates a normalised vector from this vector.
-		/// @return The normalised vector.
-		inline Vector2 Normalise() const;
+		/// Generates a normalized vector from this vector.
+		/// @return The normalized vector.
+		inline Vector2 Normalize() const;
 		/// Generates a vector with values rounded to their nearest integer.
 		/// @return The rounded vector
 		inline Vector2 Round() const;

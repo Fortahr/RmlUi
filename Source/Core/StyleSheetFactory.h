@@ -46,8 +46,8 @@ struct StructuralSelector;
 class StyleSheetFactory
 {
 public:
-	/// Initialise the style factory
-	static bool Initialise();
+	/// Initialize the style factory
+	static bool Initialize();
 	/// Shutdown style manager
 	static void Shutdown();
 
