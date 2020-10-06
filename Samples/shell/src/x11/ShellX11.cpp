@@ -66,10 +66,10 @@ static bool isRegularFile(const Rml::String& path)
 	return (stat(path.c_str(), &sb) == 0 && S_ISREG(sb.st_mode));
 }
 
-bool Shell::Initialise()
+bool Shell::Initialize()
 {
 	gettimeofday(&start_time, nullptr);
-	InputX11::Initialise();
+	InputX11::Initialize();
 
 	Rml::String root = FindSamplesRoot();
 	bool result = !root.empty();
@@ -135,10 +135,10 @@ bool Shell::OpenWindow(const char* name, ShellRenderInterfaceExtensions *_shell_
 	if (display == nullptr)
 		return false;
 
-	// This initialise they keyboard to keycode mapping system of X11
+	// This initialize they keyboard to keycode mapping system of X11
 	// itself.  It must be done here as it needs to query the connected
 	// X server display for information about its install keymap abilities.
-	InputX11::InitialiseX11Keymap(display);
+	InputX11::InitializeX11Keymap(display);
 
 	screen = XDefaultScreen(display);
 

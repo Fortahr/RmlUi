@@ -37,7 +37,7 @@ class DecoratorStarfield : public Rml::Decorator
 public:
 	virtual ~DecoratorStarfield();
 
-	bool Initialise(int num_layers, const Rml::Colourb& top_colour, const Rml::Colourb& bottom_colour, float top_speed, float bottom_speed, int top_density, int bottom_density);
+	bool Initialize(int num_layers, const Rml::Colorb& top_color, const Rml::Colorb& bottom_color, float top_speed, float bottom_speed, int top_density, int bottom_density);
 
 	/// Called on a decorator to generate any required per-element data for a newly decorated element.
 	/// @param[in] element The newly decorated element.
@@ -54,8 +54,8 @@ public:
 
 private:
 	int num_layers;
-	Rml::Colourb top_colour;
-	Rml::Colourb bottom_colour;
+	Rml::Colorb top_color;
+	Rml::Colorb bottom_color;
 	float top_speed;
 	float bottom_speed;
 	int top_density;
@@ -65,7 +65,7 @@ private:
 	{
 		typedef Rml::Vector< Rml::Vector2f > StarList;
 		StarList stars;
-		Rml::Colourb colour;
+		Rml::Colorb color;
 		float speed;
 	};
 

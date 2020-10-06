@@ -5605,7 +5605,7 @@ static void addPaddingBits(unsigned char* out, const unsigned char* in,
       setBitOfReversedStream(&obp, out, bit);
     }
     /*obp += diff; --> no, fill in some value in the padding bits too, to avoid
-    "Use of uninitialised value of size ###" warning from valgrind*/
+    "Use of uninitialized value of size ###" warning from valgrind*/
     for(x = 0; x != diff; ++x) setBitOfReversedStream(&obp, out, 0);
   }
 }

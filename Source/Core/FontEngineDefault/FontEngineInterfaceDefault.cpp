@@ -34,7 +34,7 @@ namespace Rml {
 
 FontEngineInterfaceDefault::FontEngineInterfaceDefault()
 {
-	FontProvider::Initialise();
+	FontProvider::Initialize();
 }
 
 FontEngineInterfaceDefault::~FontEngineInterfaceDefault()
@@ -101,10 +101,10 @@ int FontEngineInterfaceDefault::GetStringWidth(FontFaceHandle handle, const Stri
 }
 
 int FontEngineInterfaceDefault::GenerateString(FontFaceHandle handle, FontEffectsHandle font_effects_handle, const String& string,
-	const Vector2f& position, const Colourb& colour, GeometryList& geometry)
+	const Vector2f& position, const Colorb& color, GeometryList& geometry)
 {
 	auto handle_default = reinterpret_cast<FontFaceHandleDefault *>(handle);
-	return handle_default->GenerateString(geometry, string, position, colour, (int)font_effects_handle);
+	return handle_default->GenerateString(geometry, string, position, color, (int)font_effects_handle);
 }
 
 int FontEngineInterfaceDefault::GetVersion(FontFaceHandle handle)

@@ -37,9 +37,9 @@
 
 namespace Rml {
 
-static Colourf ColourToLinearSpace(Colourb c)
+static Colorf ColorToLinearSpace(Colorb c)
 {
-	Colourf result;
+	Colorf result;
 	// Approximate inverse sRGB function
 	result.red = Math::SquareRoot((float)c.red / 255.f);
 	result.green = Math::SquareRoot((float)c.green / 255.f);
@@ -48,9 +48,9 @@ static Colourf ColourToLinearSpace(Colourb c)
 	return result;
 }
 
-static Colourb ColourFromLinearSpace(Colourf c)
+static Colorb ColorFromLinearSpace(Colorf c)
 {
-	Colourb result;
+	Colorb result;
 	result.red = (byte)Math::Clamp(c.red*c.red*255.f, 0.0f, 255.f);
 	result.green = (byte)Math::Clamp(c.green*c.green*255.f, 0.0f, 255.f);
 	result.blue = (byte)Math::Clamp(c.blue*c.blue*255.f, 0.0f, 255.f);
@@ -120,14 +120,14 @@ static Property InterpolateProperties(const Property & p0, const Property& p1, f
 		return alpha < 0.5f ? p0 : p1;
 	}
 
-	if (p0.unit == Property::COLOUR && p1.unit == Property::COLOUR)
+	if (p0.unit == Property::COLOR && p1.unit == Property::COLOR)
 	{
-		Colourf c0 = ColourToLinearSpace(p0.value.Get<Colourb>());
-		Colourf c1 = ColourToLinearSpace(p1.value.Get<Colourb>());
+		Colorf c0 = ColorToLinearSpace(p0.value.Get<Colorb>());
+		Colorf c1 = ColorToLinearSpace(p1.value.Get<Colorb>());
 
-		Colourf c = c0 * (1.0f - alpha) + c1 * alpha;
+		Colorf c = c0 * (1.0f - alpha) + c1 * alpha;
 
-		return Property{ ColourFromLinearSpace(c), Property::COLOUR };
+		return Property{ ColorFromLinearSpace(c), Property::COLOR };
 	}
 
 	if (p0.unit == Property::TRANSFORM && p1.unit == Property::TRANSFORM)
@@ -404,7 +404,7 @@ ElementAnimation::ElementAnimation(PropertyId property_id, ElementAnimationOrigi
 
 bool ElementAnimation::InternalAddKey(float time, const Property& in_property, Element& element, Tween tween)
 {
-	int valid_properties = (Property::NUMBER_LENGTH_PERCENT | Property::ANGLE | Property::COLOUR | Property::TRANSFORM | Property::KEYWORD);
+	int valid_properties = (Property::NUMBER_LENGTH_PERCENT | Property::ANGLE | Property::COLOR | Property::TRANSFORM | Property::KEYWORD);
 
 	if (!(in_property.unit & valid_properties))
 	{

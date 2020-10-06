@@ -79,7 +79,7 @@ void ElementGame::ProcessEvent(Rml::Event& event)
 
 	if (event == Rml::EventId::Load)
 	{
-		game->Initialise();
+		game->Initialize();
 	}
 }
 

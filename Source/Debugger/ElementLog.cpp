@@ -82,8 +82,8 @@ ElementLog::~ElementLog()
 {
 }
 
-// Initialises the log element.
-bool ElementLog::Initialise()
+// Initializes the log element.
+bool ElementLog::Initialize()
 {
 	SetInnerRML(log_rml);
 	SetId("rmlui-debug-log");

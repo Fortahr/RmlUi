@@ -58,8 +58,8 @@ DecoratorTiledBox::~DecoratorTiledBox()
 {
 }
 
-// Initialises the tiles for the decorator.
-bool DecoratorTiledBox::Initialise(const Tile* _tiles, const Texture* _textures)
+// Initializes the tiles for the decorator.
+bool DecoratorTiledBox::Initialize(const Tile* _tiles, const Texture* _textures)
 {
 	// Load the textures.
 	for (int i = 0; i < 9; i++)
@@ -112,7 +112,7 @@ bool DecoratorTiledBox::Initialise(const Tile* _tiles, const Texture* _textures)
 // Called on a decorator to generate any required per-element data for a newly decorated element.
 DecoratorDataHandle DecoratorTiledBox::GenerateElementData(Element* element) const
 {
-	// Initialise the tiles for this element.
+	// Initialize the tiles for this element.
 	for (int i = 0; i < 9; i++)
 	{
 		RMLUI_ASSERT(tiles[i].texture_index >= 0);

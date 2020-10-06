@@ -36,7 +36,7 @@ HighScores::~HighScores()
 	instance = nullptr;
 }
 
-void HighScores::Initialise()
+void HighScores::Initialize()
 {
 	new HighScores();
 }
@@ -60,11 +60,11 @@ void HighScores::GetRow(Rml::StringList& row, const Rml::String& table, int row_
 			{
 				row.push_back(Rml::CreateString(32, "%d", scores[row_index].score));
 			}
-			else if (columns[i] == "colour")
+			else if (columns[i] == "color")
 			{
-				Rml::String colour_string;
-				Rml::TypeConverter< Rml::Colourb, Rml::String >::Convert(scores[row_index].colour, colour_string);
-				row.push_back(colour_string);
+				Rml::String color_string;
+				Rml::TypeConverter< Rml::Colorb, Rml::String >::Convert(scores[row_index].color, color_string);
+				row.push_back(color_string);
 			}
 			else if (columns[i] == "wave")
 			{
@@ -92,7 +92,7 @@ int HighScores::GetNumRows(const Rml::String& table)
 	return 0;
 }
 
-void HighScores::SubmitScore(const Rml::String& name, const Rml::Colourb& colour, int wave, int score, int alien_kills[])
+void HighScores::SubmitScore(const Rml::String& name, const Rml::Colorb& color, int wave, int score, int alien_kills[])
 {
 	for (size_t i = 0; i < NUM_SCORES; i++)
 	{
@@ -106,7 +106,7 @@ void HighScores::SubmitScore(const Rml::String& name, const Rml::Colourb& colour
 
 			// Insert our new score.
 			scores[i].name = name;
-			scores[i].colour = colour;
+			scores[i].color = color;
 			scores[i].wave = wave;
 			scores[i].score = score;
 
@@ -151,12 +151,12 @@ void HighScores::LoadScores()
 				Rml::StringUtilities::ExpandString(score_parts, score_lines[i], '\t');
 				if (score_parts.size() == 4 + NUM_ALIEN_TYPES)
 				{
-					Rml::Colourb colour;
+					Rml::Colorb color;
 					int wave;
 					int score;
 					int alien_kills[NUM_ALIEN_TYPES];
 
-					if (Rml::TypeConverter< Rml::String , Rml::Colourb >::Convert(score_parts[1], colour) &&
+					if (Rml::TypeConverter< Rml::String , Rml::Colorb >::Convert(score_parts[1], color) &&
 						Rml::TypeConverter< Rml::String, int >::Convert(score_parts[2], wave) &&
 						Rml::TypeConverter< Rml::String, int >::Convert(score_parts[3], score))
 					{
@@ -168,7 +168,7 @@ void HighScores::LoadScores()
 							}
 						}
 
-						SubmitScore(score_parts[0], colour, wave, score, alien_kills);
+						SubmitScore(score_parts[0], color, wave, score, alien_kills);
 					}
 				}
 			}

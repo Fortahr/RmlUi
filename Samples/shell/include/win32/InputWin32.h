@@ -41,7 +41,7 @@
 class InputWin32 : public Input
 {
 public:
-	static bool Initialise();
+	static bool Initialize();
 	static void Shutdown();
 
 	/// Process the Windows message.

@@ -47,7 +47,7 @@ bool FontEffectBlur::HasUniqueTexture() const
 	return true;
 }
 
-bool FontEffectBlur::Initialise(int _width)
+bool FontEffectBlur::Initialize(int _width)
 {
 	if (_width <= 0)
 		return false;
@@ -61,8 +61,8 @@ bool FontEffectBlur::Initialise(int _width)
 	float sum_weight = 0.f;
 
 	// We separate the blur filter into two passes, horizontal and vertical, for performance reasons.
-	filter_x.Initialise(Vector2i(width, 0), FilterOperation::Sum);
-	filter_y.Initialise(Vector2i(0, width), FilterOperation::Sum);
+	filter_x.Initialize(Vector2i(width, 0), FilterOperation::Sum);
+	filter_y.Initialize(Vector2i(0, width), FilterOperation::Sum);
 
 	for (int x = -width; x <= width; ++x)
 	{
@@ -133,12 +133,12 @@ SharedPtr<FontEffect> FontEffectBlurInstancer::InstanceFontEffect(const String& 
 	RMLUI_UNUSED(name);
 
 	float width = properties.GetProperty(id_width)->Get< float >();
-	Colourb color = properties.GetProperty(id_color)->Get< Colourb >();
+	Colorb color = properties.GetProperty(id_color)->Get< Colorb >();
 
 	auto font_effect = MakeShared<FontEffectBlur>();
-	if (font_effect->Initialise(Math::RealToInteger(width)))
+	if (font_effect->Initialize(Math::RealToInteger(width)))
 	{
-		font_effect->SetColour(color);
+		font_effect->SetColor(color);
 		return font_effect;
 	}
 

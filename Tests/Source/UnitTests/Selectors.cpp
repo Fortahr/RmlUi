@@ -149,7 +149,7 @@ TEST_CASE("Selectors")
 	SetRenderInterface(&render_interface);
 	SetSystemInterface(&system_interface);
 
-	Initialise();
+	Initialize();
 
 	Context* context = Rml::CreateContext("main", window_size);
 	REQUIRE(context);

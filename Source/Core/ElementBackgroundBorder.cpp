@@ -66,8 +66,8 @@ void ElementBackgroundBorder::GenerateGeometry(Element* element)
 {
 	const ComputedValues& computed = element->GetComputedValues();
 
-	Colourb background_color = computed.background_color;
-	Colourb border_colors[4] = {
+	Colorb background_color = computed.background_color;
+	Colorb border_colors[4] = {
 		computed.border_top_color,
 		computed.border_right_color,
 		computed.border_bottom_color,

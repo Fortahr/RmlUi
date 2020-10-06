@@ -36,7 +36,7 @@ HighScores::~HighScores()
 	instance = nullptr;
 }
 
-void HighScores::Initialise()
+void HighScores::Initialize()
 {
 	new HighScores();
 }
@@ -46,7 +46,7 @@ void HighScores::Shutdown()
 	delete instance;
 }
 
-void HighScores::SubmitScore(const Rml::String& name, const Rml::Colourb& colour, int wave, int score)
+void HighScores::SubmitScore(const Rml::String& name, const Rml::Colorb& color, int wave, int score)
 {
 	for (size_t i = 0; i < NUM_SCORES; i++)
 	{
@@ -60,7 +60,7 @@ void HighScores::SubmitScore(const Rml::String& name, const Rml::Colourb& colour
 
 			// Insert our new score.
 			scores[i].name = name;
-			scores[i].colour = colour;
+			scores[i].color = color;
 			scores[i].wave = wave;
 			scores[i].score = score;
 
@@ -98,15 +98,15 @@ void HighScores::LoadScores()
 				Rml::StringUtilities::ExpandString(score_parts, score_lines[i], '\t');
 				if (score_parts.size() == 4)
 				{
-					Rml::Colourb colour;
+					Rml::Colorb color;
 					int wave;
 					int score;
 
-					if (Rml::TypeConverter< Rml::String , Rml::Colourb >::Convert(score_parts[1], colour) &&
+					if (Rml::TypeConverter< Rml::String , Rml::Colorb >::Convert(score_parts[1], color) &&
 						Rml::TypeConverter< Rml::String, int >::Convert(score_parts[2], wave) &&
 						Rml::TypeConverter< Rml::String, int >::Convert(score_parts[3], score))
 					{
-						SubmitScore(score_parts[0], colour, wave, score);
+						SubmitScore(score_parts[0], color, wave, score);
 					}
 				}
 			}

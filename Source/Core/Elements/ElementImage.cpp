@@ -180,12 +180,12 @@ void ElementImage::GenerateGeometry()
 	const ComputedValues& computed = GetComputedValues();
 
 	float opacity = computed.opacity;
-	Colourb quad_colour = computed.image_color;
-    quad_colour.alpha = (byte)(opacity * (float)quad_colour.alpha);
+	Colorb quad_color = computed.image_color;
+    quad_color.alpha = (byte)(opacity * (float)quad_color.alpha);
 	
 	Vector2f quad_size = GetBox().GetSize(Box::CONTENT).Round();
 
-	GeometryUtilities::GenerateQuad(&vertices[0], &indices[0], Vector2f(0, 0), quad_size, quad_colour, texcoords[0], texcoords[1]);
+	GeometryUtilities::GenerateQuad(&vertices[0], &indices[0], Vector2f(0, 0), quad_size, quad_color, texcoords[0], texcoords[1]);
 
 	geometry_dirty = false;
 }

@@ -34,8 +34,8 @@ namespace Rml {
 Variant::Variant() : type(NONE)
 {
 	// Make sure our object size assumptions fit inside the static buffer
-	static_assert(sizeof(Colourb) <= LOCAL_DATA_SIZE, "Local data too small for Colourb");
-	static_assert(sizeof(Colourf) <= LOCAL_DATA_SIZE, "Local data too small for Colourf");
+	static_assert(sizeof(Colorb) <= LOCAL_DATA_SIZE, "Local data too small for Colorb");
+	static_assert(sizeof(Colorf) <= LOCAL_DATA_SIZE, "Local data too small for Colorf");
 	static_assert(sizeof(Vector4f) <= LOCAL_DATA_SIZE, "Local data too small for Vector4f");
 	static_assert(sizeof(String) <= LOCAL_DATA_SIZE, "Local data too small for String");
 	static_assert(sizeof(TransformPtr) <= LOCAL_DATA_SIZE, "Local data too small for TransformPtr");
@@ -262,16 +262,16 @@ void Variant::Set(const Vector4f& value)
 	SET_VARIANT(Vector4f);
 }
 
-void Variant::Set(const Colourf& value)
+void Variant::Set(const Colorf& value)
 {
-	type = COLOURF;
-	SET_VARIANT(Colourf);
+	type = COLORF;
+	SET_VARIANT(Colorf);
 }
 
-void Variant::Set(const Colourb& value)
+void Variant::Set(const Colorb& value)
 {
-	type = COLOURB;
-	SET_VARIANT(Colourb);
+	type = COLORB;
+	SET_VARIANT(Colorb);
 }
 
 void Variant::Set(ScriptInterface* value)
@@ -478,10 +478,10 @@ bool Variant::operator==(const Variant & other) const
 		return DEFAULT_VARIANT_COMPARE(Vector3f);
 	case VECTOR4:
 		return DEFAULT_VARIANT_COMPARE(Vector4f);
-	case COLOURF:
-		return DEFAULT_VARIANT_COMPARE(Colourf);
-	case COLOURB:
-		return DEFAULT_VARIANT_COMPARE(Colourb);
+	case COLORF:
+		return DEFAULT_VARIANT_COMPARE(Colorf);
+	case COLORB:
+		return DEFAULT_VARIANT_COMPARE(Colorb);
 	case SCRIPTINTERFACE:
 		return DEFAULT_VARIANT_COMPARE(ScriptInterface*);
 	case VOIDPTR:

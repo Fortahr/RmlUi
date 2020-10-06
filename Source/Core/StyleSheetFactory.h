@@ -38,7 +38,7 @@ class StyleSheetNodeSelector;
 struct StructuralSelector;
 
 /**
-	Creates stylesheets on the fly as needed. The factory keeps a cache of built sheets for optimisation.
+	Creates stylesheets on the fly as needed. The factory keeps a cache of built sheets for optimization.
 
 	@author Lloyd Weehuizen
  */
@@ -46,8 +46,8 @@ struct StructuralSelector;
 class StyleSheetFactory
 {
 public:
-	/// Initialise the style factory
-	static bool Initialise();
+	/// Initialize the style factory
+	static bool Initialize();
 	/// Shutdown style manager
 	static void Shutdown();
 

@@ -42,8 +42,8 @@
 class Shell
 {
 public:
-	/// Initialise the shell.
-	static bool Initialise();
+	/// Initialize the shell.
+	static bool Initialize();
 	/// Shutdown the shell.
 	static void Shutdown();
 
@@ -58,7 +58,7 @@ public:
 	/// List subdirectories in the given directory. An initial forward slash '/' makes it relative to the samples root.
 	static Rml::StringList ListDirectories(const Rml::String& in_directory);
 
-	/// Open a platform specific window, optionally initialising an OpenGL context on it.
+	/// Open a platform specific window, optionally initializing an OpenGL context on it.
 	/// @param[in] title Title of the window.
 	/// @param[in] srie Provides the interface for attaching a renderer to the window and performing related bits of interface.
 	static bool OpenWindow(const char* title, ShellRenderInterfaceExtensions *_shell_renderer, unsigned int width, unsigned int height, bool allow_resize);

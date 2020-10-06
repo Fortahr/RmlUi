@@ -109,8 +109,8 @@ public:
 	Pool(int chunk_size = 0, bool grow = false);
 	~Pool();
 
-	/// Initialises the pool to a given size.
-	void Initialise(int chunk_size, bool grow = false);
+	/// Initializes the pool to a given size.
+	void Initialize(int chunk_size, bool grow = false);
 
 	/// Returns the head of the linked list of allocated objects.
 	inline Iterator Begin();

@@ -67,7 +67,7 @@ ElementDataGridRow::~ElementDataGridRow()
 	}
 }
 
-void ElementDataGridRow::Initialise(ElementDataGrid* _parent_grid, ElementDataGridRow* _parent_row, int _child_index, ElementDataGridRow* header_row, int _depth)
+void ElementDataGridRow::Initialize(ElementDataGrid* _parent_grid, ElementDataGridRow* _parent_row, int _child_index, ElementDataGridRow* header_row, int _depth)
 {
 	parent_grid = _parent_grid;
 	parent_row = _parent_row;
@@ -86,7 +86,7 @@ void ElementDataGridRow::Initialise(ElementDataGrid* _parent_grid, ElementDataGr
 	{
 		ElementPtr element = Factory::InstanceElement(this, "#rmlctl_datagridcell", "datagridcell", cell_attributes);
 		ElementDataGridCell* cell = rmlui_dynamic_cast< ElementDataGridCell* >(element.get());
-		cell->Initialise(i, header_row->GetChild(i));
+		cell->Initialize(i, header_row->GetChild(i));
 		cell->SetProperty(PropertyId::Display, Property(Style::Display::InlineBlock));
 		AppendChild(std::move(element));
 	}

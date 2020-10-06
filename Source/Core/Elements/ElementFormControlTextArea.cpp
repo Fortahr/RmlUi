@@ -182,7 +182,7 @@ void ElementFormControlTextArea::OnPropertyChange(const PropertyIdSet& changed_p
 
 	if (changed_properties.Contains(PropertyId::Color) ||
 		changed_properties.Contains(PropertyId::BackgroundColor))
-		widget->UpdateSelectionColours();
+		widget->UpdateSelectionColors();
 }
 
 // Returns the text content of the element.

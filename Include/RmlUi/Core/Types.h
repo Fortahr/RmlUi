@@ -48,7 +48,7 @@ enum class Character : char32_t { Null, Replacement = 0xfffd };
 
 }
 
-#include "Colour.h"
+#include "Color.h"
 #include "Vector2.h"
 #include "Vector3.h"
 #include "Vector4.h"
@@ -58,8 +58,8 @@ enum class Character : char32_t { Null, Replacement = 0xfffd };
 namespace Rml {
 
 // Color and linear algebra
-using Colourf = Colour< float, 1 >;
-using Colourb = Colour< byte, 255 >;
+using Colorf = Color< float, 1 >;
+using Colorb = Color< byte, 255 >;
 using Vector2i = Vector2< int >;
 using Vector2f = Vector2< float >;
 using Vector3i = Vector3< int >;

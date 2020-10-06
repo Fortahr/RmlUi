@@ -44,8 +44,8 @@ class Template;
 class TemplateCache
 {
 public:
-	/// Initialisation and Shutdown
-	static bool Initialise();
+	/// Initialization and Shutdown
+	static bool Initialize();
 	static void Shutdown();
 
 	/// Load the named template from the given path, if its already loaded get the cached copy

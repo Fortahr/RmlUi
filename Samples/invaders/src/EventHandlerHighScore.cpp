@@ -50,7 +50,7 @@ void EventHandlerHighScore::ProcessEvent(Rml::Event& event, const Rml::String& v
 		if (score > 0)
 		{
 			// Submit the score the player just got to the high scores chart.
-			HighScores::SubmitScore(GameDetails::GetDefenderColour(), GameDetails::GetWave(), GameDetails::GetScore());
+			HighScores::SubmitScore(GameDetails::GetDefenderColor(), GameDetails::GetWave(), GameDetails::GetScore());
 			// Reset the score so the chart won't get confused next time we enter.
 			GameDetails::ResetScore();
 		}

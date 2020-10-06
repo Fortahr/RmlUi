@@ -67,9 +67,9 @@ public:
 		HORIZONTAL = 1
 	};
 
-	/// Initialises a zero-sized box.
+	/// Initializes a zero-sized box.
 	Box();
-	/// Initialises a box with a default content area and no padding, borders and margins.
+	/// Initializes a box with a default content area and no padding, borders and margins.
 	Box(Vector2f content);
 	~Box();
 

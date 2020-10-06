@@ -30,14 +30,14 @@
 
 namespace Rml {
 
-// Initialising constructor.
+// Initializing constructor.
 template < typename Type >
 Vector4< Type >::Vector4(Type v) 
 	: x(v), y(v), z(v), w(v)
 {
 }
 
-// Initialising constructor.
+// Initializing constructor.
 template < typename Type >
 Vector4< Type >::Vector4(Type x, Type y, Type z, Type w)
 	: x(x), y(y), z(z), w(w)
@@ -69,16 +69,16 @@ Type Vector4< Type >::SquaredMagnitude() const
 	return x * x + y * y + z * z + w * w;
 }
 
-// Generates a normalised vector from this vector.
+// Generates a normalized vector from this vector.
 template < typename Type >
-Vector4< Type > Vector4< Type >::Normalise() const
+Vector4< Type > Vector4< Type >::Normalize() const
 {
 	static_assert(std::is_floating_point< Type >::value, "Invalid operation");
 	return *this;
 }
 
 template <>
-RMLUICORE_API Vector4< float > Vector4< float >::Normalise() const;
+RMLUICORE_API Vector4< float > Vector4< float >::Normalize() const;
 
 // Computes the dot-product between this vector and another.
 template < typename Type >

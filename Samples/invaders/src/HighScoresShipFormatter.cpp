@@ -40,6 +40,6 @@ HighScoresShipFormatter::~HighScoresShipFormatter()
 void HighScoresShipFormatter::FormatData(Rml::String& formatted_data, const Rml::StringList& raw_data)
 {
 	// Data format:
-	// raw_data[0] is the colour, in "%d, %d, %d, %d" format.
+	// raw_data[0] is the color, in "%d, %d, %d, %d" format.
 	formatted_data = "<defender style=\"color: rgba(" + raw_data[0] + ");\" />";
 }

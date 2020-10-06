@@ -37,7 +37,7 @@ namespace Rml {
 GeometryBackgroundBorder::GeometryBackgroundBorder(Vector<Vertex>& vertices, Vector<int>& indices) : vertices(vertices), indices(indices)
 {}
 
-void GeometryBackgroundBorder::Draw(Vector<Vertex>& vertices, Vector<int>& indices, CornerSizes radii, const Box& box, const Vector2f offset, const Colourb background_color, const Colourb* border_colors)
+void GeometryBackgroundBorder::Draw(Vector<Vertex>& vertices, Vector<int>& indices, CornerSizes radii, const Box& box, const Vector2f offset, const Colorb background_color, const Colorb* border_colors)
 {
 	using Edge = Box::Edge;
 
@@ -204,7 +204,7 @@ void GeometryBackgroundBorder::Draw(Vector<Vertex>& vertices, Vector<int>& indic
 
 		for (int i = 0; i < num_vertices; i++)
 		{
-			GeometryUtilities::GenerateQuad(vertices.data() + num_vertices + 4 * i, indices.data() + num_indices + 6 * i, vertices[i].position, Vector2f(3, 3), Colourb(255, 0, (i % 2) == 0 ? 0 : 255), num_vertices + 4 * i);
+			GeometryUtilities::GenerateQuad(vertices.data() + num_vertices + 4 * i, indices.data() + num_indices + 6 * i, vertices[i].position, Vector2f(3, 3), Colorb(255, 0, (i % 2) == 0 ? 0 : 255), num_vertices + 4 * i);
 		}
 	}
 #endif
@@ -220,7 +220,7 @@ void GeometryBackgroundBorder::Draw(Vector<Vertex>& vertices, Vector<int>& indic
 
 
 
-void GeometryBackgroundBorder::DrawBackgroundCorner(Corner corner, Vector2f pos_inner, Vector2f pos_circle_center, float R, Vector2f r, Colourb color)
+void GeometryBackgroundBorder::DrawBackgroundCorner(Corner corner, Vector2f pos_inner, Vector2f pos_circle_center, float R, Vector2f r, Colorb color)
 {
 	if (R == 0 || r.x <= 0 || r.y <= 0)
 	{
@@ -235,17 +235,17 @@ void GeometryBackgroundBorder::DrawBackgroundCorner(Corner corner, Vector2f pos_
 	}
 }
 
-void GeometryBackgroundBorder::DrawPoint(Vector2f pos, Colourb color)
+void GeometryBackgroundBorder::DrawPoint(Vector2f pos, Colorb color)
 {
 	const int offset_vertices = (int)vertices.size();
 
 	vertices.resize(offset_vertices + 1);
 
 	vertices[offset_vertices].position = pos;
-	vertices[offset_vertices].colour = color;
+	vertices[offset_vertices].color = color;
 }
 
-void GeometryBackgroundBorder::DrawArc(Vector2f pos_center, Vector2f r, float a0, float a1, Colourb color0, Colourb color1, int num_points)
+void GeometryBackgroundBorder::DrawArc(Vector2f pos_center, Vector2f r, float a0, float a1, Colorb color0, Colorb color1, int num_points)
 {
 	RMLUI_ASSERT(num_points >= 2 && r.x > 0 && r.y > 0);
 
@@ -258,12 +258,12 @@ void GeometryBackgroundBorder::DrawArc(Vector2f pos_center, Vector2f r, float a0
 		const float t = float(i) / float(num_points - 1);
 
 		const float a = Math::Lerp(t, a0, a1);
-		const Colourb color = Math::Lerp(t, color0, color1);
+		const Colorb color = Math::Lerp(t, color0, color1);
 
 		const Vector2f unit_vector(Math::Cos(a), Math::Sin(a));
 
 		vertices[offset_vertices + i].position = unit_vector * r + pos_center;
-		vertices[offset_vertices + i].colour = color;
+		vertices[offset_vertices + i].color = color;
 	}
 }
 
@@ -284,7 +284,7 @@ void GeometryBackgroundBorder::FillBackground(int index_start)
 	}
 }
 
-void GeometryBackgroundBorder::DrawBorderCorner(Corner corner, Vector2f pos_outer, Vector2f pos_inner, Vector2f pos_circle_center, float R, Vector2f r, Colourb color0, Colourb color1)
+void GeometryBackgroundBorder::DrawBorderCorner(Corner corner, Vector2f pos_outer, Vector2f pos_inner, Vector2f pos_circle_center, float R, Vector2f r, Colorb color0, Colorb color1)
 {
 	const float a0 = float((int)corner + 2) * 0.5f * Math::RMLUI_PI;
 	const float a1 = float((int)corner + 3) * 0.5f * Math::RMLUI_PI;
@@ -303,7 +303,7 @@ void GeometryBackgroundBorder::DrawBorderCorner(Corner corner, Vector2f pos_oute
 	}
 }
 
-void GeometryBackgroundBorder::DrawPointPoint(Vector2f pos_outer, Vector2f pos_inner, Colourb color0, Colourb color1)
+void GeometryBackgroundBorder::DrawPointPoint(Vector2f pos_outer, Vector2f pos_inner, Colorb color0, Colorb color1)
 {
 	const bool different_color = (color0 != color1);
 
@@ -319,7 +319,7 @@ void GeometryBackgroundBorder::DrawPointPoint(Vector2f pos_outer, Vector2f pos_i
 	}
 }
 
-void GeometryBackgroundBorder::DrawArcArc(Vector2f pos_center, float R, Vector2f r, float a0, float a1, Colourb color0, Colourb color1, int num_points)
+void GeometryBackgroundBorder::DrawArcArc(Vector2f pos_center, float R, Vector2f r, float a0, float a1, Colorb color0, Colorb color1, int num_points)
 {
 	RMLUI_ASSERT(num_points >= 2 && R > 0 && r.x > 0 && r.y > 0);
 
@@ -336,14 +336,14 @@ void GeometryBackgroundBorder::DrawArcArc(Vector2f pos_center, float R, Vector2f
 		const float t = float(i) / float(num_points - 1);
 
 		const float a = Math::Lerp(t, a0, a1);
-		const Colourb color = Math::Lerp(t, color0, color1);
+		const Colorb color = Math::Lerp(t, color0, color1);
 
 		const Vector2f unit_vector(Math::Cos(a), Math::Sin(a));
 
 		vertices[offset_vertices + 2 * i].position = unit_vector * r + pos_center;
-		vertices[offset_vertices + 2 * i].colour = color;
+		vertices[offset_vertices + 2 * i].color = color;
 		vertices[offset_vertices + 2 * i + 1].position = unit_vector * R + pos_center;
-		vertices[offset_vertices + 2 * i + 1].colour = color;
+		vertices[offset_vertices + 2 * i + 1].color = color;
 	}
 
 	for (int i = 0; i < num_triangles; i += 2)
@@ -358,7 +358,7 @@ void GeometryBackgroundBorder::DrawArcArc(Vector2f pos_center, float R, Vector2f
 	}
 }
 
-void GeometryBackgroundBorder::DrawArcPoint(Vector2f pos_center, Vector2f pos_inner, float R, float a0, float a1, Colourb color0, Colourb color1, int num_points)
+void GeometryBackgroundBorder::DrawArcPoint(Vector2f pos_center, Vector2f pos_inner, float R, float a0, float a1, Colorb color0, Colorb color1, int num_points)
 {
 	RMLUI_ASSERT(R > 0 && num_points >= 2);
 

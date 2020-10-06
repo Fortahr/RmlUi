@@ -41,14 +41,14 @@ Shield::Shield(Game* _game, ShieldType _type) : position(0,0)
 	type = _type;
 	health = MAX_HEALTH;
 
-	InitialiseCells();
+	InitializeCells();
 }
 
 Shield::~Shield()
 {
 }
 
-void Shield::InitialiseCells()
+void Shield::InitializeCells()
 {
 	if (type == REGULAR || type == TOP_LEFT || type == TOP_RIGHT)
 	{
@@ -125,7 +125,7 @@ void Shield::Render()
 	{
 		glPointSize((GLfloat) PIXEL_SIZE);
 		glDisable(GL_TEXTURE_2D);
-		glColor4ubv(GameDetails::GetDefenderColour());
+		glColor4ubv(GameDetails::GetDefenderColor());
 
 		glBegin(GL_POINTS);
 

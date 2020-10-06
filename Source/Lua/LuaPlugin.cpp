@@ -44,8 +44,8 @@
 #include "Element.h"
 #include "ElementStyleProxy.h"
 #include "Document.h"
-#include "Colourb.h"
-#include "Colourf.h"
+#include "Colorb.h"
+#include "Colorf.h"
 #include "Vector2f.h"
 #include "Vector2i.h"
 #include "Context.h"
@@ -76,7 +76,7 @@ static lua_State* g_L = nullptr;
 
 
 /** This will populate the global Lua table with all of the Lua core types by calling LuaType<T>::Register
-@remark This is called automatically by LuaPlugin::OnInitialise(). */
+@remark This is called automatically by LuaPlugin::OnInitialize(). */
 static void RegisterTypes();
 
 
@@ -91,7 +91,7 @@ int LuaPlugin::GetEventClasses()
     return EVT_BASIC;
 }
 
-void LuaPlugin::OnInitialise()
+void LuaPlugin::OnInitialize()
 {
 	if (g_L == nullptr)
 	{
@@ -136,8 +136,8 @@ static void RegisterTypes()
 
     LuaType<Vector2i>::Register(L);
     LuaType<Vector2f>::Register(L);
-    LuaType<Colourf>::Register(L);
-    LuaType<Colourb>::Register(L);
+    LuaType<Colorf>::Register(L);
+    LuaType<Colorb>::Register(L);
     LuaType<Log>::Register(L);
     LuaType<ElementStyleProxy>::Register(L);
     LuaType<Element>::Register(L);

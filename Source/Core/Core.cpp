@@ -62,11 +62,11 @@ static FileInterface* file_interface = nullptr;
 // RmlUi's font engine interface.
 static FontEngineInterface* font_interface = nullptr;
 
-// Default interfaces should be created and destroyed on Initialise and Shutdown, respectively.
+// Default interfaces should be created and destroyed on Initialize and Shutdown, respectively.
 static UniquePtr<FileInterface> default_file_interface;
 static UniquePtr<FontEngineInterface> default_font_interface;
 
-static bool initialised = false;
+static bool initialized = false;
 
 using ContextMap = UnorderedMap< String, ContextPtr >;
 static ContextMap contexts;
@@ -76,7 +76,7 @@ static ContextMap contexts;
 #endif
 
 
-bool Initialise()
+bool Initialize()
 {
 	// Check for valid interfaces, or install default interfaces as appropriate.
 	if (!system_interface)
@@ -96,11 +96,11 @@ bool Initialise()
 #endif
 	}
 
-	Log::Initialise();
+	Log::Initialize();
 
 	EventSpecificationInterface::Initialize();
 
-	TextureDatabase::Initialise();
+	TextureDatabase::Initialize();
 
 	if (!font_interface)
 	{
@@ -113,17 +113,17 @@ bool Initialise()
 #endif
 	}
 
-	StyleSheetSpecification::Initialise();
-	StyleSheetFactory::Initialise();
+	StyleSheetSpecification::Initialize();
+	StyleSheetFactory::Initialize();
 
-	TemplateCache::Initialise();
+	TemplateCache::Initialize();
 
-	Factory::Initialise();
+	Factory::Initialize();
 
 	// Notify all plugins we're starting up.
-	PluginRegistry::NotifyInitialise();
+	PluginRegistry::NotifyInitialize();
 
-	initialised = true;
+	initialized = true;
 
 	return true;
 }
@@ -144,7 +144,7 @@ void Shutdown()
 
 	Log::Shutdown();
 
-	initialised = false;
+	initialized = false;
 
 	render_interface = nullptr;
 	file_interface = nullptr;
@@ -212,7 +212,7 @@ FontEngineInterface* GetFontEngineInterface()
 // Creates a new element context.
 Context* CreateContext(const String& name, const Vector2i& dimensions, RenderInterface* custom_render_interface)
 {
-	if (!initialised)
+	if (!initialized)
 		return nullptr;
 
 	if (!custom_render_interface && !render_interface)
@@ -311,8 +311,8 @@ bool LoadFontFace(const byte* data, int data_size, const String& font_family, St
 // Registers a generic rmlui plugin
 void RegisterPlugin(Plugin* plugin)
 {
-	if (initialised)
-		plugin->OnInitialise();
+	if (initialized)
+		plugin->OnInitialize();
 
 	PluginRegistry::RegisterPlugin(plugin);
 }

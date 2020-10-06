@@ -33,12 +33,12 @@
 namespace Rml {
 namespace Lua {
 
-void Initialise()
+void Initialize()
 {
-	::Rml::Lua::Initialise(nullptr);
+	::Rml::Lua::Initialize(nullptr);
 }
 
-void Initialise(lua_State* lua_state)
+void Initialize(lua_State* lua_state)
 {
 	::Rml::RegisterPlugin(new LuaPlugin(lua_state));
 }

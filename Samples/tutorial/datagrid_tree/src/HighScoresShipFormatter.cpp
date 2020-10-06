@@ -23,12 +23,12 @@ HighScoresShipFormatter::~HighScoresShipFormatter()
 void HighScoresShipFormatter::FormatData(Rml::String& formatted_data, const Rml::StringList& raw_data)
 {
 	// Data format:
-	// raw_data[0] is the colour, in "%d, %d, %d, %d" format.
+	// raw_data[0] is the color, in "%d, %d, %d, %d" format.
 
-	Rml::Colourb ship_colour;
-	Rml::TypeConverter< Rml::String, Rml::Colourb >::Convert(raw_data[0], ship_colour);
+	Rml::Colorb ship_color;
+	Rml::TypeConverter< Rml::String, Rml::Colorb >::Convert(raw_data[0], ship_color);
 
-	Rml::String colour_string = Rml::CreateString(32, "%d,%d,%d", ship_colour.red, ship_colour.green, ship_colour.blue);
+	Rml::String color_string = Rml::CreateString(32, "%d,%d,%d", ship_color.red, ship_color.green, ship_color.blue);
 
-	formatted_data = "<defender style=\"color: rgb(" + colour_string + ");\" />";
+	formatted_data = "<defender style=\"color: rgb(" + color_string + ");\" />";
 }

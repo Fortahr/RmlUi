@@ -56,7 +56,7 @@ DecoratorGradient::~DecoratorGradient()
 {
 }
 
-bool DecoratorGradient::Initialise(const Direction &dir_, const Colourb &start_, const Colourb & stop_)
+bool DecoratorGradient::Initialize(const Direction &dir_, const Colorb &start_, const Colorb & stop_)
 {
 	dir = dir_;
 	start = start_;
@@ -78,13 +78,13 @@ DecoratorDataHandle DecoratorGradient::GenerateElementData(Element* element) con
 		computed.border_bottom_right_radius,
 		computed.border_bottom_left_radius,
 	};
-	GeometryUtilities::GenerateBackgroundBorder(geometry, element->GetBox(), Vector2f(0), border_radius, Colourb());
+	GeometryUtilities::GenerateBackgroundBorder(geometry, element->GetBox(), Vector2f(0), border_radius, Colorb());
 
 	// Apply opacity
-	Colourb colour_start = start;
-	colour_start.alpha = (byte)(opacity * (float)colour_start.alpha);
-	Colourb colour_stop = stop;
-	colour_stop.alpha = (byte)(opacity * (float)colour_stop.alpha);
+	Colorb color_start = start;
+	color_start.alpha = (byte)(opacity * (float)color_start.alpha);
+	Colorb color_stop = stop;
+	color_stop.alpha = (byte)(opacity * (float)color_stop.alpha);
 
 	const Vector2f padding_offset = box.GetPosition(Box::PADDING);
 	const Vector2f padding_size = box.GetSize(Box::PADDING);
@@ -96,7 +96,7 @@ DecoratorDataHandle DecoratorGradient::GenerateElementData(Element* element) con
 		for (int i = 0; i < (int)vertices.size(); i++)
 		{
 			const float t = (vertices[i].position.x - padding_offset.x) / padding_size.x;
-			vertices[i].colour = Math::Lerp(Math::Clamp(t, 0.0f, 1.0f), colour_start, colour_stop);
+			vertices[i].color = Math::Lerp(Math::Clamp(t, 0.0f, 1.0f), color_start, color_stop);
 		}
 	}
 	else if (dir == Direction::Vertical)
@@ -104,7 +104,7 @@ DecoratorDataHandle DecoratorGradient::GenerateElementData(Element* element) con
 		for (int i = 0; i < (int)vertices.size(); i++)
 		{
 			const float t = (vertices[i].position.y - padding_offset.y) / padding_size.y;
-			vertices[i].colour = Math::Lerp(t, colour_start, colour_stop);
+			vertices[i].color = Math::Lerp(t, color_start, color_stop);
 		}
 	}
 
@@ -144,11 +144,11 @@ SharedPtr<Decorator> DecoratorGradientInstancer::InstanceDecorator(const String 
 	RMLUI_UNUSED(interface_);
 
 	DecoratorGradient::Direction dir = (DecoratorGradient::Direction)properties_.GetProperty(ids.direction)->Get< int >();
-	Colourb start = properties_.GetProperty(ids.start)->Get<Colourb>();
-	Colourb stop = properties_.GetProperty(ids.stop)->Get<Colourb>();
+	Colorb start = properties_.GetProperty(ids.start)->Get<Colorb>();
+	Colorb stop = properties_.GetProperty(ids.stop)->Get<Colorb>();
 
 	auto decorator = MakeShared<DecoratorGradient>();
-	if (decorator->Initialise(dir, start, stop)) {
+	if (decorator->Initialize(dir, start, stop)) {
 		return decorator;
 	}
 

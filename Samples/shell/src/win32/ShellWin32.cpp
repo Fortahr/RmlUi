@@ -57,10 +57,10 @@ static HCURSOR cursor_text = nullptr;
 static HCURSOR cursor_unavailable = nullptr;
 
 
-bool Shell::Initialise()
+bool Shell::Initialize()
 {
 	instance_handle = GetModuleHandle(nullptr);
-	InputWin32::Initialise();
+	InputWin32::Initialize();
 
 	LARGE_INTEGER time_ticks_per_second;
 	QueryPerformanceFrequency(&time_ticks_per_second);

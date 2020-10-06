@@ -78,7 +78,7 @@ sf::RenderWindow *RmlUiSFMLRenderer::GetWindow()
 	return MyWindow;
 }
 
-// Called by RmlUi when it wants to render geometry that it does not wish to optimise.
+// Called by RmlUi when it wants to render geometry that it does not wish to optimize.
 void RmlUiSFMLRenderer::RenderGeometry(Rml::Vertex* vertices, int num_vertices, int* indices, int num_indices, const Rml::TextureHandle texture, const Rml::Vector2f& translation)
 {
 	MyWindow->pushGLStates();
@@ -87,13 +87,13 @@ void RmlUiSFMLRenderer::RenderGeometry(Rml::Vertex* vertices, int num_vertices, 
 	glTranslatef(translation.x, translation.y, 0);
 
 	Rml::Vector<Rml::Vector2f> Positions(num_vertices);
-	Rml::Vector<Rml::Colourb> Colors(num_vertices);
+	Rml::Vector<Rml::Colorb> Colors(num_vertices);
 	Rml::Vector<Rml::Vector2f> TexCoords(num_vertices);
 
 	for(int i = 0; i < num_vertices; i++)
 	{
 		Positions[i] = vertices[i].position;
-		Colors[i] = vertices[i].colour;
+		Colors[i] = vertices[i].color;
 		TexCoords[i] = vertices[i].tex_coord;
 	};
 
@@ -141,8 +141,8 @@ Rml::CompiledGeometryHandle RmlUiSFMLRenderer::CompileGeometry(Rml::Vertex* vert
 	{
 		Data[i].Position = sf::Vector2f(vertices[i].position.x, vertices[i].position.y);
 		Data[i].TexCoord = sf::Vector2f(vertices[i].tex_coord.x, vertices[i].tex_coord.y);
-		Data[i].Color = sf::Color(vertices[i].colour.red, vertices[i].colour.green,
-			vertices[i].colour.blue, vertices[i].colour.alpha);
+		Data[i].Color = sf::Color(vertices[i].color.red, vertices[i].color.green,
+			vertices[i].color.blue, vertices[i].color.alpha);
 	};
 
 	RmlUiSFMLRendererGeometryHandler *Geometry = new RmlUiSFMLRendererGeometryHandler();

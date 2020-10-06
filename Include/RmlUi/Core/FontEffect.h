@@ -65,10 +65,10 @@ public:
 	/// @param[in] glyph The glyph the effect is being asked to generate an effect texture for.
 	virtual void GenerateGlyphTexture(byte* destination_data, Vector2i destination_dimensions, int destination_stride, const FontGlyph& glyph) const;
 
-	/// Sets the colour of the effect's geometry.
-	void SetColour(const Colourb& colour);
-	/// Returns the effect's colour.
-	const Colourb& GetColour() const;
+	/// Sets the color of the effect's geometry.
+	void SetColor(const Colorb& color);
+	/// Returns the effect's color.
+	const Colorb& GetColor() const;
 
 	Layer GetLayer() const;
 	void SetLayer(Layer layer);
@@ -81,8 +81,8 @@ public:
 private:
 	Layer layer;
 
-	// The colour of the effect's geometry.
-	Colourb colour;
+	// The color of the effect's geometry.
+	Colorb color;
 
 	// A hash value identifying the properties that affected the generation of the effect's geometry and texture data.
 	size_t fingerprint;

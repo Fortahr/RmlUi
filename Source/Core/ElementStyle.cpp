@@ -660,16 +660,16 @@ PropertyIdSet ElementStyle::ComputeValues(Style::ComputedValues& values, const S
 			break;
 
 		case PropertyId::BorderTopColor:
-			values.border_top_color = p->Get<Colourb>();
+			values.border_top_color = p->Get<Colorb>();
 			break;
 		case PropertyId::BorderRightColor:
-			values.border_right_color = p->Get<Colourb>();
+			values.border_right_color = p->Get<Colorb>();
 			break;
 		case PropertyId::BorderBottomColor:
-			values.border_bottom_color = p->Get<Colourb>();
+			values.border_bottom_color = p->Get<Colorb>();
 			break;
 		case PropertyId::BorderLeftColor:
-			values.border_left_color = p->Get<Colourb>();
+			values.border_left_color = p->Get<Colorb>();
 			break;
 
 		case PropertyId::BorderTopLeftRadius:
@@ -760,13 +760,13 @@ PropertyIdSet ElementStyle::ComputeValues(Style::ComputedValues& values, const S
 			break;
 
 		case PropertyId::BackgroundColor:
-			values.background_color = p->Get<Colourb>();
+			values.background_color = p->Get<Colorb>();
 			break;
 		case PropertyId::Color:
-			values.color = p->Get<Colourb>();
+			values.color = p->Get<Colorb>();
 			break;
 		case PropertyId::ImageColor:
-			values.image_color = p->Get<Colourb>();
+			values.image_color = p->Get<Colorb>();
 			break;
 		case PropertyId::Opacity:
 			values.opacity = p->Get<float>();

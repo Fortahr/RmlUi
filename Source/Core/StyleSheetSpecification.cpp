@@ -31,7 +31,7 @@
 #include "../../Include/RmlUi/Core/PropertyDefinition.h"
 #include "PropertyParserNumber.h"
 #include "PropertyParserAnimation.h"
-#include "PropertyParserColour.h"
+#include "PropertyParserColor.h"
 #include "PropertyParserKeyword.h"
 #include "PropertyParserString.h"
 #include "PropertyParserTransform.h"
@@ -53,7 +53,7 @@ struct DefaultStyleSheetParsers {
 	PropertyParserString string = PropertyParserString();
 	PropertyParserAnimation animation = PropertyParserAnimation(PropertyParserAnimation::ANIMATION_PARSER);
 	PropertyParserAnimation transition = PropertyParserAnimation(PropertyParserAnimation::TRANSITION_PARSER);
-	PropertyParserColour color = PropertyParserColour();
+	PropertyParserColor color = PropertyParserColor();
 	PropertyParserTransform transform = PropertyParserTransform();
 };
 
@@ -83,7 +83,7 @@ ShorthandId StyleSheetSpecification::RegisterShorthand(ShorthandId id, const Str
 	return properties.RegisterShorthand(shorthand_name, property_names, type, id);
 }
 
-bool StyleSheetSpecification::Initialise()
+bool StyleSheetSpecification::Initialize()
 {
 	if (instance == nullptr)
 	{

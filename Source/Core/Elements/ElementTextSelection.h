@@ -36,8 +36,8 @@ namespace Rml {
 class WidgetTextInput;
 
 /**
-	A stub element used by the WidgetTextInput to query the RCSS-specified text colour and
-	background colour for selected text.
+	A stub element used by the WidgetTextInput to query the RCSS-specified text color and
+	background color for selected text.
 
 	@author Peter Curry
  */

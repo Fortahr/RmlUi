@@ -39,7 +39,7 @@ int Plugin::GetEventClasses()
 	return EVT_ALL;
 }
 
-void Plugin::OnInitialise()
+void Plugin::OnInitialize()
 {
 }
 
@@ -66,7 +66,7 @@ void Plugin::OnDocumentOpen(Context* RMLUI_UNUSED_PARAMETER(context), const Stri
 	RMLUI_UNUSED(document_path);
 }
 
-// Called when a document is successfully loaded from file or instanced, initialised and added to
+// Called when a document is successfully loaded from file or instanced, initialized and added to
 // its context.
 void Plugin::OnDocumentLoad(ElementDocument* RMLUI_UNUSED_PARAMETER(document))
 {

@@ -90,8 +90,8 @@ PASS_THROUGH(Vector3i);
 PASS_THROUGH(Vector3f);
 PASS_THROUGH(Vector4i);
 PASS_THROUGH(Vector4f);
-PASS_THROUGH(Colourf);
-PASS_THROUGH(Colourb);
+PASS_THROUGH(Colorf);
+PASS_THROUGH(Colorb);
 PASS_THROUGH(String);
 
 // Pointer types need to be typedef'd
@@ -251,8 +251,8 @@ STRING_VECTOR_CONVERTER(Vector3i, int, 3);
 STRING_VECTOR_CONVERTER(Vector3f, float, 3);
 STRING_VECTOR_CONVERTER(Vector4i, int, 4);
 STRING_VECTOR_CONVERTER(Vector4f, float, 4);
-STRING_VECTOR_CONVERTER(Colourf, float, 4);
-STRING_VECTOR_CONVERTER(Colourb, byte, 4);
+STRING_VECTOR_CONVERTER(Colorf, float, 4);
+STRING_VECTOR_CONVERTER(Colorb, byte, 4);
 
 /////////////////////////////////////////////////
 // To String Converters
@@ -374,8 +374,8 @@ VECTOR_STRING_CONVERTER(Vector3i, int, 3);
 VECTOR_STRING_CONVERTER(Vector3f, float, 3);
 VECTOR_STRING_CONVERTER(Vector4i, int, 4);
 VECTOR_STRING_CONVERTER(Vector4f, float, 4);
-VECTOR_STRING_CONVERTER(Colourf, float, 4);
-VECTOR_STRING_CONVERTER(Colourb, byte, 4);
+VECTOR_STRING_CONVERTER(Colorf, float, 4);
+VECTOR_STRING_CONVERTER(Colorb, byte, 4);
 #undef PASS_THROUGH
 #undef BASIC_CONVERTER
 #undef BASIC_CONVERTER_BOOL

@@ -26,49 +26,49 @@
  *
  */
 
-#include "PropertyParserColour.h"
+#include "PropertyParserColor.h"
 #include <string.h>
 
 namespace Rml {
 
-PropertyParserColour::PropertyParserColour()
+PropertyParserColor::PropertyParserColor()
 {
-	html_colours["black"] = Colourb(0, 0, 0);
-	html_colours["silver"] = Colourb(192, 192, 192);
-	html_colours["gray"] = Colourb(128, 128, 128);
-	html_colours["grey"] = Colourb(128, 128, 128);
-	html_colours["white"] = Colourb(255, 255, 255);
-	html_colours["maroon"] = Colourb(128, 0, 0);
-	html_colours["red"] = Colourb(255, 0, 0);
-	html_colours["orange"] = Colourb(255, 165, 0);
-	html_colours["purple"] = Colourb(128, 0, 128);
-	html_colours["fuchsia"] =  Colourb(255, 0, 255);
-	html_colours["green"] =  Colourb(0, 128, 0);
-	html_colours["lime"] =  Colourb(0, 255, 0);
-	html_colours["olive"] =  Colourb(128, 128, 0);
-	html_colours["yellow"] =  Colourb(255, 255, 0);
-	html_colours["navy"] =  Colourb(0, 0, 128);
-	html_colours["blue"] =  Colourb(0, 0, 255);
-	html_colours["teal"] =  Colourb(0, 128, 128);
-	html_colours["aqua"] = Colourb(0, 255, 255);
-	html_colours["transparent"] = Colourb(255, 255, 255, 0);
+	html_colors["black"] = Colorb(0, 0, 0);
+	html_colors["silver"] = Colorb(192, 192, 192);
+	html_colors["gray"] = Colorb(128, 128, 128);
+	html_colors["grey"] = Colorb(128, 128, 128);
+	html_colors["white"] = Colorb(255, 255, 255);
+	html_colors["maroon"] = Colorb(128, 0, 0);
+	html_colors["red"] = Colorb(255, 0, 0);
+	html_colors["orange"] = Colorb(255, 165, 0);
+	html_colors["purple"] = Colorb(128, 0, 128);
+	html_colors["fuchsia"] =  Colorb(255, 0, 255);
+	html_colors["green"] =  Colorb(0, 128, 0);
+	html_colors["lime"] =  Colorb(0, 255, 0);
+	html_colors["olive"] =  Colorb(128, 128, 0);
+	html_colors["yellow"] =  Colorb(255, 255, 0);
+	html_colors["navy"] =  Colorb(0, 0, 128);
+	html_colors["blue"] =  Colorb(0, 0, 255);
+	html_colors["teal"] =  Colorb(0, 128, 128);
+	html_colors["aqua"] = Colorb(0, 255, 255);
+	html_colors["transparent"] = Colorb(255, 255, 255, 0);
 }
 
-PropertyParserColour::~PropertyParserColour()
+PropertyParserColor::~PropertyParserColor()
 {
 }
 
-// Called to parse a RCSS colour declaration.
-bool PropertyParserColour::ParseValue(Property& property, const String& value, const ParameterMap& RMLUI_UNUSED_PARAMETER(parameters)) const
+// Called to parse a RCSS color declaration.
+bool PropertyParserColor::ParseValue(Property& property, const String& value, const ParameterMap& RMLUI_UNUSED_PARAMETER(parameters)) const
 {
 	RMLUI_UNUSED(parameters);
 
 	if (value.empty())
 		return false;
 
-	Colourb colour;
+	Colorb color;
 
-	// Check for a hex colour.
+	// Check for a hex color.
 	if (value[0] == '#')
 	{
 		char hex_values[4][2] = { {'f', 'f'},
@@ -99,7 +99,7 @@ bool PropertyParserColour::ParseValue(Property& property, const String& value, c
 				return false;
 		}
 
-		// Parse each of the colour elements.
+		// Parse each of the color elements.
 		for (int i = 0; i < 4; i++)
 		{
 			int tens = Math::HexToDecimal(hex_values[i][0]);
@@ -108,7 +108,7 @@ bool PropertyParserColour::ParseValue(Property& property, const String& value, c
 				ones == -1)
 				return false;
 
-			colour[i] = (byte) (tens * 16 + ones);
+			color[i] = (byte) (tens * 16 + ones);
 		}
 	}
 	else if (value.substr(0, 3) == "rgb")
@@ -124,7 +124,7 @@ bool PropertyParserColour::ParseValue(Property& property, const String& value, c
 
 		StringUtilities::ExpandString(values, value.substr(begin_values, value.rfind(')') - begin_values), ',');
 
-		// Check if we're parsing an 'rgba' or 'rgb' colour declaration.
+		// Check if we're parsing an 'rgba' or 'rgb' color declaration.
 		if (value.size() > 3 && value[3] == 'a')
 		{
 			if (values.size() != 4)
@@ -150,21 +150,21 @@ bool PropertyParserColour::ParseValue(Property& property, const String& value, c
 			else
 				component = atoi(values[i].c_str());
 
-			colour[i] = (byte) (Math::Clamp(component, 0, 255));
+			color[i] = (byte) (Math::Clamp(component, 0, 255));
 		}
 	}
 	else
 	{
-		// Check for the specification of an HTML colour.
-		ColourMap::const_iterator iterator = html_colours.find(StringUtilities::ToLower(value));
-		if (iterator == html_colours.end())
+		// Check for the specification of an HTML color.
+		ColorMap::const_iterator iterator = html_colors.find(StringUtilities::ToLower(value));
+		if (iterator == html_colors.end())
 			return false;
 		else
-			colour = (*iterator).second;
+			color = (*iterator).second;
 	}
 
-	property.value = Variant(colour);
-	property.unit = Property::COLOUR;
+	property.value = Variant(color);
+	property.unit = Property::COLOR;
 
 	return true;
 }

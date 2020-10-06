@@ -50,7 +50,7 @@ public:
 	ElementContextHook(const String& tag);
 	virtual ~ElementContextHook();
 
-	void Initialise(DebuggerPlugin* debugger);
+	void Initialize(DebuggerPlugin* debugger);
 
 	void OnRender() override;
 

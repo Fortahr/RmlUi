@@ -36,7 +36,7 @@ namespace FontProviderBitmap
 	static Rml::Vector<Rml::UniquePtr<FontFaceBitmap>> fonts;
 
 
-	void Initialise()
+	void Initialize()
 	{
 	}
 
@@ -157,7 +157,7 @@ int FontFaceBitmap::GetStringWidth(const String& string, Character previous_char
 	return width;
 }
 
-int FontFaceBitmap::GenerateString(const String& string, const Vector2f& string_position, const Colourb& colour, GeometryList& geometry_list)
+int FontFaceBitmap::GenerateString(const String& string, const Vector2f& string_position, const Colorb& color, GeometryList& geometry_list)
 {
 	int width = 0;
 
@@ -202,7 +202,7 @@ int FontFaceBitmap::GenerateString(const String& string, const Vector2f& string_
 			&indices[0] + (indices.size() - 6),
 			Vector2f(position + glyph.offset).Round(),
 			glyph.dimension,
-			colour,
+			color,
 			uv_top_left,
 			uv_bottom_right,
 			(int)vertices.size() - 4

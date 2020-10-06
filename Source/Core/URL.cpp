@@ -220,7 +220,7 @@ bool URL::SetURL(const String& _url)
 		// Copy the path including the trailing slash.
 		path = String(path_begin, ++file_name_begin);
 
-		// Normalise the path, stripping any ../'s from it
+		// Normalize the path, stripping any ../'s from it
 		size_t parent_dir_pos = String::npos;
 		while ((parent_dir_pos = path.find("/..")) != String::npos && parent_dir_pos != 0)
 		{

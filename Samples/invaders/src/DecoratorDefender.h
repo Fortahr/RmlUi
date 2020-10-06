@@ -36,7 +36,7 @@ class DecoratorDefender : public Rml::Decorator
 public:
 	virtual ~DecoratorDefender();
 
-	bool Initialise(const Rml::String& image_source, const Rml::String& image_path);
+	bool Initialize(const Rml::String& image_source, const Rml::String& image_path);
 
 	/// Called on a decorator to generate any required per-element data for a newly decorated element.
 	/// @param element[in] The newly decorated element.

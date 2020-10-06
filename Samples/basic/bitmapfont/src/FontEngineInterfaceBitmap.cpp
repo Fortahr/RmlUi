@@ -32,7 +32,7 @@
 
 FontEngineInterfaceBitmap::FontEngineInterfaceBitmap()
 {
-	FontProviderBitmap::Initialise();
+	FontProviderBitmap::Initialize();
 }
 
 FontEngineInterfaceBitmap::~FontEngineInterfaceBitmap()
@@ -105,10 +105,10 @@ int FontEngineInterfaceBitmap::GetStringWidth(FontFaceHandle handle, const Strin
 }
 
 int FontEngineInterfaceBitmap::GenerateString(FontFaceHandle handle, FontEffectsHandle /*font_effects_handle*/, const String& string,
-	const Vector2f& position, const Colourb& colour, GeometryList& geometry)
+	const Vector2f& position, const Colorb& color, GeometryList& geometry)
 {
 	auto handle_bitmap = reinterpret_cast<FontFaceBitmap*>(handle);
-	return handle_bitmap->GenerateString(string, position, colour, geometry);
+	return handle_bitmap->GenerateString(string, position, color, geometry);
 }
 
 int FontEngineInterfaceBitmap::GetVersion(FontFaceHandle /*handle*/)

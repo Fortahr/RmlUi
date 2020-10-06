@@ -102,19 +102,19 @@ Game::~Game()
 	delete [] shields;
 }
 
-void Game::Initialise()
+void Game::Initialize()
 {
-	// Initialise the scores and wave information
+	// Initialize the scores and wave information
 	SetScore(0);
 	SetWave(1);
 	SetHighScore(HighScores::GetHighScore());
 	SetLives(NUM_LIVES);
 
-	// Initialise the shields.
-	InitialiseShields();
+	// Initialize the shields.
+	InitializeShields();
 
 	// Create a new wave
-	InitialiseWave();
+	InitializeWave();
 }
 
 void Game::Update()
@@ -342,7 +342,7 @@ void Game::MoveInvaders()
 	if (!invaders_alive)
 	{
 		SetWave(GameDetails::GetWave() + 1);
-		InitialiseWave();
+		InitializeWave();
 	}
 }
 
@@ -353,7 +353,7 @@ void Game::OnGameOver()
 	game_over = true;
 }
 
-void Game::InitialiseShields()
+void Game::InitializeShields()
 {
 	Rml::Vector2f shield_array_start_position((float) SHIELD_START_X, (float) SHIELD_START_Y);
 
@@ -401,7 +401,7 @@ void Game::InitialiseShields()
 	}
 }
 
-void Game::InitialiseWave()
+void Game::InitializeWave()
 {
 	// Set up the rows
 	for (int y = 0; y < NUM_INVADER_ROWS; y++)

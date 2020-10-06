@@ -28,7 +28,7 @@
 
 namespace Rml {
 
-// Initialising constructor.
+// Initializing constructor.
 template< typename Component, class Storage >
 Matrix4< Component, Storage >::Matrix4(
 	const typename Matrix4< Component, Storage >::VectorType& vec0,
@@ -50,7 +50,7 @@ Matrix4< Component, Storage >::Matrix4() noexcept
 {
 }
 
-// Initialising, copy constructor.
+// Initializing, copy constructor.
 template< typename Component, class Storage >
 Matrix4< Component, Storage >::Matrix4(const typename Matrix4< Component, Storage >::ThisType& other) noexcept
 {
@@ -595,7 +595,7 @@ Matrix4< Component, Storage > Matrix4< Component, Storage >::ScaleZ(Component z)
 template< typename Component, class Storage>
 Matrix4< Component, Storage > Matrix4< Component, Storage >::Rotate(const Vector3< Component >& v, Component angle) noexcept
 {
-	Vector3< Component > n = v.Normalise();
+	Vector3< Component > n = v.Normalize();
 	Component Sin = Math::Sin(angle);
 	Component Cos = Math::Cos(angle);
 	return Matrix4< Component, Storage >::FromRows(

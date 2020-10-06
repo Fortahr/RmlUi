@@ -37,7 +37,7 @@ class FontFaceBitmap;
 
 namespace FontProviderBitmap
 {
-	void Initialise();
+	void Initialize();
 	void Shutdown();
 	bool LoadFontFace(const String& file_name);
 	FontFaceBitmap* GetFontFaceHandle(const String& family, FontStyle style, FontWeight weight, int size);
@@ -74,7 +74,7 @@ public:
 	int GetStringWidth(const String& string, Character prior_character);
 
 	// Generate the string geometry, returning its width.
-	int GenerateString(const String& string, const Vector2f& position, const Colourb& colour, GeometryList& geometry);
+	int GenerateString(const String& string, const Vector2f& position, const Colorb& color, GeometryList& geometry);
 
 
 	const FontMetrics& GetMetrics() const { return metrics; }

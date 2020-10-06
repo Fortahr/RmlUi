@@ -56,14 +56,14 @@ public:
 	DebuggerPlugin();
 	~DebuggerPlugin();
 
-	/// Initialises the debugging tools into the given context.
+	/// Initializes the debugging tools into the given context.
 	/// @param[in] context The context to load the tools into.
 	/// @return True on success, false if an error occured.
-	bool Initialise(Context* context);
+	bool Initialize(Context* context);
 
 	/// Sets the context to be debugged.
 	/// @param[in] context The context to be debugged.
-	/// @return True if the debugger is initialised and the context was switched, false otherwise..
+	/// @return True if the debugger is initialized and the context was switched, false otherwise..
 	bool SetContext(Context* context);
 
 	/// Sets the visibility of the debugger.

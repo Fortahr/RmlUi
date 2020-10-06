@@ -30,13 +30,13 @@
 
 namespace Rml {
 
-// Initialising constructor.
+// Initializing constructor.
 template < typename Type >
 Vector3< Type >::Vector3(Type v) : x(v), y(v), z(v)
 {
 }
 
-// Initialising constructor.
+// Initializing constructor.
 template < typename Type >
 Vector3< Type >::Vector3(Type x, Type y, Type z) : x(x), y(y), z(z)
 {
@@ -60,16 +60,16 @@ Type Vector3< Type >::SquaredMagnitude() const
 	return x * x + y * y + z * z;
 }
 
-// Generates a normalised vector from this vector.
+// Generates a normalized vector from this vector.
 template < typename Type >
-Vector3< Type > Vector3< Type >::Normalise() const
+Vector3< Type > Vector3< Type >::Normalize() const
 {
 	static_assert(std::is_floating_point< Type >::value, "Invalid operation");
 	return *this;
 }
 
 template <>
-inline Vector3< float > Vector3< float >::Normalise() const
+inline Vector3< float > Vector3< float >::Normalize() const
 {
 	float magnitude = Magnitude();
 	if (Math::IsZero(magnitude))

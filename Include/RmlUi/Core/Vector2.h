@@ -43,10 +43,10 @@ template < typename Type >
 class Vector2
 {
 	public:
-		/// Initialising constructor.
+		/// Initializing constructor.
 		/// @param[in] v Initial value of each element in the vector.
 		explicit inline Vector2(Type v = Type{ 0 });
-		/// Initialising constructor.
+		/// Initializing constructor.
 		/// @param[in] x Initial x-value of the vector.
 		/// @param[in] y Initial y-value of the vector.
 		inline Vector2(Type x, Type y);
@@ -57,9 +57,9 @@ class Vector2
 		/// Returns the squared magnitude of the vector.
 		/// @return The computed squared magnitude.
 		inline Type SquaredMagnitude() const;
-		/// Generates a normalised vector from this vector.
-		/// @return The normalised vector.
-		inline Vector2 Normalise() const;
+		/// Generates a normalized vector from this vector.
+		/// @return The normalized vector.
+		inline Vector2 Normalize() const;
 		/// Generates a vector with values rounded to their nearest integer.
 		/// @return The rounded vector
 		inline Vector2 Round() const;

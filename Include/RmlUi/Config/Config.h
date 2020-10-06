@@ -153,11 +153,11 @@ inline UniquePtr<T> MakeUnique(Args&&... args) { return std::make_unique<T, Args
 // color types. RmlUi assumes that float colors are interpreted in linear colorspace while byte colors are 
 // interpreted as sRGB.
 
-#define RMLUI_COLOUR_USER_EXTRA                                                                         \
-	template<typename U = ColourType, typename std::enable_if_t<std::is_same_v<U, byte>>* = nullptr>    \
+#define RMLUI_COLOR_USER_EXTRA                                                                         \
+	template<typename U = ColorType, typename std::enable_if_t<std::is_same_v<U, byte>>* = nullptr>    \
 	operator MyColor() const { return MyColor(                                                          \
 		(float)red / 255.0f, (float)green / 255.0f, (float)blue / 255.0f, (float)alpha / 255.0f); }     \
-	template<typename U = ColourType, typename std::enable_if_t<std::is_same_v<U, float>>* = nullptr>   \
+	template<typename U = ColorType, typename std::enable_if_t<std::is_same_v<U, float>>* = nullptr>   \
 	operator MyColor() const { return MyColor(red, green, blue, alpha); }                               \
 
 // Extra code to be inserted into RmlUi::Vector2<> class body.

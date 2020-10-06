@@ -69,7 +69,7 @@ set(Core_HDR_FILES
     ${PROJECT_SOURCE_DIR}/Source/Core/precompiled.h
     ${PROJECT_SOURCE_DIR}/Source/Core/PropertiesIterator.h
     ${PROJECT_SOURCE_DIR}/Source/Core/PropertyParserAnimation.h
-    ${PROJECT_SOURCE_DIR}/Source/Core/PropertyParserColour.h
+    ${PROJECT_SOURCE_DIR}/Source/Core/PropertyParserColor.h
     ${PROJECT_SOURCE_DIR}/Source/Core/PropertyParserKeyword.h
     ${PROJECT_SOURCE_DIR}/Source/Core/PropertyParserNumber.h
     ${PROJECT_SOURCE_DIR}/Source/Core/PropertyParserString.h
@@ -119,8 +119,8 @@ set(Core_PUB_HDR_FILES
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Animation.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/BaseXMLParser.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Box.h
-    ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Colour.h
-    ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Colour.inl
+    ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Color.h
+    ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Color.inl
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/ComputedValues.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Containers/chobo/flat_map.hpp
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Containers/chobo/flat_set.hpp
@@ -345,7 +345,7 @@ set(Core_SRC_FILES
     ${PROJECT_SOURCE_DIR}/Source/Core/PropertyDefinition.cpp
     ${PROJECT_SOURCE_DIR}/Source/Core/PropertyDictionary.cpp
     ${PROJECT_SOURCE_DIR}/Source/Core/PropertyParserAnimation.cpp
-    ${PROJECT_SOURCE_DIR}/Source/Core/PropertyParserColour.cpp
+    ${PROJECT_SOURCE_DIR}/Source/Core/PropertyParserColor.cpp
     ${PROJECT_SOURCE_DIR}/Source/Core/PropertyParserKeyword.cpp
     ${PROJECT_SOURCE_DIR}/Source/Core/PropertyParserNumber.cpp
     ${PROJECT_SOURCE_DIR}/Source/Core/PropertyParserString.cpp
@@ -464,8 +464,8 @@ if(NOT NO_FONT_INTERFACE_DEFAULT)
 endif()
 
 set(Lua_HDR_FILES
-    ${PROJECT_SOURCE_DIR}/Source/Lua/Colourb.h
-    ${PROJECT_SOURCE_DIR}/Source/Lua/Colourf.h
+    ${PROJECT_SOURCE_DIR}/Source/Lua/Colorb.h
+    ${PROJECT_SOURCE_DIR}/Source/Lua/Colorf.h
     ${PROJECT_SOURCE_DIR}/Source/Lua/Context.h
     ${PROJECT_SOURCE_DIR}/Source/Lua/ContextDocumentsProxy.h
     ${PROJECT_SOURCE_DIR}/Source/Lua/Document.h
@@ -516,8 +516,8 @@ set(Lua_PUB_HDR_FILES
 )
 
 set(Lua_SRC_FILES
-    ${PROJECT_SOURCE_DIR}/Source/Lua/Colourb.cpp
-    ${PROJECT_SOURCE_DIR}/Source/Lua/Colourf.cpp
+    ${PROJECT_SOURCE_DIR}/Source/Lua/Colorb.cpp
+    ${PROJECT_SOURCE_DIR}/Source/Lua/Colorf.cpp
     ${PROJECT_SOURCE_DIR}/Source/Lua/Context.cpp
     ${PROJECT_SOURCE_DIR}/Source/Lua/ContextDocumentsProxy.cpp
     ${PROJECT_SOURCE_DIR}/Source/Lua/Document.cpp

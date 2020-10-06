@@ -54,8 +54,8 @@ public:
 	WidgetScroll(Element* parent);
 	virtual ~WidgetScroll();
 
-	/// Initialises the slider to a given orientation.
-	bool Initialise(Orientation orientation);
+	/// Initializes the slider to a given orientation.
+	bool Initialize(Orientation orientation);
 
 	/// Updates the key repeats for the increment / decrement arrows.
 	void Update();

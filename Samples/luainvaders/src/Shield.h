@@ -52,7 +52,7 @@ public:
 	~Shield();
 
 	/// Sets up which cells are on and off, based on the type.
-	void InitialiseCells();
+	void InitializeCells();
 
 	/// Set the shield's screen position
 	/// @param position Position in screen space

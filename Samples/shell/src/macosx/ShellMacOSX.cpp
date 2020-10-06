@@ -62,11 +62,11 @@ static Rml::UniquePtr<ShellFileInterface> file_interface;
 static void IdleTimerCallback(EventLoopTimerRef timer, EventLoopIdleTimerMessage inState, void* p);
 static OSStatus EventHandler(EventHandlerCallRef next_handler, EventRef event, void* p);
 
-bool Shell::Initialise()
+bool Shell::Initialize()
 {
 	gettimeofday(&start_time, nullptr);
 
-	InputMacOSX::Initialise();
+	InputMacOSX::Initialize();
 
 	Rml::String root = FindSamplesRoot();
 

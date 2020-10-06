@@ -44,7 +44,7 @@ WidgetTextInputSingleLine::~WidgetTextInputSingleLine()
 void WidgetTextInputSingleLine::SetValue(const String& value)
 {
 	String new_value = value;
-	SanitiseValue(new_value);
+	SanitizeValue(new_value);
 
 	WidgetTextInput::SetValue(new_value);
 }
@@ -62,7 +62,7 @@ void WidgetTextInputSingleLine::LineBreak()
 }
 
 // Strips all \n and \r characters from the string.
-void WidgetTextInputSingleLine::SanitiseValue(String& value)
+void WidgetTextInputSingleLine::SanitizeValue(String& value)
 {
 	String new_value;
 	for (String::size_type i = 0; i < value.size(); ++i)

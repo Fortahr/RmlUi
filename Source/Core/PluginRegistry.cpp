@@ -52,11 +52,11 @@ void PluginRegistry::RegisterPlugin(Plugin* plugin)
 		element_plugins.push_back(plugin);
 }
 
-// Calls OnInitialise() on all plugins.
-void PluginRegistry::NotifyInitialise()
+// Calls OnInitialize() on all plugins.
+void PluginRegistry::NotifyInitialize()
 {
 	for (size_t i = 0; i < basic_plugins.size(); ++i)
-		basic_plugins[i]->OnInitialise();
+		basic_plugins[i]->OnInitialize();
 }
 
 // Calls OnShutdown() on all plugins.

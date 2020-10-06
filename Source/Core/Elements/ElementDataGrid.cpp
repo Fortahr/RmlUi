@@ -47,7 +47,7 @@ ElementDataGrid::ElementDataGrid(const String& tag) : Element(tag)
 	ElementPtr element = Factory::InstanceElement(this, "#rmlctl_datagridrow", "datagridheader", attributes);
 	header = static_cast<ElementDataGridRow*>(element.get());
 	header->SetProperty(PropertyId::Display, Property(Style::Display::Block));
-	header->Initialise(this);
+	header->Initialize(this);
 	AppendChild(std::move(element));
 
 	element = Factory::InstanceElement(this, "*", "datagridbody", attributes);
@@ -59,7 +59,7 @@ ElementDataGrid::ElementDataGrid(const String& tag) : Element(tag)
 	element = Factory::InstanceElement(this, "#rmlctl_datagridrow", "datagridroot", attributes);
 	root = static_cast<ElementDataGridRow*>(element.get());
 	root->SetProperty(PropertyId::Display, Property(Style::Display::None));
-	root->Initialise(this);
+	root->Initialize(this);
 	AppendChild(std::move(element), false);
 
 	SetProperty(PropertyId::OverflowX, Property(Style::Overflow::Auto));
@@ -176,7 +176,7 @@ ElementDataGridRow* ElementDataGrid::AddRow(ElementDataGridRow* parent, int inde
 	ElementPtr element = Factory::InstanceElement(this, "#rmlctl_datagridrow", "datagridrow", attributes);
 	ElementDataGridRow* new_row = rmlui_dynamic_cast< ElementDataGridRow* >(element.get());
 
-	new_row->Initialise(this, parent, index, header, parent->GetDepth() + 1);
+	new_row->Initialize(this, parent, index, header, parent->GetDepth() + 1);
 
 	// We need to work out the table-specific row.
 	int table_relative_index = parent->GetChildTableRelativeIndex(index);

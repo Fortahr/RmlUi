@@ -17,14 +17,14 @@
 const int NUM_SCORES = 10;
 
 /**
-	This class stores a list of high scores, and loads the high scores list from a file upon initialisation.
+	This class stores a list of high scores, and loads the high scores list from a file upon initialization.
 	@author Robert Curry
  */
 
 class HighScores
 {
 public:
-	static void Initialise();
+	static void Initialize();
 	static void Shutdown();
 
 private:
@@ -33,13 +33,13 @@ private:
 
 	static HighScores* instance;
 
-	void SubmitScore(const Rml::String& name, const Rml::Colourb& colour, int wave, int score);
+	void SubmitScore(const Rml::String& name, const Rml::Colorb& color, int wave, int score);
 	void LoadScores();
 
 	struct Score
 	{
 		Rml::String name;
-		Rml::Colourb colour;
+		Rml::Colorb color;
 		int score;
 		int wave;
 	};

@@ -42,7 +42,7 @@ static const float BOMB_MISSILE_SPEED = 7;
 static const float BOMB_PROBABILITY_EASY = 0.002f;
 static const float BOMB_PROBABILITY_HARD = 0.005f;
 static const float EXPLOSION_TIME = 0.25;
-static const Rml::Colourb MOTHERSHIP_COLOUR = Rml::Colourb(255, 0, 0, 255);
+static const Rml::Colorb MOTHERSHIP_COLOR = Rml::Colorb(255, 0, 0, 255);
 
 Sprite invader_sprites[] =
 {
@@ -186,7 +186,7 @@ void Invader::Render()
 {
 	if (type == MOTHERSHIP)
 	{
-		glColor4ubv(MOTHERSHIP_COLOUR);
+		glColor4ubv(MOTHERSHIP_COLOR);
 	}
 	int sprite_index = GetSpriteIndex();
 	int sprite_offset = Rml::Math::RealToInteger((invader_sprites[sprite_index].dimensions.x - 48) / 2);

@@ -56,7 +56,7 @@ public:
 private:
     int GetEventClasses() override;
     
-	void OnInitialise() override;
+	void OnInitialize() override;
     
 	void OnShutdown() override;
 

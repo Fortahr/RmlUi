@@ -84,10 +84,10 @@ WidgetScroll::~WidgetScroll()
 	}
 }
 
-// Initialises the slider to a given orientation.
-bool WidgetScroll::Initialise(Orientation _orientation)
+// Initializes the slider to a given orientation.
+bool WidgetScroll::Initialize(Orientation _orientation)
 {
-	// Check that we haven't already been successfully initialised.
+	// Check that we haven't already been successfully initialized.
 	if (orientation != UNKNOWN)
 	{
 		RMLUI_ERROR;
@@ -235,7 +235,7 @@ void WidgetScroll::FormatElements(const Vector2f& containing_block, bool resize_
 	content = track_box.GetSize();
 	content[length_axis] = slider_length -= orientation == VERTICAL ? (track_box.GetCumulativeEdge(Box::CONTENT, Box::TOP) + track_box.GetCumulativeEdge(Box::CONTENT, Box::BOTTOM)) :
 																	  (track_box.GetCumulativeEdge(Box::CONTENT, Box::LEFT) + track_box.GetCumulativeEdge(Box::CONTENT, Box::RIGHT));
-	// If no height has been explicitly specified for the track, it'll be initialised to -1 as per normal block
+	// If no height has been explicitly specified for the track, it'll be initialized to -1 as per normal block
 	// elements. We'll fix that up here.
 	if (orientation == HORIZONTAL &&
 		content.y < 0)

@@ -37,14 +37,14 @@ class Context;
 
 namespace Debugger {
 
-/// Initialises the debug plugin. The debugger will be loaded into the given context.
+/// Initializes the debug plugin. The debugger will be loaded into the given context.
 /// @param[in] context The RmlUi context to load the debugger into. The debugging tools will be displayed on this context. If this context is destroyed, the debugger will be released.
-/// @return True if the debugger was successfully initialised
-RMLUIDEBUGGER_API bool Initialise(Context* context);
+/// @return True if the debugger was successfully initialized
+RMLUIDEBUGGER_API bool Initialize(Context* context);
 
 /// Sets the context to be debugged.
 /// @param[in] context The context to be debugged.
-/// @return True if the debugger is initialised and the context was switched, false otherwise.
+/// @return True if the debugger is initialized and the context was switched, false otherwise.
 RMLUIDEBUGGER_API bool SetContext(Context* context);
 
 /// Sets the visibility of the debugger.

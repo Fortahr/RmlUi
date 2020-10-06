@@ -43,7 +43,7 @@ class TextureResource;
 class TextureDatabase
 {
 public:
-	static void Initialise();
+	static void Initialize();
 	static void Shutdown();
 
     /// Fetch a texture resource from file.

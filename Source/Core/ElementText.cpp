@@ -44,7 +44,7 @@ namespace Rml {
 static bool BuildToken(String& token, const char*& token_begin, const char* string_end, bool first_token, bool collapse_white_space, bool break_at_endline, Style::TextTransform text_transformation, bool decode_escape_characters);
 static bool LastToken(const char* token_begin, const char* string_end, bool collapse_white_space, bool break_at_endline);
 
-ElementText::ElementText(const String& tag) : Element(tag), colour(255, 255, 255), decoration(this)
+ElementText::ElementText(const String& tag) : Element(tag), color(255, 255, 255), decoration(this)
 {
 	dirty_layout_on_change = true;
 
@@ -98,7 +98,7 @@ void ElementText::OnRender()
 		geometry_dirty = true;
 	}
 
-	// Regenerate the geometry if the colour or font configuration has altered.
+	// Regenerate the geometry if the color or font configuration has altered.
 	if (geometry_dirty)
 		GenerateGeometry(font_face_handle);
 
@@ -195,7 +195,7 @@ bool ElementText::GenerateLine(String& line, int& line_length, float& line_width
 
 	FontFaceHandle font_face_handle = GetFontFaceHandle();
 
-	// Initialise the output variables.
+	// Initialize the output variables.
 	line.clear();
 	line_length = 0;
 	line_width = 0;
@@ -348,20 +348,20 @@ void ElementText::OnPropertyChange(const PropertyIdSet& changed_properties)
 
 	Element::OnPropertyChange(changed_properties);
 
-	bool colour_changed = false;
+	bool color_changed = false;
 	bool font_face_changed = false;
 	auto& computed = GetComputedValues();
 
 	if (changed_properties.Contains(PropertyId::Color) ||
 		changed_properties.Contains(PropertyId::Opacity))
 	{
-		// Fetch our (potentially) new colour.
-		Colourb new_colour = computed.color;
+		// Fetch our (potentially) new color.
+		Colorb new_color = computed.color;
 		float opacity = computed.opacity;
-		new_colour.alpha = byte(opacity * float(new_colour.alpha));
-		colour_changed = colour != new_colour;
-		if (colour_changed)
-			colour = new_colour;
+		new_color.alpha = byte(opacity * float(new_color.alpha));
+		color_changed = color != new_color;
+		if (color_changed)
+			color = new_color;
 	}
 
 	if (changed_properties.Contains(PropertyId::FontFamily) ||
@@ -391,15 +391,15 @@ void ElementText::OnPropertyChange(const PropertyIdSet& changed_properties)
 		if (dirty_layout_on_change)
 			DirtyLayout();
 	}
-	else if (colour_changed)
+	else if (color_changed)
 	{
 		// Force the geometry to be regenerated.
 		geometry_dirty = true;
 
-		// Re-colour the decoration geometry.
+		// Re-color the decoration geometry.
 		Vector< Vertex >& vertices = decoration.GetVertices();
 		for (size_t i = 0; i < vertices.size(); ++i)
-			vertices[i].colour = colour;
+			vertices[i].color = color;
 
 		decoration.Release();
 	}
@@ -461,7 +461,7 @@ void ElementText::GenerateGeometry(const FontFaceHandle font_face_handle)
 
 void ElementText::GenerateGeometry(const FontFaceHandle font_face_handle, Line& line)
 {
-	line.width = GetFontEngineInterface()->GenerateString(font_face_handle, font_effects_handle, line.text, line.position, colour, geometry);
+	line.width = GetFontEngineInterface()->GenerateString(font_face_handle, font_effects_handle, line.text, line.position, color, geometry);
 	for (size_t i = 0; i < geometry.size(); ++i)
 		geometry[i].SetHostElement(this);
 }
@@ -472,7 +472,7 @@ void ElementText::GenerateDecoration(const FontFaceHandle font_face_handle)
 	RMLUI_ZoneScopedC(0xA52A2A);
 	
 	for(const Line& line : lines)
-		GeometryUtilities::GenerateLine(font_face_handle, &decoration, line.position, line.width, decoration_property, colour);
+		GeometryUtilities::GenerateLine(font_face_handle, &decoration, line.position, line.width, decoration_property, color);
 }
 
 static bool BuildToken(String& token, const char*& token_begin, const char* string_end, bool first_token, bool collapse_white_space, bool break_at_endline, Style::TextTransform text_transformation, bool decode_escape_characters)
@@ -509,9 +509,9 @@ static bool BuildToken(String& token, const char*& token_begin, const char* stri
 			{
 				token_begin = escape_begin;
 			}
-			// We could find a ';', parse the escape code. If the escape code is recognised, set the parsed character
+			// We could find a ';', parse the escape code. If the escape code is recognized, set the parsed character
 			// to the appropriate one. If it is a non-breaking space, prevent it being picked up as whitespace. If it
-			// is not recognised, print the token like normal text.
+			// is not recognized, print the token like normal text.
 			else
 			{
 				String escape_code(escape_begin + 1, token_begin);
@@ -557,7 +557,7 @@ static bool BuildToken(String& token, const char*& token_begin, const char* stri
 				return false;
 			}
 
-			// We're collapsing white-space; we only tokenise words, not white-space, so we're only done tokenising
+			// We're collapsing white-space; we only tokenize words, not white-space, so we're only done tokenising
 			// once we've begun parsing non-white-space and then found white-space.
 			if (!parsing_white_space)
 			{

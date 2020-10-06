@@ -221,7 +221,7 @@ bool ElementScroll::CreateScrollbar(Orientation orientation)
 	scrollbars[orientation].element->SetProperty(PropertyId::Clip, Property(1, Property::NUMBER));
 
 	scrollbars[orientation].widget = MakeUnique<WidgetScroll>(scrollbars[orientation].element);
-	scrollbars[orientation].widget->Initialise(orientation == VERTICAL ? WidgetScroll::VERTICAL : WidgetScroll::HORIZONTAL);
+	scrollbars[orientation].widget->Initialize(orientation == VERTICAL ? WidgetScroll::VERTICAL : WidgetScroll::HORIZONTAL);
 
 	Element* child = element->AppendChild(std::move(scrollbar_element), false);
 

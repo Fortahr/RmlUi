@@ -60,8 +60,8 @@ DecoratorTiledVertical::~DecoratorTiledVertical()
 {
 }
 
-// Initialises the tiles for the decorator.
-bool DecoratorTiledVertical::Initialise(const Tile* _tiles, const Texture* _textures)
+// Initializes the tiles for the decorator.
+bool DecoratorTiledVertical::Initialize(const Tile* _tiles, const Texture* _textures)
 {
 	// Load the textures.
 	for (int i = 0; i < 3; i++)
@@ -93,7 +93,7 @@ bool DecoratorTiledVertical::Initialise(const Tile* _tiles, const Texture* _text
 // Called on a decorator to generate any required per-element data for a newly decorated element.
 DecoratorDataHandle DecoratorTiledVertical::GenerateElementData(Element* element) const
 {
-	// Initialise the tile for this element.
+	// Initialize the tile for this element.
 	for (int i = 0; i < 3; i++)
 		tiles[i].CalculateDimensions(element, *GetTexture(tiles[i].texture_index));
 

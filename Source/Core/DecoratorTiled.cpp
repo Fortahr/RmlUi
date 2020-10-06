@@ -115,10 +115,10 @@ void DecoratorTiled::Tile::GenerateGeometry(Vector< Vertex >& vertices, Vector< 
 	const auto& computed = element->GetComputedValues();
 
 	float opacity = computed.opacity;
-	Colourb quad_colour = computed.image_color;
+	Colorb quad_color = computed.image_color;
 
     // Apply opacity
-    quad_colour.alpha = (byte)(opacity * (float)quad_colour.alpha);
+    quad_color.alpha = (byte)(opacity * (float)quad_color.alpha);
 
 	auto data_iterator = data.find(render_interface);
 	if (data_iterator == data.end())
@@ -232,7 +232,7 @@ void DecoratorTiled::Tile::GenerateGeometry(Vector< Vertex >& vertices, Vector< 
 	// Generate the vertices for the tiled surface.
 	Vector2f tile_position = (surface_origin + tile_offset).Round();
 
-	GeometryUtilities::GenerateQuad(new_vertices, new_indices, tile_position, final_tile_dimensions.Round(), quad_colour, scaled_texcoords[0], scaled_texcoords[1], index_offset);
+	GeometryUtilities::GenerateQuad(new_vertices, new_indices, tile_position, final_tile_dimensions.Round(), quad_color, scaled_texcoords[0], scaled_texcoords[1], index_offset);
 }
 
 // Scales a tile dimensions by a fixed value along one axis.

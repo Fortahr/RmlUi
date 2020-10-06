@@ -50,9 +50,9 @@ public:
 	ElementLog(const String& tag);
 	~ElementLog();
 
-	/// Initialises the log element.
-	/// @return True if the element initialised successfully, false otherwise.
-	bool Initialise();
+	/// Initializes the log element.
+	/// @return True if the element initialized successfully, false otherwise.
+	bool Initialize();
 
 	/// Adds a log message to the debug log.
 	void AddLogMessage(Log::Type type, const String& message);

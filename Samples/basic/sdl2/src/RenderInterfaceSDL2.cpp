@@ -41,7 +41,7 @@ RmlUiSDL2Renderer::RmlUiSDL2Renderer(SDL_Renderer* renderer, SDL_Window* screen)
     mScreen = screen;
 }
 
-// Called by RmlUi when it wants to render geometry that it does not wish to optimise.
+// Called by RmlUi when it wants to render geometry that it does not wish to optimize.
 void RmlUiSDL2Renderer::RenderGeometry(Rml::Vertex* vertices, int num_vertices, int* indices, int num_indices, const Rml::TextureHandle texture, const Rml::Vector2f& translation)
 {
     // SDL uses shaders that we need to disable here  
@@ -50,7 +50,7 @@ void RmlUiSDL2Renderer::RenderGeometry(Rml::Vertex* vertices, int num_vertices, 
     glTranslatef(translation.x, translation.y, 0);
  
     Rml::Vector<Rml::Vector2f> Positions(num_vertices);
-    Rml::Vector<Rml::Colourb> Colors(num_vertices);
+    Rml::Vector<Rml::Colorb> Colors(num_vertices);
     Rml::Vector<Rml::Vector2f> TexCoords(num_vertices);
     float texw = 0.0f;
     float texh = 0.0f;
@@ -65,7 +65,7 @@ void RmlUiSDL2Renderer::RenderGeometry(Rml::Vertex* vertices, int num_vertices, 
  
     for(int  i = 0; i < num_vertices; i++) {
         Positions[i] = vertices[i].position;
-        Colors[i] = vertices[i].colour;
+        Colors[i] = vertices[i].color;
         if (sdl_texture) {
             TexCoords[i].x = vertices[i].tex_coord.x * texw;
             TexCoords[i].y = vertices[i].tex_coord.y * texh;

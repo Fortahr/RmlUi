@@ -9,7 +9,7 @@
     Game.Shutdown = function() Shell::RequestExit() end
     Game.SetPaused = function(paused) GameDetails::SetPaused(paused) end --where paused is a bool
     Game.SetDifficulty = function(difficulty) GameDetails::SetDifficulty(difficulty) end --difficulty is a value from Game.difficulty
-    Game.SetDefenderColour = function(colour) GameDetails::SetDefenderColour(colour) end --colour is of type Colourb
+    Game.SetDefenderColor = function(color) GameDetails::SetDefenderColor(color) end --color is of type Colorb
     Game.SubmitHighScore = function() HighScores::SubmitScore(stuff from GameDetails) end
     Game.SetHighScoreName = function(name) HighScore::SubmitName(name) end -- name is a string
     Game.difficulty = { "HARD" = GameDetails::HARD, "EASY" = GameDetails::EASY }
@@ -20,7 +20,7 @@ class Game;
 class LuaInterface
 {
 public:
-    static void Initialise(lua_State* L);
+    static void Initialize(lua_State* L);
     static void InitGame(lua_State* L);
 };
 

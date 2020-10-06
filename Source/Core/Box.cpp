@@ -31,13 +31,13 @@
 
 namespace Rml {
 
-// Initialises a zero-sized box.
+// Initializes a zero-sized box.
 Box::Box() : content(0, 0)
 {
 	memset(area_edges, 0, sizeof(area_edges));
 }
 
-// Initialises a box with a default content area and no padding, borders and margins.
+// Initializes a box with a default content area and no padding, borders and margins.
 Box::Box(Vector2f content) : content(content)
 {
 	memset(area_edges, 0, sizeof(area_edges));

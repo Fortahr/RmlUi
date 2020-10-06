@@ -43,7 +43,7 @@ class RmlUiSDL2Renderer : public Rml::RenderInterface
 public:
 	RmlUiSDL2Renderer(SDL_Renderer* renderer, SDL_Window* screen);
 
-	/// Called by RmlUi when it wants to render geometry that it does not wish to optimise.
+	/// Called by RmlUi when it wants to render geometry that it does not wish to optimize.
 	void RenderGeometry(Rml::Vertex* vertices, int num_vertices, int* indices, int num_indices, Rml::TextureHandle texture, const Rml::Vector2f& translation) override;
 
 	/// Called by RmlUi when it wants to enable or disable scissoring to clip content.

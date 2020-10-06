@@ -39,11 +39,11 @@ DecoratorStarfield::~DecoratorStarfield()
 {
 }
 
-bool DecoratorStarfield::Initialise(int _num_layers, const Rml::Colourb& _top_colour, const Rml::Colourb& _bottom_colour, float _top_speed, float _bottom_speed, int _top_density, int _bottom_density)
+bool DecoratorStarfield::Initialize(int _num_layers, const Rml::Colorb& _top_color, const Rml::Colorb& _bottom_color, float _top_speed, float _bottom_speed, int _top_density, int _bottom_density)
 {
 	num_layers = _num_layers;
-	top_colour = _top_colour;
-	bottom_colour = _bottom_colour;
+	top_color = _top_color;
+	bottom_color = _bottom_color;
 	top_speed = _top_speed;
 	bottom_speed = _bottom_speed;
 	top_density = _top_density;
@@ -66,8 +66,8 @@ Rml::DecoratorDataHandle DecoratorStarfield::GenerateElementData(Rml::Element* e
 		int density = Rml::Math::RealToInteger((top_density * layer_depth) + (bottom_density * (1.0f - layer_depth)));
 		star_field->star_layers[i].stars.resize(density);
 
-		Rml::Colourb colour = (top_colour * layer_depth) + (bottom_colour * (1.0f - layer_depth));
-		star_field->star_layers[i].colour = colour;
+		Rml::Colorb color = (top_color * layer_depth) + (bottom_color * (1.0f - layer_depth));
+		star_field->star_layers[i].color = color;
 
 		float speed = (top_speed * layer_depth) + (bottom_speed * (1.0f - layer_depth));
 		star_field->star_layers[i].speed = speed;
@@ -109,7 +109,7 @@ void DecoratorStarfield::RenderElement(Rml::Element* RMLUI_UNUSED_PARAMETER(elem
 
 	for (size_t i = 0; i < star_field->star_layers.size(); i++)
 	{
-		glColor4ubv(star_field->star_layers[i].colour);
+		glColor4ubv(star_field->star_layers[i].color);
 		
 		for (size_t j = 0; j < star_field->star_layers[i].stars.size(); j++)
 		{

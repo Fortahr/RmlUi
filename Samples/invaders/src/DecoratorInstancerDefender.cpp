@@ -53,7 +53,7 @@ Rml::SharedPtr<Rml::Decorator> DecoratorInstancerDefender::InstanceDecorator(con
 		source_path = source->path;
 
 	auto decorator = Rml::MakeShared<DecoratorDefender>();
-	if (decorator->Initialise(image_source, source_path))
+	if (decorator->Initialize(image_source, source_path))
 		return decorator;
 	
 	return nullptr;

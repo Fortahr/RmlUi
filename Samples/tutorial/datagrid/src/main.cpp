@@ -54,22 +54,22 @@ int main(int RMLUI_UNUSED_PARAMETER(argc), char** RMLUI_UNUSED_PARAMETER(argv))
 	ShellRenderInterfaceOpenGL opengl_renderer;
 	shell_renderer = &opengl_renderer;
 
-	// Generic OS initialisation, creates a window and attaches OpenGL.
-	if (!Shell::Initialise() ||
+	// Generic OS initialization, creates a window and attaches OpenGL.
+	if (!Shell::Initialize() ||
 		!Shell::OpenWindow("Datagrid Tutorial", shell_renderer, 1024, 768, true))
 	{
 		Shell::Shutdown();
 		return -1;
 	}
 
-	// RmlUi initialisation.
+	// RmlUi initialization.
 	Rml::SetRenderInterface(&opengl_renderer);
 	opengl_renderer.SetViewport(1024,768);
 
 	ShellSystemInterface system_interface;
 	Rml::SetSystemInterface(&system_interface);
 
-	Rml::Initialise();
+	Rml::Initialize();
 
 	// Create the main RmlUi context and set it on the shell's input layer.
 	context = Rml::CreateContext("main", Rml::Vector2i(1024, 768));
@@ -80,7 +80,7 @@ int main(int RMLUI_UNUSED_PARAMETER(argc), char** RMLUI_UNUSED_PARAMETER(argv))
 		return -1;
 	}
 
-	Rml::Debugger::Initialise(context);
+	Rml::Debugger::Initialize(context);
 	Input::SetContext(context);
 	shell_renderer->SetContext(context);
 
@@ -91,7 +91,7 @@ int main(int RMLUI_UNUSED_PARAMETER(argc), char** RMLUI_UNUSED_PARAMETER(argv))
 	Rml::Factory::RegisterDecoratorInstancer("defender", &decorator_instancer_defender);
 
 	// Construct the high scores.
-	HighScores::Initialise();
+	HighScores::Initialize();
 
 	// Load and show the tutorial document.
 	Rml::ElementDocument* document = context->LoadDocument("tutorial/datagrid/data/tutorial.rml");

@@ -56,23 +56,23 @@ void EventHandlerStartGame::ProcessEvent(Rml::Event& event, const Rml::String& v
 		else
 			GameDetails::SetDifficulty(GameDetails::EASY);
 
-		// Set the defender colour.
-		Rml::StringList colour_components;
-		Rml::StringUtilities::ExpandString(colour_components, event.GetParameter< Rml::String >("colour", "255,255,255"));
+		// Set the defender color.
+		Rml::StringList color_components;
+		Rml::StringUtilities::ExpandString(color_components, event.GetParameter< Rml::String >("color", "255,255,255"));
 
-		Rml::Colourb colour(255, 255, 255);
-		for (size_t i = 0; i < colour_components.size() && i < 3; ++i)
+		Rml::Colorb color(255, 255, 255);
+		for (size_t i = 0; i < color_components.size() && i < 3; ++i)
 		{
-			int colour_component = atoi(colour_components[i].c_str());
-			if (colour_component < 0)
-				colour_component = 0;
-			if (colour_component > 255)
-				colour_component = 255;
+			int color_component = atoi(color_components[i].c_str());
+			if (color_component < 0)
+				color_component = 0;
+			if (color_component > 255)
+				color_component = 255;
 
-			colour[i] = (Rml::byte) colour_component;
+			color[i] = (Rml::byte) color_component;
 		}
 
-		GameDetails::SetDefenderColour(colour);
+		GameDetails::SetDefenderColor(color);
 
 		// Go to the game window and close the start game window.
 		if (EventManager::LoadWindow("game"))

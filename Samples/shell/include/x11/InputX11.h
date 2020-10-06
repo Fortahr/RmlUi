@@ -50,16 +50,16 @@
 class InputX11 : public Input
 {
 public:
-	static bool Initialise();
+	static bool Initialize();
 	static void Shutdown();
 
 	/// Process the windows message
 	static void ProcessXEvent(Display* display, const XEvent& event);
 
-	// Initialises Xkb extension if available or reads keymap from X11
+	// Initializes Xkb extension if available or reads keymap from X11
 	// server otherwise.  This is internal to the X11 subsystem and
 	// has nothing to do with RmlUi's mapping.
-	static void InitialiseX11Keymap(Display *display);
+	static void InitializeX11Keymap(Display *display);
 };
 
 #endif

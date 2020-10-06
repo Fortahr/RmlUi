@@ -35,7 +35,7 @@ namespace Rml {
 InputTypeRange::InputTypeRange(ElementFormControlInput* element) : InputType(element)
 {
 	widget = new WidgetSlider(element);
-	widget->Initialise();
+	widget->Initialize();
 }
 
 InputTypeRange::~InputTypeRange()

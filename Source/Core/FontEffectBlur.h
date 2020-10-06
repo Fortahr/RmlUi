@@ -45,7 +45,7 @@ public:
 	FontEffectBlur();
 	virtual ~FontEffectBlur();
 
-	bool Initialise(int width);
+	bool Initialize(int width);
 
 	bool HasUniqueTexture() const override;
 

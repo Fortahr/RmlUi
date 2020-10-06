@@ -41,7 +41,7 @@ DecoratorTiledImage::~DecoratorTiledImage()
 {
 }
 
-bool DecoratorTiledImage::Initialise(const Tile& _tile, const Texture& _texture)
+bool DecoratorTiledImage::Initialize(const Tile& _tile, const Texture& _texture)
 {
 	tile = _tile;
 	tile.texture_index = AddTexture(_texture);

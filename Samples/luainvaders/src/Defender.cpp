@@ -105,7 +105,7 @@ void Defender::Update()
 
 void Defender::Render()
 {
-	glColor4ubv(GameDetails::GetDefenderColour());
+	glColor4ubv(GameDetails::GetDefenderColor());
 
 	// Render our sprite if rendering is enabled
 	if (render)

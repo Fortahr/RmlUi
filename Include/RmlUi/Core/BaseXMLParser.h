@@ -52,7 +52,7 @@ class RMLUICORE_API BaseXMLParser
 		virtual ~BaseXMLParser();
 
 		/// Registers a tag as containing general character data. This will mean the contents of the tag will be parsed
-		/// similarly to a CDATA tag (ie, no other markup will be recognised until the section's closing tag is found).
+		/// similarly to a CDATA tag (ie, no other markup will be recognized until the section's closing tag is found).
 		/// @param[in] tag The tag to register as containing generic character data.
 		void RegisterCDATATag(const String& tag);
 

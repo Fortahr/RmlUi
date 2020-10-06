@@ -28,13 +28,13 @@
 
 namespace Rml {
 
-// Initialising constructor.
+// Initializing constructor.
 template < typename Type >
 Vector2< Type >::Vector2(Type v) : x(v), y(v)
 {
 }
 
-// Initialising constructor.
+// Initializing constructor.
 template < typename Type >
 Vector2< Type >::Vector2(Type x, Type y) : x(x), y(y)
 {
@@ -59,9 +59,9 @@ Type Vector2< Type >::SquaredMagnitude() const
 		y * y;
 }
 
-// Generates a normalised vector from this vector.
+// Generates a normalized vector from this vector.
 template < typename Type >
-Vector2< Type > Vector2< Type >::Normalise() const
+Vector2< Type > Vector2< Type >::Normalize() const
 {
 	float magnitude = Magnitude();
 	if (Math::IsZero(magnitude))

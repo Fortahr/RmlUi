@@ -41,7 +41,7 @@ ElementDataGridCell::~ElementDataGridCell()
 {
 }
 
-void ElementDataGridCell::Initialise(int _column, Element* _header)
+void ElementDataGridCell::Initialize(int _column, Element* _header)
 {
 	column = _column;
 	header = _header;

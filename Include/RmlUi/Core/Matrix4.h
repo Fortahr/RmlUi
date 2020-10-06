@@ -255,7 +255,7 @@ class Matrix4
 		// The components of the matrix.
 		VectorType vectors[4];
 
-		/// Initialising constructor.
+		/// Initializing constructor.
 		Matrix4(const VectorType& vec0, const VectorType& vec1, const VectorType& vec2, const VectorType& vec3) noexcept;
 
 		template< typename _Component, class _StorageA >
@@ -293,7 +293,7 @@ class Matrix4
 		};
 
 	public:
-		/// Zero-initialising default constructor.
+		/// Zero-initializing default constructor.
 		inline Matrix4() noexcept;
 
 		/// Copy constructor.

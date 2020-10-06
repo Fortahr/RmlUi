@@ -40,7 +40,7 @@ ShellRenderInterfaceOpenGL::ShellRenderInterfaceOpenGL() : m_width(0), m_height(
 
 }
 
-// Called by RmlUi when it wants to render geometry that it does not wish to optimise.
+// Called by RmlUi when it wants to render geometry that it does not wish to optimize.
 void ShellRenderInterfaceOpenGL::RenderGeometry(Rml::Vertex* vertices, int RMLUI_UNUSED_PARAMETER(num_vertices), int* indices, int num_indices, const Rml::TextureHandle texture, const Rml::Vector2f& translation)
 {
 	RMLUI_UNUSED(num_vertices);
@@ -50,7 +50,7 @@ void ShellRenderInterfaceOpenGL::RenderGeometry(Rml::Vertex* vertices, int RMLUI
 
 	glVertexPointer(2, GL_FLOAT, sizeof(Rml::Vertex), &vertices[0].position);
 	glEnableClientState(GL_COLOR_ARRAY);
-	glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(Rml::Vertex), &vertices[0].colour);
+	glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(Rml::Vertex), &vertices[0].color);
 
 	if (!texture)
 	{
@@ -159,11 +159,11 @@ void ShellRenderInterfaceOpenGL::SetScissorRegion(int x, int y, int width, int h
 struct TGAHeader 
 {
 	char  idLength;
-	char  colourMapType;
+	char  colorMapType;
 	char  dataType;
-	short int colourMapOrigin;
-	short int colourMapLength;
-	char  colourMapDepth;
+	short int colorMapOrigin;
+	short int colorMapLength;
+	char  colorMapDepth;
 	short int xOrigin;
 	short int yOrigin;
 	short int width;

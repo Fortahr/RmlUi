@@ -39,12 +39,12 @@ ConvolutionFilter::ConvolutionFilter()
 ConvolutionFilter::~ConvolutionFilter()
 {}
 
-bool ConvolutionFilter::Initialise(int _kernel_radius, FilterOperation _operation)
+bool ConvolutionFilter::Initialize(int _kernel_radius, FilterOperation _operation)
 {
-	return Initialise(Vector2i(_kernel_radius), _operation);
+	return Initialize(Vector2i(_kernel_radius), _operation);
 }
 
-bool ConvolutionFilter::Initialise(Vector2i _kernel_radii, FilterOperation _operation)
+bool ConvolutionFilter::Initialize(Vector2i _kernel_radii, FilterOperation _operation)
 {
 	if (_kernel_radii.x < 0 || _kernel_radii.y < 0)
 	{

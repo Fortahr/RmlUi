@@ -55,7 +55,7 @@ public:
 
 	/// Generates or re-generates the character and texture data for the layer.
 	/// @param[in] handle The handle generating this layer.
-	/// @param[in] effect The effect to initialise the layer with.
+	/// @param[in] effect The effect to initialize the layer with.
 	/// @param[in] clone The layer to optionally clone geometry and texture data from.
 	/// @return True if the layer was generated successfully, false if not.
 	bool Generate(const FontFaceHandleDefault* handle, const FontFaceLayer* clone = nullptr, bool clone_glyph_origins = false);
@@ -71,8 +71,8 @@ public:
 	/// @param[out] geometry An array of geometries this layer will write to. It must be at least as big as the number of textures in this layer.
 	/// @param[in] character_code The character to generate geometry for.
 	/// @param[in] position The position of the baseline.
-	/// @param[in] colour The colour of the string.
-	inline void GenerateGeometry(Geometry* geometry, const Character character_code, const Vector2f& position, const Colourb& colour) const
+	/// @param[in] color The color of the string.
+	inline void GenerateGeometry(Geometry* geometry, const Character character_code, const Vector2f& position, const Colorb& color) const
 	{
 		auto it = character_boxes.find(character_code);
 		if (it == character_boxes.end())
@@ -94,7 +94,7 @@ public:
 			&character_indices[0] + (character_indices.size() - 6),
 			Vector2f(position.x + box.origin.x, position.y + box.origin.y).Round(),
 			box.dimensions,
-			colour,
+			color,
 			box.texcoords[0],
 			box.texcoords[1],
 			(int)character_vertices.size() - 4
@@ -109,8 +109,8 @@ public:
 	/// Returns the number of textures employed by this layer.
 	int GetNumTextures() const;
 
-	/// Returns the layer's colour.
-	const Colourb& GetColour() const;
+	/// Returns the layer's color.
+	const Colorb& GetColor() const;
 
 private:
 
@@ -139,7 +139,7 @@ private:
 
 	CharacterMap character_boxes;
 	TextureList textures;
-	Colourb colour;
+	Colorb color;
 };
 
 } // namespace Rml

@@ -46,7 +46,7 @@ public:
 	FontEffectShadow();
 	virtual ~FontEffectShadow();
 
-	bool Initialise(const Vector2i& offset);
+	bool Initialize(const Vector2i& offset);
 
 	bool HasUniqueTexture() const override;
 

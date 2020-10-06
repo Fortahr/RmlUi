@@ -38,7 +38,7 @@ namespace Rml {
 ElementFormControlDataSelect::ElementFormControlDataSelect(const String& tag) : ElementFormControlSelect(tag)
 {
 	data_source = nullptr;
-	initialised = false;
+	initialized = false;
 }
 
 ElementFormControlDataSelect::~ElementFormControlDataSelect()
@@ -59,9 +59,9 @@ void ElementFormControlDataSelect::SetDataSource(const String& _data_source)
 // options.
 void ElementFormControlDataSelect::OnUpdate()
 {
-	if (!initialised)
+	if (!initialized)
 	{
-		initialised = true;
+		initialized = true;
 
 		if (ParseDataSource(data_source, data_table, GetAttribute< String >("source", "")))
 		{
@@ -83,7 +83,7 @@ void ElementFormControlDataSelect::OnAttributeChange(const ElementAttributes& ch
 			data_source = nullptr;
 		}
 
-		initialised = false;
+		initialized = false;
 	}
 	else if (changed_attributes.find("fields") != changed_attributes.end() ||
 			 changed_attributes.find("valuefield") != changed_attributes.end() ||

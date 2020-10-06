@@ -51,8 +51,8 @@ enum class DefaultActionPhase;
 	@author Peter Curry
  */
 
-/// Initialises RmlUi.
-RMLUICORE_API bool Initialise();
+/// Initializes RmlUi.
+RMLUICORE_API bool Initialize();
 /// Shutdown RmlUi.
 RMLUICORE_API void Shutdown();
 
@@ -60,7 +60,7 @@ RMLUICORE_API void Shutdown();
 /// @return The version number.
 RMLUICORE_API String GetVersion();
 
-/// Sets the interface through which all system requests are made. This must be called before Initialise().
+/// Sets the interface through which all system requests are made. This must be called before Initialize().
 /// @param[in] system_interface A non-owning pointer to the application-specified logging interface.
 /// @lifetime The interface must be kept alive until after the call to Rml::Shutdown.
 RMLUICORE_API void SetSystemInterface(SystemInterface* system_interface);
@@ -68,7 +68,7 @@ RMLUICORE_API void SetSystemInterface(SystemInterface* system_interface);
 RMLUICORE_API SystemInterface* GetSystemInterface();
 
 /// Sets the interface through which all rendering requests are made. This is not required to be called, but if it is
-/// it must be called before Initialise(). If no render interface is specified, then all contexts must have a custom
+/// it must be called before Initialize(). If no render interface is specified, then all contexts must have a custom
 /// render interface.
 /// @param[in] render_interface A non-owning pointer to the render interface implementation.
 /// @lifetime The interface must be kept alive until after the call to Rml::Shutdown.
@@ -77,7 +77,7 @@ RMLUICORE_API void SetRenderInterface(RenderInterface* render_interface);
 RMLUICORE_API RenderInterface* GetRenderInterface();
 
 /// Sets the interface through which all file I/O requests are made. This is not required to be called, but if it is it
-/// must be called before Initialise().
+/// must be called before Initialize().
 /// @param[in] file_interface A non-owning pointer to the application-specified file interface.
 /// @lifetime The interface must be kept alive until after the call to Rml::Shutdown.
 RMLUICORE_API void SetFileInterface(FileInterface* file_interface);
@@ -85,7 +85,7 @@ RMLUICORE_API void SetFileInterface(FileInterface* file_interface);
 RMLUICORE_API FileInterface* GetFileInterface();
 
 /// Sets the interface through which all font requests are made. This is not required to be called, but if it is
-/// it must be called before Initialise().
+/// it must be called before Initialize().
 /// @param[in] font_interface A non-owning pointer to the application-specified font engine interface.
 /// @lifetime The interface must be kept alive until after the call to Rml::Shutdown.
 RMLUICORE_API void SetFontEngineInterface(FontEngineInterface* font_interface);

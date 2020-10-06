@@ -47,7 +47,7 @@ class FontFaceHandleDefault;
 class FontProvider
 {
 public:
-	static bool Initialise();
+	static bool Initialize();
 	static void Shutdown();
 
 	/// Returns a handle to a font face that can be used to position and render text. This will return the closest match

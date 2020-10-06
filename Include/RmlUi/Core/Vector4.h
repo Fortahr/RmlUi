@@ -44,10 +44,10 @@ template < typename Type >
 class Vector4
 {
 	public:
-		/// Initialising constructor.
+		/// Initializing constructor.
 		/// @param[in] v Initial value of each element in the vector.
 		explicit inline Vector4(Type v = Type{ 0 });
-		/// Initialising constructor.
+		/// Initializing constructor.
 		/// @param[in] x Initial x-value of the vector.
 		/// @param[in] y Initial y-value of the vector.
 		/// @param[in] z Initial z-value of the vector.
@@ -62,9 +62,9 @@ class Vector4
 		/// Returns the squared magnitude of the vector.
 		/// @return The computed squared magnitude.
 		inline Type SquaredMagnitude() const;
-		/// Generates a normalised vector from this vector.
-		/// @return The normalised vector.
-		inline Vector4 Normalise() const;
+		/// Generates a normalized vector from this vector.
+		/// @return The normalized vector.
+		inline Vector4 Normalize() const;
 
 		/// Computes the dot-product between this vector and another.
 		/// @param[in] rhs The other vector to use in the dot-product.

@@ -41,7 +41,7 @@ ElementHandle::ElementHandle(const String& tag) : Element(tag), drag_start(0, 0)
 
 	move_target = nullptr;
 	size_target = nullptr;
-	initialised = false;
+	initialized = false;
 }
 
 ElementHandle::~ElementHandle()
@@ -52,11 +52,11 @@ void ElementHandle::OnAttributeChange(const ElementAttributes& changed_attribute
 {
 	Element::OnAttributeChange(changed_attributes);
 
-	// Reset initialised state if the move or size targets have changed.
+	// Reset initialized state if the move or size targets have changed.
 	if (changed_attributes.find("move_target") != changed_attributes.end() ||
 		changed_attributes.find("size_target") != changed_attributes.end())
 	{
-		initialised = false;
+		initialized = false;
 		move_target = nullptr;
 		size_target = nullptr;
 	}
@@ -68,8 +68,8 @@ void ElementHandle::ProcessDefaultAction(Event& event)
 
 	if (event.GetTargetElement() == this)
 	{
-		// Lazy initialisation.
-		if (!initialised && GetOwnerDocument())
+		// Lazy initialization.
+		if (!initialized && GetOwnerDocument())
 		{
 			String move_target_name = GetAttribute<String>("move_target", "");
 			if (!move_target_name.empty())
@@ -79,7 +79,7 @@ void ElementHandle::ProcessDefaultAction(Event& event)
 			if (!size_target_name.empty())
 				size_target = GetElementById(size_target_name);
 
-			initialised = true;
+			initialized = true;
 		}
 
 		if (event == EventId::Dragstart)

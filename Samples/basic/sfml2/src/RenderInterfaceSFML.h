@@ -57,7 +57,7 @@ public:
 	/// Returns the currently assigned window
 	sf::RenderWindow *GetWindow();
 
-	/// Called by RmlUi when it wants to render geometry that it does not wish to optimise.
+	/// Called by RmlUi when it wants to render geometry that it does not wish to optimize.
 	void RenderGeometry(Rml::Vertex* vertices, int num_vertices, int* indices, int num_indices, Rml::TextureHandle texture, const Rml::Vector2f& translation) override;
 
 	/// Called by RmlUi when it wants to compile geometry it believes will be static for the forseeable future.
