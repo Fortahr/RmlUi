@@ -108,7 +108,10 @@ public:
 	/// @return A constant pointer to the first value.
 	inline operator ColorType*() { return &red; }
 
-	ColorType red, green, blue, alpha;
+	union { ColorType r, x, red; };
+	union { ColorType g, y, green; };
+	union { ColorType b, z, blue; };
+	union { ColorType a, w, alpha; };
 
 #ifdef RMLUI_COLOR_USER_EXTRA
 	#if defined(__has_include) && __has_include(RMLUI_COLOR_USER_EXTRA)
