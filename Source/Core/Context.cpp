@@ -63,7 +63,7 @@ Context::Context(const String& name) : name(name), dimensions(0, 0), density_ind
 	root->SetProperty(PropertyId::ZIndex, Property(0, Property::NUMBER));
 
 	cursor_proxy = Factory::InstanceElement(nullptr, documents_base_tag, documents_base_tag, XMLAttributes());
-	ElementDocument* cursor_proxy_document = rmlui_dynamic_cast< ElementDocument* >(cursor_proxy.get());
+	ElementDocument* cursor_proxy_document = cursor_proxy.get();
 	if (cursor_proxy_document)
 		cursor_proxy_document->context = this;
 	else
@@ -201,7 +201,7 @@ bool Context::Render()
 	// Render the cursor proxy so any elements attached the cursor will be rendered below the cursor.
 	if (cursor_proxy)
 	{
-		static_cast<ElementDocument&>(*cursor_proxy).UpdateDocument();
+		cursor_proxy->UpdateDocument();
 		cursor_proxy->SetOffset(Vector2f((float)Math::Clamp(mouse_position.x, 0, dimensions.x),
 			(float)Math::Clamp(mouse_position.y, 0, dimensions.y)),
 			nullptr);
@@ -1187,7 +1187,7 @@ void Context::CreateDragClone(Element* element)
 	cursor_proxy->AppendChild(std::move(element_drag_clone));
 
 	// Set the style sheet on the cursor proxy.
-	static_cast<ElementDocument&>(*cursor_proxy).SetStyleSheet(element->GetStyleSheet());
+	cursor_proxy->SetStyleSheet(element->GetStyleSheet());
 
 	// Set all the required properties and pseudo-classes on the clone.
 	drag_clone->SetPseudoClass("drag", true);

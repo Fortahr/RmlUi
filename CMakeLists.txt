@@ -336,7 +336,14 @@ foreach(library ${LIBRARIES})
 	set_target_properties(${NAME} PROPERTIES
 	   VERSION ${PROJECT_VERSION}
 	   SOVERSION ${PROJECT_VERSION_MAJOR}
+	   OUTPUT_NAME ${NAME}${CUSTOM_OUTPUT_NAME_POSTFIX}
 	)
+	
+	if(CUSTOM_OUTPUT_NAME_POSTFIX_DEBUG)
+		set_target_properties(${NAME} PROPERTIES
+			OUTPUT_NAME_DEBUG ${NAME}${CUSTOM_OUTPUT_NAME_POSTFIX}
+		)
+	endif()
 	
 	add_common_target_options(${NAME})
 
