@@ -79,6 +79,7 @@ Context::Context(const String& name) : name(name), dimensions(0, 0), density_ind
 
 	drag_started = false;
 	drag_verbose = false;
+	drag_passive = false;
 	drag_clone = nullptr;
 	drag_hover = nullptr;
 
@@ -655,7 +656,7 @@ bool Context::ProcessMouseButtonDown(int button_index, int key_modifier_state)
 
 		active_chain.insert(active_chain.end(), hover_chain.begin(), hover_chain.end());
 
-		if (propagate)
+		if (propagate && !drag_passive)
 		{
 			// Traverse down the hierarchy of the newly focused element (if any), and see if we can begin dragging it.
 			drag_started = false;
@@ -716,7 +717,7 @@ bool Context::ProcessMouseButtonUp(int button_index, int key_modifier_state)
 		active_chain.clear();
 		active = nullptr;
 
-		if (drag)
+		if (drag && !drag_passive)
 		{
 			if (drag_started)
 			{
@@ -741,7 +742,7 @@ bool Context::ProcessMouseButtonUp(int button_index, int key_modifier_state)
 
 				ReleaseDragClone();
 			}
-
+			
 			drag = nullptr;
 			drag_hover = nullptr;
 			drag_hover_chain.clear();
@@ -880,7 +881,7 @@ void Context::OnElementDetach(Element* element)
 			active = nullptr;
 	}
 
-	if (drag)
+	if (drag && !drag_passive)
 	{
 		auto it = drag_hover_chain.find(element);
 		if (it != drag_hover_chain.end())
@@ -1303,6 +1304,42 @@ void Context::SendEvents(const ElementSet& old_items, const ElementSet& new_item
 		if (element)
 			element->DispatchEvent(id, parameters);
 	}
+}
+
+Element* Context::GetDragElement() const
+{
+	return cursor_proxy->GetFirstChild();
+}
+
+void Context::SetDragElement(Element* element)
+{
+	if (element == nullptr)
+	{
+		drag = nullptr;
+		drag_passive = drag_verbose = drag_started = false;
+		drag_hover_chain.clear();
+		cursor_proxy->RemoveChild(cursor_proxy->GetFirstChild());
+	}
+	else
+	{
+		drag = element;
+		drag_passive = drag_verbose = drag_started = true;
+
+		if(element->GetParentNode())
+			cursor_proxy->AppendChild(element->GetParentNode()->RemoveChild(element));
+		//else
+		//	cursor_proxy->AppendChild(element.);
+	}
+}
+
+ElementPtr Context::ReleaseDragElement()
+{
+	Element* drag = this->drag;
+
+	this->drag = nullptr;
+	drag_passive = drag_verbose = drag_started = false;
+	drag_hover_chain.clear();
+	return drag->GetParentNode()->RemoveChild(drag);
 }
 
 void Context::Release()

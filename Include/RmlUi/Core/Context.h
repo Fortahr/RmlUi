@@ -248,6 +248,11 @@ public:
 	/// @return True if succesfully removed, false if no data model was found.
 	bool RemoveDataModel(const String& name);
 
+	Element* GetDragElement() const;
+	void SetDragElement(Element* element);
+
+	ElementPtr ReleaseDragElement();
+
 	/// This will set the documents base <tag> before creation. Default = "body"
 	/// @param[in] tag The name of the base tag. Example: "html"
 	void SetDocumentsBaseTag(const String& tag);
@@ -307,6 +312,8 @@ private:
 	bool drag_started;
 	// True if the current drag is a verbose drag (ie, sends ondragover, ondragout, ondragdrop, etc, events).
 	bool drag_verbose;
+	// True if the current drag got enabled through a SetDragElement();
+	bool drag_passive;
 	// Used when dragging a cloned object.
 	Element* drag_clone;
 

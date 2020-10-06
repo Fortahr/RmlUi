@@ -227,10 +227,22 @@ void Variant::Set(const int value)
 	SET_VARIANT(int);
 }
 
+void Variant::Set(const unsigned int value)
+{
+	type = UINT;
+	SET_VARIANT(unsigned int);
+}
+
 void Variant::Set(const int64_t value)
 {
 	type = INT64;
 	SET_VARIANT(int64_t);
+}
+
+void Variant::Set(const uint64_t value)
+{
+	type = UINT64;
+	SET_VARIANT(uint64_t);
 }
 
 void Variant::Set(const char* value) 
