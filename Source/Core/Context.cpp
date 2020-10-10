@@ -1318,6 +1318,19 @@ void Context::SetDragElement(Element* element)
 		drag = nullptr;
 		drag_passive = drag_verbose = drag_started = false;
 		drag_hover_chain.clear();
+
+		if (drag_hover)
+		{
+			Dictionary drag_parameters;
+			GenerateMouseEventParameters(drag_parameters);
+			GenerateDragEventParameters(drag_parameters);
+
+			drag_hover->DispatchEvent(EventId::Dragdrop, drag_parameters);
+			// User may have removed the element, do an extra check.
+			if (drag_hover)
+				drag_hover->DispatchEvent(EventId::Dragout, drag_parameters);
+		}
+
 		cursor_proxy->RemoveChild(cursor_proxy->GetFirstChild());
 	}
 	else
@@ -1325,10 +1338,11 @@ void Context::SetDragElement(Element* element)
 		drag = element;
 		drag_passive = drag_verbose = drag_started = true;
 
-		if(element->GetParentNode())
+		if (element->GetParentNode())
+		{
+			cursor_proxy->SetStyleSheet(element->GetStyleSheet());
 			cursor_proxy->AppendChild(element->GetParentNode()->RemoveChild(element));
-		//else
-		//	cursor_proxy->AppendChild(element.);
+		}
 	}
 }
 
@@ -1339,6 +1353,19 @@ ElementPtr Context::ReleaseDragElement()
 	this->drag = nullptr;
 	drag_passive = drag_verbose = drag_started = false;
 	drag_hover_chain.clear();
+
+	if (drag_hover)
+	{
+		Dictionary drag_parameters;
+		GenerateMouseEventParameters(drag_parameters);
+		GenerateDragEventParameters(drag_parameters);
+
+		drag_hover->DispatchEvent(EventId::Dragdrop, drag_parameters);
+		// User may have removed the element, do an extra check.
+		if (drag_hover)
+			drag_hover->DispatchEvent(EventId::Dragout, drag_parameters);
+	}
+
 	return drag->GetParentNode()->RemoveChild(drag);
 }
 
