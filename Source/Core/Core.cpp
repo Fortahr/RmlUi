@@ -66,7 +66,7 @@ static FontEngineInterface* font_interface = nullptr;
 static UniquePtr<FileInterface> default_file_interface;
 static UniquePtr<FontEngineInterface> default_font_interface;
 
-static bool initialised = false;
+static bool initialized = false;
 
 using ContextMap = UnorderedMap< String, ContextPtr >;
 static ContextMap contexts;
@@ -78,7 +78,7 @@ static ContextMap contexts;
 
 bool Initialise()
 {
-	RMLUI_ASSERTMSG(!initialised, "Rml::Initialise() called, but RmlUi is already initialised!");
+	RMLUI_ASSERTMSG(!initialized, "Rml::Initialise() called, but RmlUi is already initialized!");
 
 	Log::Initialize();
 
@@ -125,14 +125,14 @@ bool Initialise()
 	// Notify all plugins we're starting up.
 	PluginRegistry::NotifyInitialize();
 
-	initialised = true;
+	initialized = true;
 
 	return true;
 }
 
 void Shutdown()
 {
-	RMLUI_ASSERTMSG(initialised, "Rml::Shutdown() called, but RmlUi is not initialised!");
+	RMLUI_ASSERTMSG(initialized, "Rml::Shutdown() called, but RmlUi is not initialized!");
 
 	// Clear out all contexts, which should also clean up all attached elements.
 	contexts.clear();
@@ -150,7 +150,7 @@ void Shutdown()
 
 	TextureDatabase::Shutdown();
 
-	initialised = false;
+	initialized = false;
 
 	render_interface = nullptr;
 	file_interface = nullptr;
@@ -218,7 +218,7 @@ FontEngineInterface* GetFontEngineInterface()
 // Creates a new element context.
 Context* CreateContext(const String& name, const Vector2i& dimensions, RenderInterface* custom_render_interface)
 {
-	if (!initialised)
+	if (!initialized)
 		return nullptr;
 
 	if (!custom_render_interface && !render_interface)
@@ -317,7 +317,7 @@ bool LoadFontFace(const byte* data, int data_size, const String& font_family, St
 // Registers a generic rmlui plugin
 void RegisterPlugin(Plugin* plugin)
 {
-	if (initialised)
+	if (initialized)
 		plugin->OnInitialize();
 
 	PluginRegistry::RegisterPlugin(plugin);
