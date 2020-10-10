@@ -62,11 +62,11 @@ static FileInterface* file_interface = nullptr;
 // RmlUi's font engine interface.
 static FontEngineInterface* font_interface = nullptr;
 
-// Default interfaces should be created and destroyed on Initialize and Shutdown, respectively.
+// Default interfaces should be created and destroyed on Initialise and Shutdown, respectively.
 static UniquePtr<FileInterface> default_file_interface;
 static UniquePtr<FontEngineInterface> default_font_interface;
 
-static bool initialized = false;
+static bool initialised = false;
 
 using ContextMap = UnorderedMap< String, ContextPtr >;
 static ContextMap contexts;
@@ -76,8 +76,12 @@ static ContextMap contexts;
 #endif
 
 
-bool Initialize()
+bool Initialise()
 {
+	RMLUI_ASSERTMSG(!initialised, "Rml::Initialise() called, but RmlUi is already initialised!");
+
+	Log::Initialize();
+
 	// Check for valid interfaces, or install default interfaces as appropriate.
 	if (!system_interface)
 	{	
@@ -95,8 +99,6 @@ bool Initialize()
 		return false;
 #endif
 	}
-
-	Log::Initialize();
 
 	EventSpecificationInterface::Initialize();
 
@@ -123,36 +125,40 @@ bool Initialize()
 	// Notify all plugins we're starting up.
 	PluginRegistry::NotifyInitialize();
 
-	initialized = true;
+	initialised = true;
 
 	return true;
 }
 
 void Shutdown()
 {
+	RMLUI_ASSERTMSG(initialised, "Rml::Shutdown() called, but RmlUi is not initialised!");
+
 	// Clear out all contexts, which should also clean up all attached elements.
 	contexts.clear();
 
 	// Notify all plugins we're being shutdown.
 	PluginRegistry::NotifyShutdown();
 
+	Factory::Shutdown();
 	TemplateCache::Shutdown();
 	StyleSheetFactory::Shutdown();
 	StyleSheetSpecification::Shutdown();
+
+	font_interface = nullptr;
+	default_font_interface.reset();
+
 	TextureDatabase::Shutdown();
-	Factory::Shutdown();
 
-	Log::Shutdown();
-
-	initialized = false;
+	initialised = false;
 
 	render_interface = nullptr;
 	file_interface = nullptr;
 	system_interface = nullptr;
-	font_interface = nullptr;
 
 	default_file_interface.reset();
-	default_font_interface.reset();
+
+	Log::Shutdown();
 }
 
 // Returns the version of this RmlUi library.
@@ -212,7 +218,7 @@ FontEngineInterface* GetFontEngineInterface()
 // Creates a new element context.
 Context* CreateContext(const String& name, const Vector2i& dimensions, RenderInterface* custom_render_interface)
 {
-	if (!initialized)
+	if (!initialised)
 		return nullptr;
 
 	if (!custom_render_interface && !render_interface)
@@ -311,7 +317,7 @@ bool LoadFontFace(const byte* data, int data_size, const String& font_family, St
 // Registers a generic rmlui plugin
 void RegisterPlugin(Plugin* plugin)
 {
-	if (initialized)
+	if (initialised)
 		plugin->OnInitialize();
 
 	PluginRegistry::RegisterPlugin(plugin);
