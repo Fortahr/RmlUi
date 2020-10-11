@@ -29,9 +29,9 @@
 #ifndef RMLUI_CORE_ELEMENTS_WIDGETTEXTINPUT_H
 #define RMLUI_CORE_ELEMENTS_WIDGETTEXTINPUT_H
 
-#include "../../../Include/RmlUi/Core/EventListener.h"
-#include "../../../Include/RmlUi/Core/Geometry.h"
-#include "../../../Include/RmlUi/Core/Vertex.h"
+#include "../EventListener.h"
+#include "../Geometry.h"
+#include "../Vertex.h"
 
 namespace Rml {
 
@@ -44,9 +44,11 @@ class ElementFormControl;
 	@author Peter Curry
  */
 
-class WidgetTextInput : public EventListener
+class RMLUICORE_API WidgetTextInput : public EventListener
 {
 public:
+	enum class CursorMovement { Begin = -4, BeginLine = -3, PreviousWord = -2, Left = -1, Right = 1, NextWord = 2, EndLine = 3, End = 4 };
+
 	WidgetTextInput(ElementFormControl* parent);
 	virtual ~WidgetTextInput();
 
@@ -80,8 +82,16 @@ public:
 	/// Returns the input element's maximum allowed text dimensions.
 	const Vector2f& GetTextDimensions() const;
 
+	/// Moves the cursor along the current line.
+	/// @param[in] movement Cursor movement operation.
+	/// @param[in] select True if the movement will also move the selection cursor, false if not.
+	void MoveCursorHorizontal(CursorMovement movement, bool select = false);
+	/// Moves the cursor up and down the text field.
+	/// @param[in] x How far to move the cursor.
+	/// @param[in] select True if the movement will also move the selection cursor, false if not.
+	void MoveCursorVertical(int distance, bool select = false);
+
 protected:
-	enum class CursorMovement { Begin = -4, BeginLine = -3, PreviousWord = -2, Left = -1, Right = 1, NextWord = 2, EndLine = 3, End = 4 };
 
 	/// Processes the "keydown" and "textinput" event to write to the input field, and the "focus" and
 	/// "blur" to set the state of the cursor.
@@ -113,14 +123,6 @@ protected:
 
 private:
 	
-	/// Moves the cursor along the current line.
-	/// @param[in] movement Cursor movement operation.
-	/// @param[in] select True if the movement will also move the selection cursor, false if not.
-	void MoveCursorHorizontal(CursorMovement movement, bool select);
-	/// Moves the cursor up and down the text field.
-	/// @param[in] x How far to move the cursor.
-	/// @param[in] select True if the movement will also move the selection cursor, false if not.
-	void MoveCursorVertical(int distance, bool select);
 	// Move the cursor to utf-8 boundaries, in case it was moved into the middle of a multibyte character.
 	/// @param[in] forward True to seek forward, else back.
 	void MoveCursorToCharacterBoundaries(bool forward);

@@ -26,7 +26,7 @@
  *
  */
 
-#include "InputTypeText.h"
+#include "../../../Include/RmlUi/Core/Elements/InputTypeText.h"
 #include "../../../Include/RmlUi/Core/ElementUtilities.h"
 #include "WidgetTextInputSingleLine.h"
 #include "WidgetTextInputSingleLinePassword.h"
@@ -117,6 +117,11 @@ bool InputTypeText::GetIntrinsicDimensions(Vector2f& dimensions, float& /*ratio*
 	dimensions.y = element->GetLineHeight() + 2.0f;
 
 	return true;
+}
+
+WidgetTextInput* InputTypeText::GetWidgetTextInput() const
+{
+	return widget;
 }
 
 } // namespace Rml

@@ -480,8 +480,12 @@ bool Variant::operator==(const Variant & other) const
 		return DEFAULT_VARIANT_COMPARE(double);
 	case INT:
 		return DEFAULT_VARIANT_COMPARE(int);
+	case UINT:
+		return DEFAULT_VARIANT_COMPARE(unsigned int);
 	case INT64:
 		return DEFAULT_VARIANT_COMPARE(int64_t);
+	case UINT64:
+		return DEFAULT_VARIANT_COMPARE(uint64_t);
 	case STRING:
 		return DEFAULT_VARIANT_COMPARE(String);
 	case VECTOR2:

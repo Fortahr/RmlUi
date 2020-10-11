@@ -26,24 +26,24 @@
  *
  */
 
-#ifndef RMLUI_CORE_ELEMENTS_INPUTTYPERADIO_H
-#define RMLUI_CORE_ELEMENTS_INPUTTYPERADIO_H
+#ifndef RMLUI_CORE_ELEMENTS_INPUTTYPECHECKBOX_H
+#define RMLUI_CORE_ELEMENTS_INPUTTYPECHECKBOX_H
 
 #include "InputType.h"
 
 namespace Rml {
 
 /**
-	A radio button input type handler.
+	A checkbox input type handler.
 
 	@author Peter Curry
  */
 
-class InputTypeRadio : public InputType
+class RMLUICORE_API InputTypeCheckbox : public InputType
 {
 public:
-	InputTypeRadio(ElementFormControlInput* element);
-	virtual ~InputTypeRadio();
+	InputTypeCheckbox(ElementFormControlInput* element);
+	virtual ~InputTypeCheckbox();
 
 	/// Returns if this value should be submitted with the form.
 	/// @return True if the form control is to be submitted, false otherwise.
@@ -54,9 +54,6 @@ public:
 	/// @return True if no layout is required, false if the layout needs to be dirtied.
 	bool OnAttributeChange(const ElementAttributes& changed_attributes) override;
 
-	/// Pops the element's radio set if we are checked.
-	void OnChildAdd() override;
-
 	/// Checks for necessary functional changes in the control as a result of the event.
 	/// @param[in] event The event to process.
 	void ProcessDefaultAction(Event& event) override;
@@ -64,10 +61,6 @@ public:
 	/// Sizes the dimensions to the element's inherent size.
 	/// @return True.
 	bool GetIntrinsicDimensions(Vector2f& dimensions, float& ratio) override;
-
-private:
-	/// Pops all other radio buttons in our form that share our name.
-	void PopRadioSet();
 };
 
 } // namespace Rml

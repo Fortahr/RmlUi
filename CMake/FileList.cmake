@@ -27,16 +27,8 @@ set(Core_HDR_FILES
     ${PROJECT_SOURCE_DIR}/Source/Core/ElementHandle.h
     ${PROJECT_SOURCE_DIR}/Source/Core/Elements/ElementImage.h
     ${PROJECT_SOURCE_DIR}/Source/Core/Elements/ElementTextSelection.h
-    ${PROJECT_SOURCE_DIR}/Source/Core/Elements/InputType.h
-    ${PROJECT_SOURCE_DIR}/Source/Core/Elements/InputTypeButton.h
-    ${PROJECT_SOURCE_DIR}/Source/Core/Elements/InputTypeCheckbox.h
-    ${PROJECT_SOURCE_DIR}/Source/Core/Elements/InputTypeRadio.h
-    ${PROJECT_SOURCE_DIR}/Source/Core/Elements/InputTypeRange.h
-    ${PROJECT_SOURCE_DIR}/Source/Core/Elements/InputTypeSubmit.h
-    ${PROJECT_SOURCE_DIR}/Source/Core/Elements/InputTypeText.h
     ${PROJECT_SOURCE_DIR}/Source/Core/Elements/WidgetDropDown.h
     ${PROJECT_SOURCE_DIR}/Source/Core/Elements/WidgetSlider.h
-    ${PROJECT_SOURCE_DIR}/Source/Core/Elements/WidgetTextInput.h
     ${PROJECT_SOURCE_DIR}/Source/Core/Elements/WidgetTextInputMultiLine.h
     ${PROJECT_SOURCE_DIR}/Source/Core/Elements/WidgetTextInputSingleLine.h
     ${PROJECT_SOURCE_DIR}/Source/Core/Elements/WidgetTextInputSingleLinePassword.h
@@ -159,7 +151,15 @@ set(Core_PUB_HDR_FILES
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Elements/ElementFormControlTextArea.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Elements/ElementProgressBar.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Elements/ElementTabSet.h
+    ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Elements/InputType.h
+    ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Elements/InputTypeButton.h
+    ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Elements/InputTypeCheckbox.h
+    ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Elements/InputTypeRadio.h
+    ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Elements/InputTypeRange.h
+    ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Elements/InputTypeSubmit.h
+    ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Elements/InputTypeText.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Elements/SelectOption.h
+    ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Elements/WidgetTextInput.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/ElementScroll.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/ElementText.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/ElementUtilities.h

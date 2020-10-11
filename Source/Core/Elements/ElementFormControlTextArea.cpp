@@ -127,6 +127,12 @@ bool ElementFormControlTextArea::GetIntrinsicDimensions(Vector2f& dimensions, fl
 	return true;
 }
 
+
+WidgetTextInput* ElementFormControlTextArea::GetWidgetTextInput() const
+{
+	return widget;
+}
+
 // Updates the control's widget.
 void ElementFormControlTextArea::OnUpdate()
 {

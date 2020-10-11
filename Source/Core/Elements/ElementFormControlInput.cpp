@@ -28,12 +28,12 @@
 
 #include "../../../Include/RmlUi/Core/Elements/ElementFormControlInput.h"
 #include "../../../Include/RmlUi/Core/Event.h"
-#include "InputTypeButton.h"
-#include "InputTypeCheckbox.h"
-#include "InputTypeRadio.h"
-#include "InputTypeRange.h"
-#include "InputTypeSubmit.h"
-#include "InputTypeText.h"
+#include "../../../Include/RmlUi/Core/Elements/InputTypeButton.h"
+#include "../../../Include/RmlUi/Core/Elements/InputTypeCheckbox.h"
+#include "../../../Include/RmlUi/Core/Elements/InputTypeRadio.h"
+#include "../../../Include/RmlUi/Core/Elements/InputTypeRange.h"
+#include "../../../Include/RmlUi/Core/Elements/InputTypeSubmit.h"
+#include "../../../Include/RmlUi/Core/Elements/InputTypeText.h"
 
 namespace Rml {
 
@@ -182,6 +182,11 @@ bool ElementFormControlInput::GetIntrinsicDimensions(Vector2f& dimensions, float
 	if (!type)
 		return false;
 	return type->GetIntrinsicDimensions(dimensions, ratio);
+}
+
+InputType* ElementFormControlInput::GetInputType() const
+{
+	return type;
 }
 
 } // namespace Rml

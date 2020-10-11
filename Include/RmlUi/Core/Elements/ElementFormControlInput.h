@@ -62,6 +62,9 @@ public:
 	/// Returns if this value's type should be submitted with the form.
 	/// @return True if the form control is to be submitted, false otherwise.
 	bool IsSubmitted() override;
+	/// Returns the underlying functioning type.
+	/// @return InputType* or nullptr
+	InputType* GetInputType() const;
 
 protected:
 	/// Updates the element's underlying type.

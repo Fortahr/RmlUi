@@ -26,7 +26,7 @@
  *
  */
 
-#include "InputTypeSubmit.h"
+#include "../../../Include/RmlUi/Core/Elements/InputTypeSubmit.h"
 #include "../../../Include/RmlUi/Core/Elements/ElementForm.h"
 #include "../../../Include/RmlUi/Core/Elements/ElementFormControlInput.h"
 

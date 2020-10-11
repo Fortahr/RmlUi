@@ -26,39 +26,65 @@
  *
  */
 
-#ifndef RMLUI_CORE_ELEMENTS_INPUTTYPEBUTTON_H
-#define RMLUI_CORE_ELEMENTS_INPUTTYPEBUTTON_H
+#ifndef RMLUI_CORE_ELEMENTS_INPUTTYPETEXT_H
+#define RMLUI_CORE_ELEMENTS_INPUTTYPETEXT_H
 
-#include "../../../Include/RmlUi/Core/EventListener.h"
-#include "../../../Include/RmlUi/Core/ElementDocument.h"
 #include "InputType.h"
 
 namespace Rml {
 
+class WidgetTextInput;
+
 /**
-	A button input type handler. The only functionality a button provides over a normal element is the ability
-	to be disabled. This prevents 'click' events on this element and the ability to receive focus.
+	A single-line input type handler.
 
 	@author Peter Curry
  */
 
-class InputTypeButton : public InputType
+class RMLUICORE_API InputTypeText : public InputType
 {
 public:
-	InputTypeButton(ElementFormControlInput* element);
-	virtual ~InputTypeButton();
+	enum Visibility
+	{
+		VISIBLE,
+		OBSCURED
+	};
 
-	/// Returns if this value should be submitted with the form.
-	/// @return True if the form control is to be submitted, false otherwise.
-	bool IsSubmitted() override;
+	InputTypeText(ElementFormControlInput* element, Visibility visibility = VISIBLE);
+	virtual ~InputTypeText();
+
+	/// Called every update from the host element.
+	void OnUpdate() override;
+
+	/// Called every render from the host element.
+	void OnRender() override;
+
+	/// Called when the parent element's size changes.
+	void OnResize() override;
+
+	/// Checks for necessary functional changes in the control as a result of changed attributes.
+	/// @param[in] changed_attributes The list of changed attributes.
+	/// @return True if no layout is required, false if the layout needs to be dirtied.
+	bool OnAttributeChange(const ElementAttributes& changed_attributes) override;
+	/// Called when properties on the control are changed.
+	/// @param[in] changed_properties The properties changed on the element.
+	void OnPropertyChange(const PropertyIdSet& changed_properties) override;
 
 	/// Checks for necessary functional changes in the control as a result of the event.
 	/// @param[in] event The event to process.
 	void ProcessDefaultAction(Event& event) override;
 
 	/// Sizes the dimensions to the element's inherent size.
-	/// @return False.
+	/// @return True.
 	bool GetIntrinsicDimensions(Vector2f& dimensions, float& ratio) override;
+
+	/// Returns the widget that controls the text field.
+	/// @return WidgetTextInput* or nullptr if non exists.
+	WidgetTextInput* GetWidgetTextInput() const;
+private:
+	int size;
+
+	WidgetTextInput* widget;
 };
 
 } // namespace Rml

@@ -26,67 +26,52 @@
  *
  */
 
-#ifndef RMLUI_CORE_ELEMENTS_INPUTTYPE_H
-#define RMLUI_CORE_ELEMENTS_INPUTTYPE_H
+#ifndef RMLUI_CORE_ELEMENTS_INPUTTYPERANGE_H
+#define RMLUI_CORE_ELEMENTS_INPUTTYPERANGE_H
 
-#include "../../../Include/RmlUi/Core/Event.h"
-#include "../../../Include/RmlUi/Core/Types.h"
+#include "InputType.h"
 
 namespace Rml {
 
-class ElementFormControlInput;
+class WidgetSlider;
 
 /**
-	An interface for a input type handler used by ElementFormControlInput. A concrete InputType object handles the
-	functionality of an input element.
+	A range input type handler.
 
 	@author Peter Curry
  */
 
-class InputType
+class RMLUICORE_API InputTypeRange : public InputType
 {
 public:
-	InputType(ElementFormControlInput* element);
-	virtual ~InputType();
+	InputTypeRange(ElementFormControlInput* element);
+	virtual ~InputTypeRange();
 
 	/// Returns a string representation of the current value of the form control.
 	/// @return The value of the form control.
-	virtual String GetValue() const;
-	/// Returns if this value should be submitted with the form.
-	/// @return True if the form control is to be submitted, false otherwise.
-	virtual bool IsSubmitted();
+	String GetValue() const override;
 
 	/// Called every update from the host element.
-	virtual void OnUpdate();
-
-	/// Called every render from the host element.
-	virtual void OnRender();
+	void OnUpdate() override;
 
 	/// Called every time the host element's size changes.
-	virtual void OnResize();
+	void OnResize() override;
 
 	/// Checks for necessary functional changes in the control as a result of changed attributes.
 	/// @param[in] changed_attributes The list of changed attributes.
 	/// @return True if no layout is required, false if the layout needs to be dirtied.
-	virtual bool OnAttributeChange(const ElementAttributes& changed_attributes);
-	/// Called when properties on the control are changed.
-	/// @param[in] changed_properties The properties changed on the element.
-	virtual void OnPropertyChange(const PropertyIdSet& changed_properties);
-
-	/// Called when the element is added into a hierarchy.
-	virtual void OnChildAdd();
-	/// Called when the element is removed from a hierarchy.
-	virtual void OnChildRemove();
+	bool OnAttributeChange(const ElementAttributes& changed_attributes) override;
 
 	/// Checks for necessary functional changes in the control as a result of the event.
 	/// @param[in] event The event to process.
-	virtual void ProcessDefaultAction(Event& event) = 0;
+	void ProcessDefaultAction(Event& event) override;
 
 	/// Sizes the dimensions to the element's inherent size.
-	virtual bool GetIntrinsicDimensions(Vector2f& dimensions, float& ratio) = 0;
+	/// @return True.
+	bool GetIntrinsicDimensions(Vector2f& dimensions, float& ratio) override;
 
-protected:
-	ElementFormControlInput* element;
+private:
+	WidgetSlider* widget;
 };
 
 } // namespace Rml

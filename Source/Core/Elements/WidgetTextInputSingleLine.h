@@ -29,7 +29,7 @@
 #ifndef RMLUI_CORE_ELEMENTS_WIDGETTEXTINPUTSINGLELINE_H
 #define RMLUI_CORE_ELEMENTS_WIDGETTEXTINPUTSINGLELINE_H
 
-#include "WidgetTextInput.h"
+#include "../../../Include/RmlUi/Core/Elements/WidgetTextInput.h"
 
 namespace Rml {
 
@@ -39,7 +39,7 @@ namespace Rml {
 	@author Peter Curry
  */
 
-class WidgetTextInputSingleLine : public WidgetTextInput
+class RMLUICORE_API WidgetTextInputSingleLine : public WidgetTextInput
 {
 public:
 	WidgetTextInputSingleLine(ElementFormControl* parent);

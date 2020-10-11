@@ -26,7 +26,7 @@
  *
  */
 
-#include "WidgetTextInput.h"
+#include "../../../Include/RmlUi/Core/Elements/WidgetTextInput.h"
 #include "ElementTextSelection.h"
 #include "../../../Include/RmlUi/Core/Elements/ElementFormControl.h"
 #include "../../../Include/RmlUi/Core/Core.h"

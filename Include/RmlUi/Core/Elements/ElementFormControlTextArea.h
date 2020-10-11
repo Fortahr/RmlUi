@@ -95,6 +95,10 @@ public:
 	/// @return True.
 	bool GetIntrinsicDimensions(Vector2f& dimensions, float& ratio) override;
 
+	/// Returns the widget that controls the text field.
+	/// @return WidgetTextInput* or nullptr if non exists.
+	WidgetTextInput* GetWidgetTextInput() const;
+
 protected:
 	/// Updates the control's widget.
 	void OnUpdate() override;
