@@ -176,6 +176,7 @@ set(Core_PUB_HDR_FILES
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Geometry.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/GeometryUtilities.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Header.h
+	${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/HeterogeneousLookup.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/ID.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Input.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Log.h
@@ -200,6 +201,7 @@ set(Core_PUB_HDR_FILES
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/Stream.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/StreamMemory.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/StringUtilities.h
+    ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/StringView.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/StyleSheet.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/StyleSheetSpecification.h
     ${PROJECT_SOURCE_DIR}/Include/RmlUi/Core/SystemInterface.h
@@ -357,6 +359,7 @@ set(Core_SRC_FILES
     ${PROJECT_SOURCE_DIR}/Source/Core/StreamFile.cpp
     ${PROJECT_SOURCE_DIR}/Source/Core/StreamMemory.cpp
     ${PROJECT_SOURCE_DIR}/Source/Core/StringUtilities.cpp
+	${PROJECT_SOURCE_DIR}/Source/Core/StringView.cpp
     ${PROJECT_SOURCE_DIR}/Source/Core/StyleSheet.cpp
     ${PROJECT_SOURCE_DIR}/Source/Core/StyleSheetFactory.cpp
     ${PROJECT_SOURCE_DIR}/Source/Core/StyleSheetNode.cpp

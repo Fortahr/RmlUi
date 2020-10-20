@@ -117,8 +117,8 @@ bool Initialize()
 	}
 
 	StyleSheetSpecification::Initialize();
+	StyleSheetParser::Initialize();
 	StyleSheetFactory::Initialize();
-	StyleSheetParser::Initialise();
 
 	TemplateCache::Initialize();
 
