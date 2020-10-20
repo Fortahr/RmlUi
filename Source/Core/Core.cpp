@@ -42,6 +42,7 @@
 #include "GeometryDatabase.h"
 #include "PluginRegistry.h"
 #include "StyleSheetFactory.h"
+#include "StyleSheetParser.h"
 #include "TemplateCache.h"
 #include "TextureDatabase.h"
 #include "EventSpecification.h"
@@ -117,6 +118,7 @@ bool Initialize()
 
 	StyleSheetSpecification::Initialize();
 	StyleSheetFactory::Initialize();
+	StyleSheetParser::Initialise();
 
 	TemplateCache::Initialize();
 
@@ -143,6 +145,7 @@ void Shutdown()
 	Factory::Shutdown();
 	TemplateCache::Shutdown();
 	StyleSheetFactory::Shutdown();
+	StyleSheetParser::Shutdown();
 	StyleSheetSpecification::Shutdown();
 
 	font_interface = nullptr;
@@ -326,6 +329,11 @@ void RegisterPlugin(Plugin* plugin)
 EventId RegisterEventType(const String& type, bool interruptible, bool bubbles, DefaultActionPhase default_action_phase)
 {
 	return EventSpecificationInterface::InsertOrReplaceCustom(type, interruptible, bubbles, default_action_phase);
+}
+
+StringList GetTextureSourceList()
+{
+	return TextureDatabase::GetSourceList();
 }
 
 void ReleaseTextures()

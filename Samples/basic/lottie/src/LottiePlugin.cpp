@@ -26,8 +26,43 @@
  *
  */
 
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include <doctest.h>
 
-#include "../Common/TestsInterface.cpp"
-#include "../Common/TestsShell.cpp"
+#include "ElementLottie.h"
+#include <RmlUi/Core/ElementInstancer.h>
+#include <RmlUi/Core/Factory.h>
+#include <RmlUi/Core/Plugin.h>
+#include <RmlUi/Core/Core.h>
+
+namespace Rml {
+namespace Lottie {
+
+static UniquePtr<ElementInstancerGeneric<ElementLottie>> instancer;
+
+class LottiePlugin : public Plugin {
+public:
+	void OnShutdown() override
+	{
+		instancer.reset();
+		delete this;
+	}
+
+	int GetEventClasses() override
+	{
+		return Plugin::EVT_BASIC;
+	}
+};
+
+void Initialise()
+{
+	if (!instancer)
+	{
+		instancer = MakeUnique<ElementInstancerGeneric<ElementLottie> >();
+
+		Factory::RegisterElementInstancer("lottie", instancer.get());
+
+		RegisterPlugin(new LottiePlugin());
+	}
+}
+
+}
+}

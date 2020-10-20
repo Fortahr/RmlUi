@@ -26,8 +26,16 @@
  *
  */
 
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include <doctest.h>
+#ifndef RMLUI_LOTTIE_PLUGIN_H
+#define RMLUI_LOTTIE_PLUGIN_H
 
-#include "../Common/TestsInterface.cpp"
-#include "../Common/TestsShell.cpp"
+
+namespace Rml {
+namespace Lottie {
+
+void Initialise();
+
+}
+}
+
+#endif
