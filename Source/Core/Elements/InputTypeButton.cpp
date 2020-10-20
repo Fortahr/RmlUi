@@ -34,6 +34,7 @@ namespace Rml {
 
 InputTypeButton::InputTypeButton(ElementFormControlInput* element) : InputType(element)
 {
+	element->SetInnerRML(element->GetAttribute<String>("value", "Submit"));
 }
 
 InputTypeButton::~InputTypeButton()
@@ -48,6 +49,17 @@ bool InputTypeButton::IsSubmitted()
 
 void InputTypeButton::ProcessDefaultAction(Event& /*event*/)
 {
+}
+
+// Checks for necessary functional changes in the control as a result of changed attributes.
+bool InputTypeButton::OnAttributeChange(const ElementAttributes& changed_attributes)
+{
+	// Check if the value has been changed.
+	auto it = changed_attributes.find("value");
+	if (it != changed_attributes.end())
+		element->SetInnerRML(it->second.Get<String>());
+
+	return true;
 }
 
 // Sizes the dimensions to the element's inherent size.
