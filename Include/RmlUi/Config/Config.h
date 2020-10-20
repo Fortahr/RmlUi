@@ -100,8 +100,8 @@ using SmallUnorderedSet = std::unordered_set< T >;
 template <typename T>
 using SmallOrderedSet = std::set< T >;
 #else
-template < typename Key, typename Value>
-using UnorderedMap = robin_hood::unordered_flat_map< Key, Value >;
+template <typename Key, typename Value, typename Hash = robin_hood::hash<Key>, typename Equal = std::equal_to<Key>>
+using UnorderedMap = robin_hood::unordered_flat_map< Key, Value, Hash, Equal>;
 template <typename Key, typename Value>
 using SmallUnorderedMap = chobo::flat_map< Key, Value >;
 template <typename T>

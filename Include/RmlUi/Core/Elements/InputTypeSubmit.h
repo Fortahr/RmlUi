@@ -52,6 +52,9 @@ public:
 	/// Checks for necessary functional changes in the control as a result of the event.
 	/// @param[in] event The event to process.
 	void ProcessDefaultAction(Event& event) override;
+	/// Called when properties on the control are changed.
+	/// @param[in] changed_properties The properties changed on the element.
+	bool OnAttributeChange(const ElementAttributes& changed_attributes) override;
 
 	/// Sizes the dimensions to the element's inherent size.
 	/// @return False.

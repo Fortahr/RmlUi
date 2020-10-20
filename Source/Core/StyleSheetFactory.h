@@ -66,7 +66,7 @@ public:
 	/// Returns one of the available node selectors.
 	/// @param name[in] The name of the desired selector.
 	/// @return The selector registered with the given name, or nullptr if none exists.
-	static StructuralSelector GetSelector(const String& name);
+	static StructuralSelector GetSelector(StringView name);
 
 private:
 	StyleSheetFactory();

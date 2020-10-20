@@ -59,8 +59,8 @@ struct Spritesheet {
 	Texture texture;
 	StringList sprite_names;
 
-	Spritesheet(const String& name, const String& image_source, const String& definition_source, int definition_line_number, const Texture& texture)
-		: name(name), image_source(image_source), definition_source(definition_source), definition_line_number(definition_line_number), texture(texture) {}
+	Spritesheet(const StringView& name, const String& image_source, const String& definition_source, int definition_line_number, const Texture& texture)
+		: name(String(name)), image_source(image_source), definition_source(definition_source), definition_line_number(definition_line_number), texture(texture) {}
 };
 
 using SpritesheetMap = SmallUnorderedMap<String, SharedPtr<const Spritesheet>>; // key: spritesheet name (as given in @spritesheet)
@@ -73,7 +73,7 @@ using SpriteDefinitionList = Vector<Pair<String, Rectangle>>; // Sprite name and
 class SpritesheetList {
 public:
 	/// Adds a new sprite sheet to the list and inserts all sprites with unique names into the global list.
-	bool AddSpriteSheet(const String& name, const String& image_source, const String& definition_source, int definition_line_number, const SpriteDefinitionList& sprite_definitions);
+	bool AddSpriteSheet(const StringView& name, const String& image_source, const String& definition_source, int definition_line_number, const SpriteDefinitionList& sprite_definitions);
 
 	/// Get a sprite from its name if it exists.
 	/// Note: The pointer is invalidated whenever another sprite is added. Do not store it around.

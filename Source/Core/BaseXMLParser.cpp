@@ -338,7 +338,7 @@ bool BaseXMLParser::ReadCloseTag(const size_t xml_index_tag)
 	if (!FindString(">", tag_name))
 		return false;
 
-	HandleElementEndInternal(StringUtilities::StripWhitespace(tag_name));
+	HandleElementEndInternal(StringUtilities::TrimWhitespace(tag_name));
 
 
 	// Tag closed, reduce count
@@ -414,7 +414,7 @@ bool BaseXMLParser::ReadCDATA(const char* tag_terminator)
 				if (FindString(">", tag))
 				{
 					size_t slash_pos = tag.find('/');
-					String tag_name = StringUtilities::StripWhitespace(slash_pos == String::npos ? tag : tag.substr(slash_pos + 1));
+					String tag_name = StringUtilities::TrimWhitespace(slash_pos == String::npos ? tag : tag.substr(slash_pos + 1));
 					if (StringUtilities::ToLower(tag_name) == tag_terminator)
 					{
 						data += cdata;

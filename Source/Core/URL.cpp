@@ -189,13 +189,13 @@ bool URL::SetURL(const String& _url)
 		path_begin = path_segment.c_str();
 		
 		// Loop through all parameters, loading them
-		StringList parameter_list;
-		StringUtilities::ExpandString( parameter_list, parameters + 1, '&' );
+		Vector<StringView> parameter_list;
+		StringUtilities::ExpandString(parameter_list, StringView(parameters + 1, strlen(parameters) - 1), '&');
 		for ( size_t i = 0; i < parameter_list.size(); i++ )
 		{
 			// Split into key and value
 			StringList key_value;
-			StringUtilities::ExpandString( key_value, parameter_list[i], '=' );
+			StringUtilities::ExpandString(key_value, parameter_list[i], '=');
 
 			key_value[0] = UrlDecode(key_value[0]);
 			if ( key_value.size() == 2 )

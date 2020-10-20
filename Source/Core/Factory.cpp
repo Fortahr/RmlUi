@@ -93,7 +93,7 @@ using ElementInstancerMap = UnorderedMap< String, ElementInstancer* >;
 static ElementInstancerMap element_instancers;
 
 // Decorator instancers.
-using DecoratorInstancerMap = UnorderedMap< String, DecoratorInstancer* >;
+using DecoratorInstancerMap = UnorderedMap< String, DecoratorInstancer*, RmlRobinHash, RmlRobinEqual>;
 static DecoratorInstancerMap decorator_instancers;
 
 // Font effect instancers.
@@ -413,7 +413,7 @@ bool Factory::InstanceElementText(Element* parent, const String& in_text)
 	{
 		RMLUI_ZoneScopedNC("InstanceStream", 0xDC143C);
 		auto stream = MakeUnique<StreamMemory>(text.size() + 32);
-		String tag = parent->GetContext()->GetDocumentsBaseTag();
+		String tag = "body"; // parent->GetContext()->GetDocumentsBaseTag();
 		String open_tag = "<" + tag + ">";
 		String close_tag = "</" + tag + ">";
 		stream->Write(open_tag.c_str(), open_tag.size());
@@ -503,9 +503,9 @@ void Factory::RegisterDecoratorInstancer(const String& name, DecoratorInstancer*
 }
 
 // Retrieves a decorator instancer registered with the factory.
-DecoratorInstancer* Factory::GetDecoratorInstancer(const String& name)
+DecoratorInstancer* Factory::GetDecoratorInstancer(const StringView& name)
 {
-	auto iterator = decorator_instancers.find(name);
+	auto iterator = decorator_instancers.find(name, {});
 	if (iterator == decorator_instancers.end())
 		return nullptr;
 	

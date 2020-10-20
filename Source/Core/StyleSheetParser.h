@@ -94,13 +94,13 @@ private:
 	// @param properties The dictionary of properties
 	// @param rule_specificity The specifity of the rule
 	// @return The leaf node of the rule
-	static StyleSheetNode* ImportProperties(StyleSheetNode* node, String rule_name, const PropertyDictionary& properties, int rule_specificity);
+	static StyleSheetNode* ImportProperties(StyleSheetNode* node, StringView rule_name, const PropertyDictionary& properties, int rule_specificity);
 
 	// Attempts to parse a @keyframes block
-	bool ParseKeyframeBlock(KeyframesMap & keyframes_map, const String & identifier, const String & rules, const PropertyDictionary & properties);
+	bool ParseKeyframeBlock(KeyframesMap& keyframes_map, StringView identifier, StringView rules, const PropertyDictionary & properties);
 
 	// Attempts to parse a @decorator block
-	bool ParseDecoratorBlock(const String& at_name, DecoratorSpecificationMap& decorator_map, const StyleSheet& style_sheet, const SharedPtr<const PropertySource>& source);
+	bool ParseDecoratorBlock(StringView at_name, DecoratorSpecificationMap& decorator_map, const StyleSheet& style_sheet, const SharedPtr<const PropertySource>& source);
 
 	// Attempts to find one of the given character tokens in the active stream
 	// If it's found, buffer is filled with all content up until the token

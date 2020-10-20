@@ -108,11 +108,13 @@ public:
 	/// @return A constant pointer to the first value.
 	inline operator ColorType*() { return &red; }
 
+#pragma warning(disable : 4201)
 	union{
 		struct { ColorType r, g, b, a; };
 		struct { ColorType x, y, z, w; };
 		struct { ColorType red, green, blue, alpha; };
 	};
+#pragma warning(default : 4201)
 
 #ifdef RMLUI_COLOR_USER_EXTRA
 	#if defined(__has_include) && __has_include(RMLUI_COLOR_USER_EXTRA)

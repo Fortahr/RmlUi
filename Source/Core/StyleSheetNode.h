@@ -62,10 +62,11 @@ class StyleSheetNode
 public:
 	StyleSheetNode();
 	StyleSheetNode(StyleSheetNode* parent, const String& tag, const String& id, const StringList& classes, const StringList& pseudo_classes, const StructuralSelectorList& structural_selectors, bool child_combinator);
+	StyleSheetNode(StyleSheetNode* parent, const StringView& tag, const StringView& id, const Vector<StringView>& classes, const Vector<StringView>& pseudo_classes, const StructuralSelectorList& structural_selectors, bool child_combinator);
 	StyleSheetNode(StyleSheetNode* parent, String&& tag, String&& id, StringList&& classes, StringList&& pseudo_classes, StructuralSelectorList&& structural_selectors, bool child_combinator);
 
 	/// Retrieves a child node with the given requirements if they match an existing node, or else creates a new one.
-	StyleSheetNode* GetOrCreateChildNode(String&& tag, String&& id, StringList&& classes, StringList&& pseudo_classes, StructuralSelectorList&& structural_selectors, bool child_combinator);
+	StyleSheetNode* GetOrCreateChildNode(StringView tag, StringView id, const Vector<StringView>& classes, const Vector<StringView>& pseudo_classes, StructuralSelectorList&& structural_selectors, bool child_combinator);
 	/// Retrieves or creates a child node with requirements equivalent to the 'other' node.
 	StyleSheetNode* GetOrCreateChildNode(const StyleSheetNode& other);
 
@@ -101,7 +102,8 @@ public:
 
 private:
 	// Returns true if the requirements of this node equals the given arguments.
-	bool EqualRequirements(const String& tag, const String& id, const StringList& classes, const StringList& pseudo_classes, const StructuralSelectorList& structural_pseudo_classes, bool child_combinator) const;
+	template<typename S>
+	bool EqualRequirements(const S& tag, const S& id, const Vector<S>& classes, const Vector<S>& pseudo_classes, const StructuralSelectorList& structural_pseudo_classes, bool child_combinator) const;
 
 	void CalculateAndSetSpecificity();
 

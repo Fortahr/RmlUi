@@ -164,15 +164,15 @@ void StyleSheetFactory::ClearStyleSheetCache()
 }
 
 // Returns one of the available node selectors.
-StructuralSelector StyleSheetFactory::GetSelector(const String& name)
+StructuralSelector StyleSheetFactory::GetSelector(StringView name)
 {
 	SelectorMap::const_iterator it;
 	const size_t parameter_start = name.find('(');
 
-	if (parameter_start == String::npos)
-		it = instance->selectors.find(name);
+	if (parameter_start == StringView::npos)
+		it = instance->selectors.find(static_cast<String>(name));
 	else
-		it = instance->selectors.find(name.substr(0, parameter_start));
+		it = instance->selectors.find(static_cast<String>(name.substr(0, parameter_start)));
 
 	if (it == instance->selectors.end())
 		return StructuralSelector(nullptr, 0, 0);
@@ -185,7 +185,7 @@ StructuralSelector StyleSheetFactory::GetSelector(const String& name)
 	if (parameter_start != String::npos &&
 		parameter_end != String::npos)
 	{
-		String parameters = StringUtilities::StripWhitespace(name.substr(parameter_start + 1, parameter_end - (parameter_start + 1)));
+		StringView parameters = StringUtilities::TrimWhitespace(name.substr(parameter_start + 1, parameter_end - (parameter_start + 1)));
 
 		// Check for 'even' or 'odd' first.
 		if (parameters == "even")
@@ -206,7 +206,7 @@ StructuralSelector StyleSheetFactory::GetSelector(const String& name)
 			{
 				// The equation is 0n + b. So a = 0, and we only have to parse b.
 				a = 0;
-				b = atoi(parameters.c_str());
+				b = StringView::stoi(parameters);
 			}
 			else
 			{
@@ -214,11 +214,11 @@ StructuralSelector StyleSheetFactory::GetSelector(const String& name)
 					a = 1;
 				else
 				{
-					const String a_parameter = parameters.substr(0, n_index);
-					if (StringUtilities::StripWhitespace(a_parameter) == "-")
+					StringView a_parameter = parameters.substr(0, n_index);
+					if (StringUtilities::TrimWhitespace(a_parameter) == "-")
 						a = -1;
 					else
-						a = atoi(a_parameter.c_str());
+						a = StringView::stoi(a_parameter);
 				}
 
 				size_t pm_index = parameters.find('+', n_index + 1);

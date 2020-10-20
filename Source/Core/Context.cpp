@@ -311,6 +311,21 @@ void Context::UnloadDocument(ElementDocument* _document)
 		document->DispatchEvent(EventId::Unload, Dictionary());
 		PluginRegistry::NotifyDocumentUnload(document);
 
+		if(hover && hover->GetOwnerDocument() == document)
+			hover = nullptr;
+
+		if (active && active->GetOwnerDocument() == document)
+		{
+			active_chain.clear();
+			active = nullptr;
+		}
+
+		if ((drag && drag->GetOwnerDocument() == document) || (drag_hover && drag_hover->GetOwnerDocument() == document))
+		{
+			drag = drag_hover = nullptr;
+			drag_started = drag_passive = drag_verbose = false;
+		}
+
 		// Move document to a temporary location to be released later.
 		unloaded_documents.push_back( root->RemoveChild(document) );
 	}
@@ -711,9 +726,9 @@ bool Context::ProcessMouseButtonUp(int button_index, int key_modifier_state)
 
 		// Unset the 'active' pseudo-class on all the elements in the active chain; because they may not necessarily
 		// have had 'onmouseup' called on them, we can't guarantee this has happened already.
-		std::for_each(active_chain.begin(), active_chain.end(), [](Element* element) {
+		for(auto* element : active_chain)
 			element->SetPseudoClass("active", false);
-		});
+
 		active_chain.clear();
 		active = nullptr;
 

@@ -31,6 +31,7 @@
 
 #include "Header.h"
 #include "Types.h"
+#include "StringView.h"
 
 namespace Rml {
 
@@ -55,7 +56,8 @@ namespace StringUtilities
 	/// @param[out] string_list Resulting list of values.
 	/// @param[in] string String to expand.
 	/// @param[in] delimiter Delimiter found between entries in the string list.
-	RMLUICORE_API void ExpandString(StringList& string_list, const String& string, const char delimiter = ',');
+	template<typename L, typename S>
+	void ExpandString(Vector<L>& string_list, const S& string, const char delimiter = ',');
 	/// Expands character-delimited list of values with custom quote characters.
 	/// @param[out] string_list Resulting list of values.
 	/// @param[in] string String to expand.
@@ -63,12 +65,14 @@ namespace StringUtilities
 	/// @param[in] quote_character Begin quote
 	/// @param[in] unquote_character End quote
 	/// @param[in] ignore_repeated_delimiters If true, repeated values of the delimiter will not add additional entries to the list.
-	RMLUICORE_API void ExpandString(StringList& string_list, const String& string, const char delimiter, char quote_character, char unquote_character, bool ignore_repeated_delimiters = false);
+	template<typename L, typename S>
+	void ExpandString(Vector<L>& string_list, const S& string, const char delimiter, char quote_character, char unquote_character, bool ignore_repeated_delimiters = false);
 	/// Joins a list of string values into a single string separated by a character delimiter.
 	/// @param[out] string Resulting concatenated string.
 	/// @param[in] string_list Input list of string values.
 	/// @param[in] delimiter Delimiter to insert between the individual values.
-	RMLUICORE_API void JoinString(String& string, const StringList& string_list, const char delimiter = ',');
+	template<typename S>
+	void JoinString(String& string, const S& string_list, const char delimiter = ',');
 
 	/// Converts upper-case characters in string to lower-case.
 	RMLUICORE_API String ToLower(const String& string);
@@ -89,11 +93,11 @@ namespace StringUtilities
 		return (x == '\r' || x == '\n' || x == ' ' || x == '\t');
 	}
 
-	/// Strip whitespace characters from the beginning and end of a string.
-	RMLUICORE_API String StripWhitespace(const String& string);
+	/// Trim whitespace characters from the beginning and end of a string.
+	RMLUICORE_API String TrimWhitespace(const String& string);
 
-	/// Strip whitespace characters from the beginning and end of a string.
-	RMLUICORE_API String StripWhitespace(StringView string);
+	/// Trim whitespace characters from the beginning and end of a string view.
+	RMLUICORE_API StringView TrimWhitespace(StringView string);
 
 	/// Trim trailing zeros and the dot from a string-representation of a number with a decimal point.
 	/// @warning If the string does not represent a number _with_ a decimal point, the result will probably not be as desired.
@@ -137,40 +141,6 @@ namespace StringUtilities
 	/// Reports a warning if some or all characters could not be converted.
 	RMLUICORE_API String ToUTF8(const U16String& u16str);
 }
-
-
-/*
-	A poor man's string view. 
-	
-	The string view is agnostic to the underlying encoding, any operation will strictly operate on bytes.
-*/
-
-class RMLUICORE_API StringView {
-public:
-	StringView();
-	StringView(const char* p_begin, const char* p_end);
-	StringView(const String& string);
-	StringView(const String& string, size_t offset);
-	StringView(const String& string, size_t offset, size_t count);
-
-	// String comparison to another view
-	bool operator==(const StringView& other) const;
-	inline bool operator!=(const StringView& other) const { return !(*this == other); }
-
-	inline const char* begin() const { return p_begin; }
-	inline const char* end() const { return p_end; }
-
-	inline size_t size() const { return size_t(p_end - p_begin); }
-
-	explicit inline operator String() const {
-		return String(p_begin, p_end);
-	}
-
-private:
-	const char* p_begin;
-	const char* p_end;
-};
-
 
 /*
 	An iterator for UTF-8 strings. 
@@ -220,4 +190,7 @@ private:
 
 
 } // namespace Rml
+
+#include "StringUtilities.inl"
+
 #endif

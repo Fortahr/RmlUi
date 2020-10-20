@@ -55,6 +55,8 @@ public:
 	/// Sets the value of the text field.
 	/// @param[in] value The new value to set on the text field.
 	virtual void SetValue(const String& value);
+	/// Gets the value of the text field.
+	const String& GetValue() const;
 
 	/// Sets the maximum length (in characters) of this text field.
 	/// @param[in] max_length The new maximum length of the text field. A number lower than zero will mean infinite characters.

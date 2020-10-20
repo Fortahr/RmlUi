@@ -32,6 +32,7 @@
 #include "Traits.h"
 #include "PropertyDictionary.h"
 #include "Spritesheet.h"
+#include "HeterogeneousLookup.h"
 
 namespace Rml {
 
@@ -54,14 +55,14 @@ struct Keyframes {
 	Vector<PropertyId> property_ids;
 	Vector<KeyframeBlock> blocks;
 };
-using KeyframesMap = UnorderedMap<String, Keyframes>;
+using KeyframesMap = UnorderedMap<String, Keyframes, RmlRobinHash, RmlRobinEqual>;
 
 struct DecoratorSpecification {
 	String decorator_type;
 	PropertyDictionary properties;
 	SharedPtr<Decorator> decorator;
 };
-using DecoratorSpecificationMap = UnorderedMap<String, DecoratorSpecification>;
+using DecoratorSpecificationMap = UnorderedMap<String, DecoratorSpecification, RmlRobinHash, RmlRobinEqual>;
 
 /**
 	StyleSheet maintains a single stylesheet definition. A stylesheet can be combined with another stylesheet to create

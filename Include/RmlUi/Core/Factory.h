@@ -124,7 +124,7 @@ public:
 	/// Retrieves a decorator instancer registered with the factory.
 	/// @param[in] name The name of the desired decorator type.
 	/// @return The decorator instancer it it exists, nullptr otherwise.
-	static DecoratorInstancer* GetDecoratorInstancer(const String& name);
+	static DecoratorInstancer* GetDecoratorInstancer(const StringView& name);
 
 	/// Registers a non-owning pointer to an instancer that will be used to instance font effects.
 	/// @param[in] name The name of the font effect the instancer will be called for.

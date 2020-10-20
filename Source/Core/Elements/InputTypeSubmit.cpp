@@ -34,6 +34,7 @@ namespace Rml {
 
 InputTypeSubmit::InputTypeSubmit(ElementFormControlInput* element) : InputType(element)
 {
+	element->SetInnerRML(element->GetAttribute<String>("value", "Submit"));
 }
 
 InputTypeSubmit::~InputTypeSubmit()
@@ -69,10 +70,24 @@ void InputTypeSubmit::ProcessDefaultAction(Event& event)
 	}
 }
 
-// Sizes the dimensions to the element's inherent size.
-bool InputTypeSubmit::GetIntrinsicDimensions(Vector2f& /*dimensions*/, float& /*ratio*/)
+// Checks for necessary functional changes in the control as a result of changed attributes.
+bool InputTypeSubmit::OnAttributeChange(const ElementAttributes& changed_attributes)
 {
-	return false;
+	// Check if the value has been changed.
+	auto it = changed_attributes.find("value");
+	if (it != changed_attributes.end())
+		element->SetInnerRML(it->second.Get<String>());
+
+	return true;
+}
+
+// Sizes the dimensions to the element's inherent size.
+bool InputTypeSubmit::GetIntrinsicDimensions(Vector2f& dimensions, float& /*ratio*/)
+{
+	dimensions.x = (float)(ElementUtilities::GetStringWidth(element, "m"));
+	dimensions.y = element->GetLineHeight() + 2.0f;
+
+	return true;
 }
 
 } // namespace Rml

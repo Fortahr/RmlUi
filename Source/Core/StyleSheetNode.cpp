@@ -46,6 +46,12 @@ StyleSheetNode::StyleSheetNode(StyleSheetNode* parent, const String& tag, const 
 	CalculateAndSetSpecificity();
 }
 
+StyleSheetNode::StyleSheetNode(StyleSheetNode* parent, const StringView& tag, const StringView& id, const Vector<StringView>& classes, const Vector<StringView>& pseudo_classes, const StructuralSelectorList& structural_selectors, bool child_combinator)
+	: parent(parent), tag(String(tag)), id(String(id)), class_names(classes.begin(), classes.end()), pseudo_class_names(pseudo_classes.begin(), pseudo_classes.end()), structural_selectors(structural_selectors), child_combinator(child_combinator)
+{
+	CalculateAndSetSpecificity();
+}
+
 StyleSheetNode::StyleSheetNode(StyleSheetNode* parent, String&& tag, String&& id, StringList&& classes, StringList&& pseudo_classes, StructuralSelectorList&& structural_selectors, bool child_combinator)
 	: parent(parent), tag(std::move(tag)), id(std::move(id)), class_names(std::move(classes)), pseudo_class_names(std::move(pseudo_classes)), structural_selectors(std::move(structural_selectors)), child_combinator(child_combinator)
 {
@@ -70,7 +76,7 @@ StyleSheetNode* StyleSheetNode::GetOrCreateChildNode(const StyleSheetNode& other
 	return result;
 }
 
-StyleSheetNode* StyleSheetNode::GetOrCreateChildNode(String&& tag, String&& id, StringList&& classes, StringList&& pseudo_classes, StructuralSelectorList&& structural_pseudo_classes, bool child_combinator)
+StyleSheetNode* StyleSheetNode::GetOrCreateChildNode(StringView tag, StringView id, const Vector<StringView>& classes, const Vector<StringView>& pseudo_classes, StructuralSelectorList&& structural_pseudo_classes, bool child_combinator)
 {
 	// See if we match an existing child
 	for (const auto& child : children)
@@ -80,7 +86,7 @@ StyleSheetNode* StyleSheetNode::GetOrCreateChildNode(String&& tag, String&& id, 
 	}
 
 	// We don't, so create a new child
-	auto child = MakeUnique<StyleSheetNode>(this, std::move(tag), std::move(id), std::move(classes), std::move(pseudo_classes), std::move(structural_pseudo_classes), child_combinator);
+	auto child = MakeUnique<StyleSheetNode>(this, tag, id, classes, pseudo_classes, std::move(structural_pseudo_classes), child_combinator);
 	StyleSheetNode* result = child.get();
 
 	children.push_back(std::move(child));
@@ -205,15 +211,16 @@ bool StyleSheetNode::SetStructurallyVolatileRecursive(bool ancestor_is_structura
 	return (self_is_structural_pseudo_class || descendant_is_structural_pseudo_class);
 }
 
-bool StyleSheetNode::EqualRequirements(const String& _tag, const String& _id, const StringList& _class_names, const StringList& _pseudo_class_names, const StructuralSelectorList& _structural_selectors, bool _child_combinator) const
+template<typename S>
+bool StyleSheetNode::EqualRequirements(const S& _tag, const S& _id, const Vector<S>& _class_names, const Vector<S>& _pseudo_class_names, const StructuralSelectorList& _structural_selectors, bool _child_combinator) const
 {
-	if (tag != _tag)
+	if (_tag != tag)
 		return false;
-	if (id != _id)
+	if (_id != id)
+		return false;	
+	if (_class_names.size() != class_names.size() || !std::equal(_class_names.begin(), _class_names.end(), class_names.begin()))
 		return false;
-	if (class_names != _class_names)
-		return false;
-	if (pseudo_class_names != _pseudo_class_names)
+	if (_pseudo_class_names.size() != pseudo_class_names.size() || !std::equal(_pseudo_class_names.begin(), _pseudo_class_names.end(), pseudo_class_names.begin()))
 		return false;
 	if (structural_selectors != _structural_selectors)
 		return false;

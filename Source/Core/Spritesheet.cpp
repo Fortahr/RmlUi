@@ -32,7 +32,7 @@
 
 namespace Rml {
 
-bool SpritesheetList::AddSpriteSheet(const String& name, const String& image_source, const String& definition_source, int definition_line_number, const SpriteDefinitionList& sprite_definitions)
+bool SpritesheetList::AddSpriteSheet(const StringView& name, const String& image_source, const String& definition_source, int definition_line_number, const SpriteDefinitionList& sprite_definitions)
 {
 	// Load the texture
 	Texture texture;
@@ -42,7 +42,7 @@ bool SpritesheetList::AddSpriteSheet(const String& name, const String& image_sou
 	auto result = spritesheet_map.emplace(name, sprite_sheet);
 	if (!result.second)
 	{
-		Log::Message(Log::LT_WARNING, "Spritesheet '%s' has the same name as another spritesheet, ignored. See %s:%d", name.c_str(), definition_source.c_str(), definition_line_number);
+		Log::Message(Log::LT_WARNING, "Spritesheet '%s' has the same name as another spritesheet, ignored. See %s:%d", String(name).c_str(), definition_source.c_str(), definition_line_number);
 		return false;
 	}
 

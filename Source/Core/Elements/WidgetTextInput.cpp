@@ -130,10 +130,27 @@ WidgetTextInput::~WidgetTextInput()
 // Sets the value of the text field.
 void WidgetTextInput::SetValue(const String& value)
 {
-	text_element->SetText(value);
+	if (value.empty())
+	{
+		parent->SetPseudoClass("placeholder", true);
+		text_element->SetText(GetElement()->GetAttribute<String>("placeholder", ""));
+	}
+	else
+	{
+		parent->SetPseudoClass("placeholder", false);
+		text_element->SetText(value);
+	}
+
 	FormatElement();
 
 	UpdateRelativeCursor();
+}
+
+// Sets the value of the text field.
+const String& WidgetTextInput::GetValue() const
+{
+	static String s;
+	return parent->IsPseudoClassSet("placeholder") ? s : text_element->GetText();
 }
 
 // Sets the maximum length (in characters) of this text field.
@@ -990,7 +1007,7 @@ Vector2f WidgetTextInput::FormatText()
 
 	int line_begin = 0;
 	Vector2f line_position(0, 0);
-	bool last_line = false;
+	bool last_line = parent->IsPseudoClassSet("placeholder");
 
 	// Keep generating lines until all the text content is placed.
 	do
@@ -1000,7 +1017,7 @@ Vector2f WidgetTextInput::FormatText()
 		float line_width;
 
 		// Generate the next line.
-		last_line = text_element->GenerateLine(line.content, line.content_length, line_width, line_begin, parent->GetClientWidth() - cursor_size.x, 0, false, false);
+		last_line |= text_element->GenerateLine(line.content, line.content_length, line_width, line_begin, parent->GetClientWidth() - cursor_size.x, 0, false, false);
 
 		// If this line terminates in a soft-return, then the line may be leaving a space or two behind as an orphan.
 		// If so, we must append the orphan onto the line even though it will push the line outside of the input
@@ -1012,7 +1029,7 @@ Vector2f WidgetTextInput::FormatText()
 		{
 			soft_return = true;
 
-			const String& text = text_element->GetText();
+			const String& text = GetValue();
 			String orphan;
 			for (int i = 1; i >= 0; --i)
 			{
@@ -1130,7 +1147,7 @@ void WidgetTextInput::UpdateCursorPosition()
 	if (text_element->GetFontFaceHandle() == 0)
 		return;
 
-	cursor_position.x = (float) ElementUtilities::GetStringWidth(text_element, lines[cursor_line_index].content.substr(0, cursor_character_index));
+	cursor_position.x = parent->IsPseudoClassSet("placeholder") ? 0.f : (float) ElementUtilities::GetStringWidth(text_element, lines[cursor_line_index].content.substr(0, cursor_character_index));
 	cursor_position.y = -1.f + (float)cursor_line_index * text_element->GetLineHeight();
 }
 

@@ -435,7 +435,7 @@ bool PropertySpecification::ParsePropertyValues(StringList& values_list, const S
 			{
 				if (character == ';')
 				{
-					value = StringUtilities::StripWhitespace(value);
+					value = StringUtilities::TrimWhitespace(value);
 					if (value.size() > 0)
 					{
 						values_list.push_back(value);
@@ -446,7 +446,7 @@ bool PropertySpecification::ParsePropertyValues(StringList& values_list, const S
 				{
 					if (split_values)
 					{
-						value = StringUtilities::StripWhitespace(value);
+						value = StringUtilities::TrimWhitespace(value);
 						if (value.size() > 0)
 						{
 							values_list.push_back(value);
@@ -460,7 +460,7 @@ bool PropertySpecification::ParsePropertyValues(StringList& values_list, const S
 				{
 					if (split_values)
 					{
-						value = StringUtilities::StripWhitespace(value);
+						value = StringUtilities::TrimWhitespace(value);
 						if (value.size() > 0)
 						{
 							values_list.push_back(value);
@@ -539,7 +539,7 @@ bool PropertySpecification::ParsePropertyValues(StringList& values_list, const S
 					{
 						if (split_values)
 						{
-							value = StringUtilities::StripWhitespace(value);
+							value = StringUtilities::TrimWhitespace(value);
 							if (value.size() > 0)
 							{
 								values_list.push_back(value);
@@ -563,7 +563,7 @@ bool PropertySpecification::ParsePropertyValues(StringList& values_list, const S
 
 	if (state == VALUE)
 	{
-		value = StringUtilities::StripWhitespace(value);
+		value = StringUtilities::TrimWhitespace(value);
 		if (value.size() > 0)
 			values_list.push_back(value);
 	}

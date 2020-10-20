@@ -185,7 +185,7 @@ DecoratorsPtr StyleSheet::InstanceDecoratorsFromString(const String& decorator_s
 		else
 		{
 			// Since we have parentheses it must be an anonymous decorator with inline properties
-			const String type = StringUtilities::StripWhitespace(decorator_string.substr(0, shorthand_open));
+			const String type = StringUtilities::TrimWhitespace(decorator_string.substr(0, shorthand_open));
 
 			// Check for valid decorator type
 			DecoratorInstancer* instancer = Factory::GetDecoratorInstancer(type);
@@ -265,7 +265,7 @@ FontEffectsPtr StyleSheet::InstanceFontEffectsFromString(const String& font_effe
 		else
 		{
 			// Since we have parentheses it must be an anonymous decorator with inline properties
-			const String type = StringUtilities::StripWhitespace(font_effect_string.substr(0, shorthand_open));
+			const String type = StringUtilities::TrimWhitespace(font_effect_string.substr(0, shorthand_open));
 
 			// Check for valid font-effect type
 			FontEffectInstancer* instancer = Factory::GetFontEffectInstancer(type);
