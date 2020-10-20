@@ -125,24 +125,21 @@ const PropertyIdSet& PropertySpecification::GetRegisteredPropertiesForcingLayout
 }
 
 // Registers a shorthand property definition.
-ShorthandId PropertySpecification::RegisterShorthand(const String& shorthand_name, const String& property_names, ShorthandType type, ShorthandId id)
+ShorthandId PropertySpecification::RegisterShorthand(const String& shorthand_name, const Vector<StringView>& property_names, ShorthandType type, ShorthandId id)
 {
 	if (id == ShorthandId::Invalid)
 		id = shorthand_map->GetOrCreateId(shorthand_name);
 	else
 		shorthand_map->AddPair(id, shorthand_name);
 
-	StringList property_list;
-	StringUtilities::ExpandString(property_list, StringUtilities::ToLower(property_names));
-
 	// Construct the new shorthand definition and resolve its properties.
 	UniquePtr<ShorthandDefinition> property_shorthand(new ShorthandDefinition());
 
-	for (const String& raw_name : property_list)
+	for (const StringView& raw_name : property_names)
 	{
 		ShorthandItem item;
 		bool optional = false;
-		String name = raw_name;
+		String name = StringUtilities::ToLower(raw_name);
 
 		if (!raw_name.empty() && raw_name.back() == '?')
 		{

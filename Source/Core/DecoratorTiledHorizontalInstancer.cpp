@@ -36,14 +36,15 @@ DecoratorTiledHorizontalInstancer::DecoratorTiledHorizontalInstancer() : Decorat
 	RegisterTileProperty("left-image");
 	RegisterTileProperty("right-image");
 	RegisterTileProperty("center-image");
-	RegisterShorthand("decorator", "left-image, center-image, right-image", ShorthandType::RecursiveCommaSeparated);
+
+	RegisterShorthand("decorator", { "left-image", "center-image", "right-image" }, ShorthandType::RecursiveCommaSeparated);
 }
 
 DecoratorTiledHorizontalInstancer::~DecoratorTiledHorizontalInstancer()
 {
 }
 
-SharedPtr<Decorator> DecoratorTiledHorizontalInstancer::InstanceDecorator(const String& RMLUI_UNUSED_PARAMETER(name), const PropertyDictionary& properties, const DecoratorInstancerInterface& instancer_interface)
+SharedPtr<Decorator> DecoratorTiledHorizontalInstancer::InstanceDecorator(StringView RMLUI_UNUSED_PARAMETER(name), const PropertyDictionary& properties, const DecoratorInstancerInterface& instancer_interface)
 {
 	RMLUI_UNUSED(name);
 

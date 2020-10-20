@@ -92,7 +92,8 @@ public:
 		id_ry = specification.RegisterProperty("rectangle-y", "", false, false).AddParser("length").GetId();
 		id_rw = specification.RegisterProperty("rectangle-w", "", false, false).AddParser("length").GetId();
 		id_rh = specification.RegisterProperty("rectangle-h", "", false, false).AddParser("length").GetId();
-		id_rectangle = specification.RegisterShorthand("rectangle", "rectangle-x, rectangle-y, rectangle-w, rectangle-h", ShorthandType::FallThrough);
+
+		id_rectangle = specification.RegisterShorthand("rectangle", { "rectangle-x", "rectangle-y", "rectangle-w", "rectangle-h" }, ShorthandType::FallThrough);
 	}
 
 	const String& GetImageSource() const
@@ -635,7 +636,7 @@ StyleSheetNode* StyleSheetParser::ImportProperties(StyleSheetNode* node, StringV
 {
 	StyleSheetNode* leaf_node = node;
 
-	StringList nodes;
+	Vector<StringView> nodes;
 
 	// Find child combinators, the CSS '>' rule.
 	/*size_t i_child = rule_name.find('>');

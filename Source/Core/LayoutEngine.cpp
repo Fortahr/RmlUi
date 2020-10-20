@@ -328,10 +328,8 @@ bool LayoutEngine::FormatElementTable(LayoutBlockBox* block_context_box, Element
 // Executes any special formatting for special elements.
 bool LayoutEngine::FormatElementSpecial(LayoutBlockBox* block_context_box, Element* element)
 {
-	static const String br("br");
-	
 	// Check for a <br> tag.
-	if (element->GetTagName() == br)
+	if (element->GetTagName() == "br")
 	{
 		block_context_box->AddBreak();
 		element->OnLayout();

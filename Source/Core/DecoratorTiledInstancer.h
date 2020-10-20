@@ -50,7 +50,7 @@ protected:
 	/// Adds the property declarations for a tile.
 	/// @param[in] name The name of the tile property.
 	/// @param[in] register_fit_modes If true, the tile will have the fit modes registered.
-	void RegisterTileProperty(const String& name, bool register_fit_modes = false);
+	void RegisterTileProperty(StringView name, bool register_fit_modes = false);
 
 	/// Retrieves all the properties for a tile from the property dictionary.
 	/// @param[out] tile The tile structure for storing the tile properties.

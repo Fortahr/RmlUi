@@ -127,17 +127,17 @@ void DecoratorGradient::RenderElement(Element* element, DecoratorDataHandle elem
 DecoratorGradientInstancer::DecoratorGradientInstancer()
 {
 	// register properties for the decorator
-	ids.direction = RegisterProperty("direction", "horizontal").AddParser("keyword", "horizontal, vertical").GetId();
+	ids.direction = RegisterProperty("direction", "horizontal").AddParser("keyword", { "horizontal", "vertical" }).GetId();
 	ids.start = RegisterProperty("start-color", "#ffffff").AddParser("color").GetId();
 	ids.stop = RegisterProperty("stop-color", "#ffffff").AddParser("color").GetId();
-	RegisterShorthand("decorator", "direction, start-color, stop-color", ShorthandType::FallThrough);
+	RegisterShorthand("decorator", { "direction", "start-color", "stop-color" }, ShorthandType::FallThrough);
 }
 
 DecoratorGradientInstancer::~DecoratorGradientInstancer()
 {
 }
 
-SharedPtr<Decorator> DecoratorGradientInstancer::InstanceDecorator(const String & RMLUI_UNUSED_PARAMETER(name), const PropertyDictionary& properties_,
+SharedPtr<Decorator> DecoratorGradientInstancer::InstanceDecorator(StringView RMLUI_UNUSED_PARAMETER(name), const PropertyDictionary& properties_,
 	const DecoratorInstancerInterface& RMLUI_UNUSED_PARAMETER(interface_))
 {
 	RMLUI_UNUSED(name);

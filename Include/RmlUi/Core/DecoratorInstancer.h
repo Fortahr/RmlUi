@@ -61,7 +61,7 @@ public:
 	/// @param[in] properties All RCSS properties associated with the decorator.
 	/// @param[in] instancer_interface An interface for querying the active style sheet.
 	/// @return A shared_ptr to the decorator if it was instanced successfully.
-	virtual SharedPtr<Decorator> InstanceDecorator(const String& name, const PropertyDictionary& properties, const DecoratorInstancerInterface& instancer_interface) = 0;
+	virtual SharedPtr<Decorator> InstanceDecorator(StringView name, const PropertyDictionary& properties, const DecoratorInstancerInterface& instancer_interface) = 0;
 
 	/// Returns the property specification associated with the instancer.
 	const PropertySpecification& GetPropertySpecification() const;
@@ -77,7 +77,7 @@ protected:
 	/// @param[in] properties A comma-separated list of the properties this definition is shorthand for. The order in which they are specified here is the order in which the values will be processed.
 	/// @param[in] type The type of shorthand to declare.
 	/// @param True if all the property names exist, false otherwise.
-	ShorthandId RegisterShorthand(const String& shorthand_name, const String& property_names, ShorthandType type);
+	ShorthandId RegisterShorthand(const String& shorthand_name, const Vector<StringView>& property_names, ShorthandType type);
 
 private:
 	PropertySpecification properties;

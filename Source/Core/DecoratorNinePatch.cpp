@@ -184,19 +184,18 @@ DecoratorNinePatchInstancer::DecoratorNinePatchInstancer()
 	edge_ids[1] = RegisterProperty("edge-right", "0px").AddParser("number_length_percent").GetId();
 	edge_ids[2] = RegisterProperty("edge-bottom", "0px").AddParser("number_length_percent").GetId();
 	edge_ids[3] = RegisterProperty("edge-left", "0px").AddParser("number_length_percent").GetId();
-
-	RegisterShorthand("edge", "edge-top, edge-right, edge-bottom, edge-left", ShorthandType::Box);
+	RegisterShorthand("edge", { "edge-top", "edge-right", "edge-bottom", "edge-left" }, ShorthandType::Box);
 	
 	RMLUI_ASSERT(sprite_outer_id != PropertyId::Invalid && sprite_inner_id != PropertyId::Invalid);
 
-	RegisterShorthand("decorator", "outer, inner, edge?", ShorthandType::RecursiveCommaSeparated);
+	RegisterShorthand("decorator", { "outer", "inner", "edge?" }, ShorthandType::RecursiveCommaSeparated);
 }
 
 DecoratorNinePatchInstancer::~DecoratorNinePatchInstancer()
 {
 }
 
-SharedPtr<Decorator> DecoratorNinePatchInstancer::InstanceDecorator(const String& RMLUI_UNUSED_PARAMETER(name), const PropertyDictionary& properties, const DecoratorInstancerInterface& instancer_interface)
+SharedPtr<Decorator> DecoratorNinePatchInstancer::InstanceDecorator(StringView RMLUI_UNUSED_PARAMETER(name), const PropertyDictionary& properties, const DecoratorInstancerInterface& instancer_interface)
 {
 	RMLUI_UNUSED(name);
 

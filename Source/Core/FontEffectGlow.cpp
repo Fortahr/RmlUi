@@ -152,7 +152,8 @@ FontEffectGlowInstancer::FontEffectGlowInstancer() : id_width_outline(PropertyId
 	id_offset_x = RegisterProperty("offset-x", "0px", true).AddParser("length").GetId();
 	id_offset_y = RegisterProperty("offset-y", "0px", true).AddParser("length").GetId();
 	id_color = RegisterProperty("color", "white", false).AddParser("color").GetId();
-	RegisterShorthand("font-effect", "width-outline, width-blur, offset-x, offset-y, color", ShorthandType::FallThrough);
+
+	RegisterShorthand("font-effect", { "width-outline", "width-blur", "offset-x", "offset-y", "color" }, ShorthandType::FallThrough);
 }
 
 FontEffectGlowInstancer::~FontEffectGlowInstancer()

@@ -53,7 +53,7 @@ public:
 	/// @param[in] parser_name The name of the parser (default parsers are 'string', 'keyword', 'number' and 'color').
 	/// @param[in] parser_parameters A comma-separated list of validation parameters for the parser.
 	/// @return This property definition.
-	PropertyDefinition& AddParser(const String& parser_name, const String& parser_parameters = "");
+	PropertyDefinition& AddParser(const String& parser_name, const Vector<StringView>& parser_parameters = {});
 
 	/// Set target for relative units when resolving sizes such as percentages.
 	PropertyDefinition& SetRelativeTarget(RelativeTarget relative_target);

@@ -30,6 +30,8 @@
 #include "../../Include/RmlUi/Core/PropertyDefinition.h"
 #include "../../Include/RmlUi/Core/Spritesheet.h"
 
+#include <sstream>
+
 namespace Rml {
 
 DecoratorTiledInstancer::DecoratorTiledInstancer(size_t num_tiles)
@@ -38,43 +40,55 @@ DecoratorTiledInstancer::DecoratorTiledInstancer(size_t num_tiles)
 }
 
 // Adds the property declarations for a tile.
-void DecoratorTiledInstancer::RegisterTileProperty(const String& name, bool register_fit_modes)
+void DecoratorTiledInstancer::RegisterTileProperty(StringView name, bool register_fit_modes)
 {
 	TilePropertyIds ids = {};
 
-	ids.src = RegisterProperty(CreateString(32, "%s-src", name.c_str()), "").AddParser("string").GetId();
+	std::stringstream nameStream;
+	nameStream << name << "-src";
+	String src_name = nameStream.str();
+	String fit_name;
+	String align_x_name;
+	String align_y_name;
 
-	String additional_modes;
+	ids.src = RegisterProperty(nameStream.str(), "").AddParser("string").GetId();
+
+	String orientation_name(name); orientation_name += "-orientation";
+	Vector<StringView> additional_modes({ src_name, orientation_name });
 
 	if (register_fit_modes)
 	{
-		String fit_name = CreateString(32, "%s-fit", name.c_str());
+		nameStream.seekp(-4, std::ios_base::end);
+		nameStream << "-fit";
+		fit_name = nameStream.str();
 		ids.fit = RegisterProperty(fit_name, "fill")
-			.AddParser("keyword", "fill, contain, cover, scale-none, scale-down")
+			.AddParser("keyword", { "fill", "contain", "cover", "scale-none", "scale-down" }) // PERF
 			.GetId();
 
-		String align_x_name = CreateString(32, "%s-align-x", name.c_str());
+		nameStream.seekp(-4, std::ios_base::end);
+		nameStream << "-align-x";
+		align_x_name = nameStream.str();
 		ids.align_x = RegisterProperty(align_x_name, "center")
-			.AddParser("keyword", "left, center, right")
+			.AddParser("keyword", { "left", "center", "right" })
 			.AddParser("length_percent")
 			.GetId();
 
-		String align_y_name = CreateString(32, "%s-align-y", name.c_str());
+		nameStream.seekp(-8, std::ios_base::end);
+		nameStream << "-align-y";
+		align_y_name = nameStream.str();
 		ids.align_y = RegisterProperty(align_y_name, "center")
-			.AddParser("keyword", "top, center, bottom")
+			.AddParser("keyword", { "top", "center", "bottom" })
 			.AddParser("length_percent")
 			.GetId();
 
-		additional_modes += ", " + fit_name + ", " + align_x_name + ", " + align_y_name;
+		additional_modes.insert(additional_modes.end(), { fit_name, align_x_name, align_y_name });
 	}
 
-	ids.orientation = RegisterProperty(CreateString(32, "%s-orientation", name.c_str()), "none")
-		.AddParser("keyword", "none, flip-horizontal, flip-vertical, rotate-180")
+	ids.orientation = RegisterProperty(orientation_name, "none")
+		.AddParser("keyword", { "none", "flip-horizontal", "flip-vertical", "rotate-180" })
 		.GetId();
 
-	RegisterShorthand(name, CreateString(256, ("%s-src, %s-orientation" + additional_modes).c_str(),
-		name.c_str(), name.c_str(), name.c_str(), name.c_str(), name.c_str(), name.c_str()),
-		ShorthandType::FallThrough);
+	RegisterShorthand(String(name), additional_modes, ShorthandType::FallThrough);
 
 	tile_property_ids.push_back(ids);
 }

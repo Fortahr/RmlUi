@@ -33,6 +33,8 @@
 #include "Header.h"
 #include "Types.h"
 
+#include <iostream>
+
 namespace Rml {
 
 /*
@@ -47,6 +49,7 @@ public:
 	static constexpr size_t npos = size_t(-1);
 
 	StringView();
+	StringView(const char* c_str);
 	StringView(const char* p_begin, const char* p_end);
 	StringView(const char* p_begin, size_t count);
 	StringView(const String& string);
@@ -73,6 +76,9 @@ public:
 	inline const char* begin() const { return p_begin; }
 	inline const char* end() const { return p_end; }
 
+	inline const char& front() const { RMLUI_ASSERT(p_end > p_begin); return *p_begin; }
+	inline const char& back() const { RMLUI_ASSERT(p_end > p_begin); return *(p_end - 1); }
+
 	inline const char* data() const noexcept { return p_begin; }
 
 	inline size_t size() const { return size_t(p_end - p_begin); }
@@ -94,6 +100,8 @@ private:
 	const char* p_begin;
 	const char* p_end;
 };
+
+std::ostream& operator<<(std::ostream& stream, const StringView& object);
 
 } // namespace Rml
 #endif

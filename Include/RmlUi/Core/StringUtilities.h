@@ -40,8 +40,6 @@ namespace Rml {
 	@author Lloyd Weehuizen
  */
 
-class StringView;
-
 /// Construct a string using sprintf-style syntax.
 RMLUICORE_API String CreateString(size_t max_size, const char* format, ...) RMLUI_ATTRIBUTE_FORMAT_PRINTF(2,3);
 
@@ -56,8 +54,8 @@ namespace StringUtilities
 	/// @param[out] string_list Resulting list of values.
 	/// @param[in] string String to expand.
 	/// @param[in] delimiter Delimiter found between entries in the string list.
-	template<typename L, typename S>
-	void ExpandString(Vector<L>& string_list, const S& string, const char delimiter = ',');
+	void ExpandString(Vector<String>& string_list, StringView string, const char delimiter = ',');
+	void ExpandString(Vector<StringView>& string_list, StringView string, const char delimiter = ',');
 	/// Expands character-delimited list of values with custom quote characters.
 	/// @param[out] string_list Resulting list of values.
 	/// @param[in] string String to expand.
@@ -65,19 +63,20 @@ namespace StringUtilities
 	/// @param[in] quote_character Begin quote
 	/// @param[in] unquote_character End quote
 	/// @param[in] ignore_repeated_delimiters If true, repeated values of the delimiter will not add additional entries to the list.
-	template<typename L, typename S>
-	void ExpandString(Vector<L>& string_list, const S& string, const char delimiter, char quote_character, char unquote_character, bool ignore_repeated_delimiters = false);
+	void ExpandString(Vector<String>& string_list, StringView string, const char delimiter, char quote_character, char unquote_character, bool ignore_repeated_delimiters = false);
+	void ExpandString(Vector<StringView>& string_list, StringView string, const char delimiter, char quote_character, char unquote_character, bool ignore_repeated_delimiters = false);
+
 	/// Joins a list of string values into a single string separated by a character delimiter.
 	/// @param[out] string Resulting concatenated string.
 	/// @param[in] string_list Input list of string values.
 	/// @param[in] delimiter Delimiter to insert between the individual values.
-	template<typename S>
-	void JoinString(String& string, const S& string_list, const char delimiter = ',');
+	void JoinString(String& string, const Vector<String>& string_list, const char delimiter = ',');
+	void JoinString(String& string, const Vector<StringView>& string_list, const char delimiter = ',');
 
 	/// Converts upper-case characters in string to lower-case.
-	RMLUICORE_API String ToLower(const String& string);
+	RMLUICORE_API String ToLower(StringView string);
 	/// Converts lower-case characters in string to upper-case.
-	RMLUICORE_API String ToUpper(const String& string);
+	RMLUICORE_API String ToUpper(StringView string);
 
 	/// Encode RML characters, eg. '<' to '&lt;'
 	RMLUICORE_API String EncodeRml(const String& string);
@@ -190,7 +189,5 @@ private:
 
 
 } // namespace Rml
-
-#include "StringUtilities.inl"
 
 #endif

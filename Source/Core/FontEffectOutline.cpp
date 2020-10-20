@@ -103,7 +103,8 @@ FontEffectOutlineInstancer::FontEffectOutlineInstancer() : id_width(PropertyId::
 {
 	id_width = RegisterProperty("width", "1px", true).AddParser("length").GetId();
 	id_color = RegisterProperty("color", "white", false).AddParser("color").GetId();
-	RegisterShorthand("font-effect", "width, color", ShorthandType::FallThrough);
+
+	RegisterShorthand("font-effect", { "width", "color" }, ShorthandType::FallThrough);
 }
 
 FontEffectOutlineInstancer::~FontEffectOutlineInstancer()

@@ -45,7 +45,7 @@ PropertyDefinition::~PropertyDefinition()
 }
 
 // Registers a parser to parse values for this definition.
-PropertyDefinition& PropertyDefinition::AddParser(const String& parser_name, const String& parser_parameters)
+PropertyDefinition& PropertyDefinition::AddParser(const String& parser_name, const Vector<StringView>& parser_parameters)
 {
 	ParserState new_parser;
 
@@ -60,10 +60,8 @@ PropertyDefinition& PropertyDefinition::AddParser(const String& parser_name, con
 	// Split the parameter list, and set up the map.
 	if (!parser_parameters.empty())
 	{
-		StringList parameter_list;
-		StringUtilities::ExpandString(parameter_list, parser_parameters);
-		for (size_t i = 0; i < parameter_list.size(); i++)
-			new_parser.parameters[parameter_list[i]] = (int) i;
+		for (size_t i = 0; i < parser_parameters.size(); i++)
+			new_parser.parameters.insert({ parser_parameters[i], (int)i });
 	}
 
 	const int parser_index = (int)parsers.size();

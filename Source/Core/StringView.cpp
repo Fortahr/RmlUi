@@ -49,6 +49,8 @@ namespace Rml
 		RMLUI_ASSERT(p_end >= p_begin);
 	}
 
+	StringView::StringView(const char* c_str) : p_begin(c_str), p_end(c_str + strlen(c_str)) { }
+
 	StringView::StringView(const char* p_begin, size_t count) : p_begin(p_begin), p_end(p_begin + count)
 	{
 		RMLUI_ASSERT(p_end >= p_begin);
@@ -80,6 +82,12 @@ namespace Rml
 		}
 
 		return false;
+	}
+
+	std::ostream& operator<<(std::ostream& stream, const StringView& object)
+	{
+		stream.write(object.data(), object.size());
+		return stream;
 	}
 
 	int StringView::compare(const StringView& other) const noexcept

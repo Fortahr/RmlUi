@@ -44,8 +44,8 @@ DecoratorTiledBoxInstancer::DecoratorTiledBoxInstancer() : DecoratorTiledInstanc
 	RegisterTileProperty("bottom-image");
 
 	RegisterTileProperty("center-image");
-
-	RegisterShorthand("decorator", "top-left-image, top-image, top-right-image, left-image, center-image, right-image, bottom-left-image, bottom-image, bottom-right-image", ShorthandType::RecursiveCommaSeparated);
+	
+	RegisterShorthand("decorator", { "top-left-image", "top-image", "top-right-image", "left-image", "center-image", "right-image", "bottom-left-image", "bottom-image", "bottom-right-image" }, ShorthandType::RecursiveCommaSeparated);
 }
 
 DecoratorTiledBoxInstancer::~DecoratorTiledBoxInstancer()
@@ -53,7 +53,7 @@ DecoratorTiledBoxInstancer::~DecoratorTiledBoxInstancer()
 }
 
 // Instances a box decorator.
-SharedPtr<Decorator>DecoratorTiledBoxInstancer::InstanceDecorator(const String& RMLUI_UNUSED_PARAMETER(name), const PropertyDictionary& properties, const DecoratorInstancerInterface& instancer_interface)
+SharedPtr<Decorator>DecoratorTiledBoxInstancer::InstanceDecorator(StringView RMLUI_UNUSED_PARAMETER(name), const PropertyDictionary& properties, const DecoratorInstancerInterface& instancer_interface)
 {
 	RMLUI_UNUSED(name);
 

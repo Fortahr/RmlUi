@@ -84,10 +84,7 @@ bool InputTypeSubmit::OnAttributeChange(const ElementAttributes& changed_attribu
 // Sizes the dimensions to the element's inherent size.
 bool InputTypeSubmit::GetIntrinsicDimensions(Vector2f& dimensions, float& /*ratio*/)
 {
-	dimensions.x = (float)(ElementUtilities::GetStringWidth(element, "m"));
-	dimensions.y = element->GetLineHeight() + 2.0f;
-
-	return true;
+	return false;
 }
 
 } // namespace Rml

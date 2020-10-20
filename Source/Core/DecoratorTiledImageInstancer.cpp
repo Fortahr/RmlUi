@@ -34,7 +34,8 @@ namespace Rml {
 DecoratorTiledImageInstancer::DecoratorTiledImageInstancer() : DecoratorTiledInstancer(1)
 {
 	RegisterTileProperty("image", true);
-	RegisterShorthand("decorator", "image", ShorthandType::RecursiveRepeat);
+
+	RegisterShorthand("decorator", { "image" }, ShorthandType::RecursiveRepeat);
 }
 
 DecoratorTiledImageInstancer::~DecoratorTiledImageInstancer()
@@ -42,7 +43,7 @@ DecoratorTiledImageInstancer::~DecoratorTiledImageInstancer()
 }
 
 
-SharedPtr<Decorator> DecoratorTiledImageInstancer::InstanceDecorator(const String& RMLUI_UNUSED_PARAMETER(name), const PropertyDictionary& properties, const DecoratorInstancerInterface& instancer_interface)
+SharedPtr<Decorator> DecoratorTiledImageInstancer::InstanceDecorator(StringView RMLUI_UNUSED_PARAMETER(name), const PropertyDictionary& properties, const DecoratorInstancerInterface& instancer_interface)
 {
 	RMLUI_UNUSED(name);
 
