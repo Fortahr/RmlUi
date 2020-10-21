@@ -587,8 +587,7 @@ bool Context::ProcessMouseMove(int x, int y, int key_modifier_state)
 		{
 			hover->DispatchEvent(EventId::Mousemove, parameters);
 
-			if (drag_hover &&
-				drag_verbose)
+			if (drag_hover && drag_verbose)
 				drag_hover->DispatchEvent(EventId::Dragmove, drag_parameters);
 		}
 	}
@@ -1334,12 +1333,12 @@ void Context::SetDragElement(Element* element)
 		drag_passive = drag_verbose = drag_started = false;
 		drag_hover_chain.clear();
 
+		Dictionary drag_parameters;
+		GenerateMouseEventParameters(drag_parameters);
+		GenerateDragEventParameters(drag_parameters);
+
 		if (drag_hover)
 		{
-			Dictionary drag_parameters;
-			GenerateMouseEventParameters(drag_parameters);
-			GenerateDragEventParameters(drag_parameters);
-
 			drag_hover->DispatchEvent(EventId::Dragdrop, drag_parameters);
 			// User may have removed the element, do an extra check.
 			if (drag_hover)
@@ -1347,6 +1346,11 @@ void Context::SetDragElement(Element* element)
 		}
 
 		cursor_proxy->RemoveChild(cursor_proxy->GetFirstChild());
+
+		// recheck hover element
+		hover = GetElementAtPoint(Rml::Vector2f(mouse_position.x, mouse_position.y));
+		if(hover)
+			hover->DispatchEvent(EventId::Mouseover, drag_parameters);
 	}
 	else
 	{
@@ -1355,8 +1359,27 @@ void Context::SetDragElement(Element* element)
 
 		if (element->GetParentNode())
 		{
+			Element* parent = element->GetParentNode();
+
 			cursor_proxy->SetStyleSheet(element->GetStyleSheet());
-			cursor_proxy->AppendChild(element->GetParentNode()->RemoveChild(element));
+			cursor_proxy->AppendChild(parent->RemoveChild(element));
+
+			// recheck hover element
+			hover = GetElementAtPoint(Rml::Vector2f(mouse_position.x, mouse_position.y));
+			if (hover)
+			{
+				drag_hover = hover;
+
+				Dictionary drag_parameters;
+				GenerateMouseEventParameters(drag_parameters);
+				GenerateDragEventParameters(drag_parameters);
+
+				hover->DispatchEvent(EventId::Mouseover, drag_parameters);
+				hover->DispatchEvent(EventId::Dragover, drag_parameters);
+				hover->DispatchEvent(EventId::Dragmove, drag_parameters);
+			}
+			else
+				drag_hover = nullptr;
 		}
 	}
 }
